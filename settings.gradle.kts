@@ -6,27 +6,27 @@ pluginManagement {
     }
 
     plugins {
-        id("io.gitlab.arturbosch.detekt") version "1.7.4"
-        id("com.android.application") version "4.0.0"
-        id("org.jetbrains.kotlin.android") version "1.3.72"
-        id("org.jetbrains.kotlin.android.extensions") version "1.3.72"
-        id("com.android.dynamic-feature") version "4.0.0"
-        id("com.android.library") version "4.0.0"
+        id(BuildPlugins.dektPlugin) version Versions.dekt
+        id(BuildPlugins.androidApplication) version Versions.buildToolsVersion
+        id(BuildPlugins.kotlinAndroid) version Versions.kotlin
+        id(BuildPlugins.kotlinAndroidExtensions) version Versions.kotlin
+        id(BuildPlugins.dynamicFeature) version Versions.buildToolsVersion
+        id(BuildPlugins.androidLibrary) version Versions.buildToolsVersion
     }
     resolutionStrategy {
         eachPlugin {
             when (requested.id.id) {
-                "com.android.application",
-                "com.android.library",
-                "com.android.dynamic-feature" -> useModule("com.android.tools.build:gradle:4.0.0")
+                BuildPlugins.androidApplication,
+                BuildPlugins.androidLibrary,
+                BuildPlugins.dynamicFeature -> useModule(BuildPlugins.androidGradlePlugin)
             }
         }
     }
 }
 
 include(
-        ":app",
-        ":core"
+    BuildModules.Libraries.App,
+    BuildModules.Libraries.Core
 )
 
 rootProject.name = "Youtugo"
