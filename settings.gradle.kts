@@ -13,6 +13,7 @@ pluginManagement {
         id(BuildPlugins.dynamicFeature) version Versions.buildToolsVersion
         id(BuildPlugins.androidLibrary) version Versions.buildToolsVersion
     }
+
     resolutionStrategy {
         eachPlugin {
             when (requested.id.id) {

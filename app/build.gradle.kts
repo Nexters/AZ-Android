@@ -26,10 +26,13 @@ android {
             )
         }
     }
+    
+    dataBinding {
+        isEnabled = true
+    }
 
-    buildFeatures {
-        dataBinding = true
-        viewBinding = true
+    viewBinding {
+        isEnabled = true
     }
 
     compileOptions {
