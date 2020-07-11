@@ -27,7 +27,11 @@ pluginManagement {
 
 include(
     BuildModules.Libraries.App,
-    BuildModules.Libraries.Core
+    BuildModules.Libraries.Core,
+
+    BuildModules.Features.Home,
+    BuildModules.Features.Humors,
+    BuildModules.Features.MyPage
 )
 
 rootProject.name = "Youtugo"

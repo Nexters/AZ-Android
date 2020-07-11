@@ -26,7 +26,7 @@ android {
             )
         }
     }
-    
+
     dataBinding {
         isEnabled = true
     }
@@ -43,6 +43,11 @@ android {
     (kotlinOptions as org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions).apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+    dynamicFeatures = mutableSetOf(
+        BuildModules.Features.Home,
+        BuildModules.Features.Humors,
+        BuildModules.Features.MyPage
+    )
 }
 
 dependencies {
@@ -59,7 +64,11 @@ dependencies {
     implementation(Libraries.koinExt)
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+
+    implementation(Libraries.navigationFragment)
+    implementation(Libraries.navigationUI)
+    implementation(Libraries.navigationDynamicFeature)
+    implementation(Libraries.fragments)
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testRunner)

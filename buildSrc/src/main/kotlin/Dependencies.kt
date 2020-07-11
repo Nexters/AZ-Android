@@ -16,7 +16,13 @@ object Versions {
     const val espresso = "3.0.2"
 
     const val dekt = "1.7.4"
-    const val navVersion = "2.3.0-alpha01"
+    const val navVersion = "2.3.0-rc01"
+    const val fragments = "1.2.5"
+
+    const val retrofit = "2.7.2"
+    const val interceptor = "4.2.2"
+    const val okHttp = "4.4.0"
+    const val moshi = "1.9.3"
 }
 
 object BuildPlugins {
@@ -51,7 +57,18 @@ object Libraries {
     const val koinExt = "org.koin:koin-android-ext:${Versions.koin}"
     const val koinCore = "org.koin:koin-core:${Versions.koin}"
 
+    // networking
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val moshiConverter = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
+    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
+    const val okHttp3 = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
 
+    // navigation
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}"
+    const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}"
+    const val navigationDynamicFeature = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navVersion}"
+    const val fragments = "androidx.fragment:fragment-ktx:${Versions.fragments}"
 }
 
 object TestLibraries {
@@ -68,7 +85,9 @@ object AndroidSDK {
 
 object BuildModules {
     object Features {
-
+        const val Home = ":features:home"
+        const val Humors = ":features:humors"
+        const val MyPage = ":features:mypage"
     }
 
     object Libraries {
