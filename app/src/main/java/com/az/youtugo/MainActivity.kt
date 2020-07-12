@@ -23,16 +23,5 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.findNavController()
 
         bottomNavigation.setupWithNavController(navController = navController)
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.homeFragment,
-                R.id.humorsFragment,
-                R.id.myPageFragment -> {
-                    bottomNavigation.visibility = View.VISIBLE
-                }
-                else -> bottomNavigation.visibility = View.GONE
-            }
-        }
     }
 }
