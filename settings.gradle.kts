@@ -1,3 +1,4 @@
+include(":model")
 pluginManagement {
     repositories {
         jcenter()
