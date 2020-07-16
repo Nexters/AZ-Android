@@ -28,6 +28,7 @@ pluginManagement {
 include(
     BuildModules.Libraries.App,
     BuildModules.Libraries.Core,
+    BuildModules.Libraries.Network,
 
     BuildModules.Features.Home,
     BuildModules.Features.Humors,

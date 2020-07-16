@@ -1,22 +1,22 @@
 plugins {
-    id(BuildPlugins.androidApplication)
+    id(BuildPlugins.androidLibrary)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
 }
 
 android {
+
     compileSdkVersion(AndroidSDK.compile)
-    buildToolsVersion("29.0.2")
 
     defaultConfig {
-        applicationId = "com.az.youtugo"
         minSdkVersion(AndroidSDK.min)
         targetSdkVersion(AndroidSDK.target)
+
         versionCode = Versions.code
         versionName = Versions.name
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -27,14 +27,6 @@ android {
         }
     }
 
-    dataBinding {
-        isEnabled = true
-    }
-
-    viewBinding {
-        isEnabled = true
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -43,16 +35,9 @@ android {
     (kotlinOptions as org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions).apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-    dynamicFeatures = mutableSetOf(
-        BuildModules.Features.Home,
-        BuildModules.Features.Humors,
-        BuildModules.Features.MyPage
-    )
 }
 
 dependencies {
-    api(project(BuildModules.Libraries.Core))
-
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libraries.kotlinStandardLibrary)
     implementation(Libraries.appCompat)
@@ -65,14 +50,7 @@ dependencies {
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
 
-    implementation(Libraries.navigationFragment)
-    implementation(Libraries.navigationUI)
-    implementation(Libraries.navigationDynamicFeature)
-    implementation(Libraries.fragments)
-
-    implementation(project(BuildModules.Libraries.Network))
-
-    testImplementation(TestLibraries.junit4)
-    androidTestImplementation(TestLibraries.testRunner)
-    androidTestImplementation(TestLibraries.espresso)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.okHttp3)
+    implementation(Libraries.loggingInterceptor)
 }
