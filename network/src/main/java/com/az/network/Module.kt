@@ -1,5 +1,7 @@
 package com.az.network
 
+import com.az.data.InfoDataSource
+import com.az.data.InfoDataSourceImpl
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,7 +10,7 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
-private const val BASE_URL = ""
+private const val BASE_URL = "http://api.github.com/"
 
 val networkModule = module {
 
@@ -44,5 +46,7 @@ val networkModule = module {
             .client(get())
             .build()
     }
+
+    single { InfoDataSourceImpl(get()) as InfoDataSource }
 
 }

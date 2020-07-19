@@ -44,6 +44,8 @@ dependencies {
     implementation(Libraries.ktxCore)
     implementation(Libraries.constraintLayout)
 
+    implementation(project(BuildModules.Libraries.Vo))
+
     // Koin
     implementation(Libraries.koinAndroid)
     implementation(Libraries.koinExt)
