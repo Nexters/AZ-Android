@@ -94,5 +94,7 @@ object BuildModules {
         const val Core = ":core"
         const val App = ":app"
         const val Network = ":network"
+        const val Model = ":model"
+        const val Vo = ":vo"
     }
 }

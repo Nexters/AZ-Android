@@ -1,4 +1,3 @@
-include(":model")
 pluginManagement {
     repositories {
         jcenter()
@@ -30,6 +29,8 @@ include(
     BuildModules.Libraries.App,
     BuildModules.Libraries.Core,
     BuildModules.Libraries.Network,
+    BuildModules.Libraries.Model,
+    BuildModules.Libraries.Vo,
 
     BuildModules.Features.Home,
     BuildModules.Features.Humors,
