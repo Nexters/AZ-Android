@@ -95,5 +95,7 @@ object BuildModules {
         const val App = ":app"
         const val Network = ":network"
         const val Model = ":model"
+        const val Repository = ":data:repository"
+        const val Network = ":data:network"
     }
 }
