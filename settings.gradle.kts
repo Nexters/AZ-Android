@@ -29,6 +29,7 @@ include(
     BuildModules.Libraries.App,
     BuildModules.Libraries.Core,
     BuildModules.Libraries.Network,
+    BuildModules.Libraries.Model,
 
     BuildModules.Features.Home,
     BuildModules.Features.Humors,
