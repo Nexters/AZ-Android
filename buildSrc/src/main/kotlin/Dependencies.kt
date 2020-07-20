@@ -22,6 +22,7 @@ object Versions {
     const val retrofit = "2.7.2"
     const val interceptor = "4.2.2"
     const val okHttp = "4.4.0"
+    const val gson = "2.3.0"
     const val moshi = "1.9.3"
 }
 
@@ -61,7 +62,7 @@ object Libraries {
 
     // networking
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gson}"
     const val moshiConverter = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
