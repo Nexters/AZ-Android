@@ -44,6 +44,11 @@ dependencies {
     implementation(Libraries.ktxCore)
     implementation(Libraries.constraintLayout)
 
+    implementation(project(BuildModules.Libraries.Model))
+
+    // Gson
+    implementation(Libraries.gsonConverter)
+
     // Koin
     implementation(Libraries.koinAndroid)
     implementation(Libraries.koinExt)
