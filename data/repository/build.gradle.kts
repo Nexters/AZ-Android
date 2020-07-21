@@ -46,4 +46,14 @@ dependencies {
 
     implementation(project(BuildModules.Libraries.Model))
     implementation(project(BuildModules.Libraries.Network))
+
+    // Koin
+    implementation(Libraries.koinAndroid)
+    implementation(Libraries.koinExt)
+    implementation(Libraries.koinScope)
+    implementation(Libraries.koinViewModel)
+
+    implementation(Libraries.retrofit)
+    implementation(Libraries.okHttp3)
+    implementation(Libraries.loggingInterceptor)
 } 

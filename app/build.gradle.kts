@@ -52,8 +52,9 @@ android {
 
 dependencies {
     api(project(BuildModules.Libraries.Core))
+    api(project(BuildModules.Libraries.Model))
+    implementation(project(BuildModules.Libraries.Repository))
     implementation(project(BuildModules.Libraries.Network))
-    implementation(project(BuildModules.Libraries.Model))
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libraries.kotlinStandardLibrary)
