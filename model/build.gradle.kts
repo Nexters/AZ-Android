@@ -33,7 +33,16 @@ dependencies {
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
 
+    // Koin
+    implementation(Libraries.koinAndroid)
+    implementation(Libraries.koinExt)
+    implementation(Libraries.koinScope)
+    implementation(Libraries.koinViewModel)
+
+    implementation(Libraries.retrofit)
+
     implementation(project(BuildModules.Libraries.Network))
+    implementation(project(BuildModules.Libraries.Vo))
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testRunner)
