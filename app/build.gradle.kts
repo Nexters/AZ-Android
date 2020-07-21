@@ -71,6 +71,7 @@ dependencies {
     implementation(Libraries.fragments)
 
     implementation(project(BuildModules.Libraries.Network))
+    implementation(project(BuildModules.Libraries.Model))
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testRunner)

@@ -52,7 +52,10 @@ dependencies {
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
 
+    implementation(Libraries.coroutinesAndroidLibrary)
+
     implementation(Libraries.retrofit)
     implementation(Libraries.okHttp3)
     implementation(Libraries.loggingInterceptor)
+    implementation(Libraries.gsonConverter)
 }

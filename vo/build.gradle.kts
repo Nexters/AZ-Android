@@ -33,6 +33,8 @@ dependencies {
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
 
+    implementation(Libraries.gson)
+
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testRunner)
     androidTestImplementation(TestLibraries.espresso)

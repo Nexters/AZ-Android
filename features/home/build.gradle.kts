@@ -37,7 +37,13 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(BuildModules.Libraries.App))
+    implementation(project(BuildModules.Libraries.Model))
+    implementation(project(BuildModules.Libraries.Network))
+
     implementation(Libraries.constraintLayout)
+
+    implementation(Libraries.lifeCycleLiveData)
+    implementation(Libraries.lifeCycleViewModel)
 
     // Koin
     implementation(Libraries.koinAndroid)

@@ -23,6 +23,9 @@ object Versions {
     const val interceptor = "4.2.2"
     const val okHttp = "4.4.0"
     const val moshi = "1.9.3"
+    const val gson = "2.8.6"
+    
+    const val lifecycle = "2.2.0"
 }
 
 object BuildPlugins {
@@ -57,6 +60,9 @@ object Libraries {
     const val koinExt = "org.koin:koin-android-ext:${Versions.koin}"
     const val koinCore = "org.koin:koin-core:${Versions.koin}"
 
+    // GSON
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
+
     // networking
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
@@ -69,6 +75,10 @@ object Libraries {
     const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}"
     const val navigationDynamicFeature = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navVersion}"
     const val fragments = "androidx.fragment:fragment-ktx:${Versions.fragments}"
+
+    // lifecycle
+    const val lifeCycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    const val lifeCycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
 }
 
 object TestLibraries {
