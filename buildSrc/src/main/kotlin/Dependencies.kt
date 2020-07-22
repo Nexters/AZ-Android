@@ -20,8 +20,8 @@ object Versions {
     const val fragments = "1.2.5"
 
     const val retrofit = "2.7.2"
-    const val interceptor = "4.2.2"
-    const val okHttp = "4.4.0"
+    const val interceptor = "3.4.1"
+    const val okHttp = "3.2.0"
     const val gson = "2.3.0"
     const val moshi = "1.9.3"
 }
