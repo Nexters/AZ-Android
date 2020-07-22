@@ -9,6 +9,7 @@ class HomeViewModel(
 ) : ViewModel() {
 
     fun getUserInfo() {
+        Log.d("시작", "start")
         githubRepository.getUserInfo(
             "nukeolaf",
             onSuccess = { response ->
@@ -16,6 +17,7 @@ class HomeViewModel(
             },
             onFailure = {
                 // do something
+                Log.e("통신 실패", it.message)
             }
         )
     }
