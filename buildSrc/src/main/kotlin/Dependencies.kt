@@ -20,8 +20,9 @@ object Versions {
     const val fragments = "1.2.5"
 
     const val retrofit = "2.7.2"
-    const val interceptor = "4.2.2"
-    const val okHttp = "4.4.0"
+    const val interceptor = "3.4.1"
+    const val okHttp = "3.2.0"
+    const val gson = "2.3.0"
     const val moshi = "1.9.3"
 }
 
@@ -35,19 +36,21 @@ object BuildPlugins {
     const val androidLibrary = "com.android.library"
     const val kotlinKapt = "kotlin-kapt"
     const val safeArgs = "androidx.navigation.safeargs.kotlin"
-    const val safeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}"
+    const val safeArgsGradlePlugin =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}"
     const val dektPlugin = "io.gitlab.arturbosch.detekt"
 }
 
 object Libraries {
     const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val coroutinesLibrary =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroidLibrary =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val appCompatX = "androidx.appcompat:appcompat:${Versions.jetPack}"
     const val appCompat = "com.android.support:appcompat-v7:${Versions.v7}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val constraintLayout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
 
@@ -59,15 +62,18 @@ object Libraries {
 
     // networking
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gson}"
     const val moshiConverter = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
-    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
+    const val loggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
     const val okHttp3 = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
 
     // navigation
-    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}"
+    const val navigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}"
     const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}"
-    const val navigationDynamicFeature = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navVersion}"
+    const val navigationDynamicFeature =
+        "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navVersion}"
     const val fragments = "androidx.fragment:fragment-ktx:${Versions.fragments}"
 }
 
@@ -93,5 +99,8 @@ object BuildModules {
     object Libraries {
         const val Core = ":core"
         const val App = ":app"
+        const val Model = ":model"
+        const val Repository = ":data:repository"
+        const val Network = ":data:network"
     }
 }
