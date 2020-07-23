@@ -1,3 +1,4 @@
+include(":main")
 pluginManagement {
     repositories {
         jcenter()
