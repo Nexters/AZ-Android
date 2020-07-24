@@ -12,27 +12,52 @@
         android:layout_height="match_parent"
         android:background="@color/colorDarkGrey">
 
-        <TextView
-            android:id="@+id/user_grade"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="85dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="45dp"
-            android:textStyle="bold"
+            android:layout_marginTop="54dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="유머쪼랩ㅋ" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textSize="45dp"
-            app:layout_constraintStart_toStartOf="@id/user_grade"
-            app:layout_constraintTop_toBottomOf="@id/user_grade"
-            tools:text="분발하자^^" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/user_grade_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/user_grade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="45dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/user_grade_guide"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="유머쪼랩ㅋ" />
+
+            <TextView
+                android:id="@+id/user_grade_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="45dp"
+                app:layout_constraintStart_toStartOf="@id/user_grade"
+                app:layout_constraintTop_toBottomOf="@id/user_grade"
+                tools:text="분발하자^^" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="154dp"
+                android:src="@drawable/sinip_main"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
