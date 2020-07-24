@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/img_delete_button"
+            android:id="@+id/img_close_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/delete_button" />
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:src="@drawable/newbie" />
+            android:src="@drawable/ic_sinip_small" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

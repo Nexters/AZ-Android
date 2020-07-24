@@ -28,17 +28,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:navGraph="@navigation/main_nav_graph" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorBlack"
-        app:itemIconTint="@color/bottomNavItemColor"
-        app:itemTextColor="@color/bottomNavItemColor"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_navigation" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
