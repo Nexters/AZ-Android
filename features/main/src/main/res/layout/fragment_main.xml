@@ -69,9 +69,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/user_info_grade">
+                app:layout_constraintTop_toBottomOf="@id/user_info_grade"
+                app:layout_constraintBottom_toTopOf="@id/humor_card">
 
                 <TextView
                     android:id="@+id/humor_count"
@@ -111,12 +113,15 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/humor_card"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="450dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/rounded_background_for_humor_card"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/user_info_progress"
-                android:background="@drawable/rounded_background_for_humor_card">
+                app:layout_constraintTop_toBottomOf="@id/user_info_progress">
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
