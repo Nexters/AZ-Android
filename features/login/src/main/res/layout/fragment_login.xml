@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDarkGrey">
+
+    <TextView
+        android:id="@+id/txt_sub_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="65dp"
+        android:letterSpacing="-0.05em"
+        android:lineHeight="54sp"
+        android:text="@string/login_sub_guide"
+        android:textColor="@color/colorWhite"
+        android:textSize="45sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="22dp"
+        android:letterSpacing="-0.05em"
+        android:lineHeight="54sp"
+        android:text="@string/login_guide"
+        android:textColor="@color/colorWhite"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_sub_guide" />
+
+    <ImageView
+        android:id="@+id/img_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/heart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/senior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_heart" />
+
+    <LinearLayout
+        android:id="@+id/layout_edit_text_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_guide">
+
+        <EditText
+            android:id="@+id/edt_login_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorDarkLightGrey"
+            android:hint="@string/id_placeholder"
+            android:paddingBottom="20dp"
+            android:textColor="@color/colorDarkLightGrey"
+            android:textColorHint="@color/colorDarkLightGrey" />
+
+        <EditText
+            android:id="@+id/edt_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorDarkLightGrey"
+            android:hint="@string/password_placeholder"
+            android:paddingBottom="20dp"
+            android:textColor="@color/colorDarkLightGrey"
+            android:textColorHint="@color/colorDarkLightGrey" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

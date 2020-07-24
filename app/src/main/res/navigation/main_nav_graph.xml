@@ -21,4 +21,10 @@
         android:name="com.az.mypage.ui.views.MyPageFragment">
 
     </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.az.login.LoginFragment">
+
+    </fragment>
 </navigation>

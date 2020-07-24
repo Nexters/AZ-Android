@@ -1,0 +1,11 @@
+<resources>
+    <string name="login_sub_guide">아재개그,\n좋아하시나요?</string>
+    <string name="login_guide">아재트와\n함께해요!</string>
+
+    <string name="id_placeholder">아이디</string>
+    <string name="password_placeholder">비밀번호</string>
+    <string name="forgot_password">비밀호 찾기</string>
+
+    <string name="login_button">로그인</string>
+    <string name="signin_button">회원가입</string>
+</resources>
