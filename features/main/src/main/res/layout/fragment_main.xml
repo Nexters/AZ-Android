@@ -13,6 +13,7 @@
         android:background="@color/colorDarkGrey">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/user_info_grade"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="54dp"
@@ -56,6 +57,52 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_info_grade">
+
+            <TextView
+                android:id="@+id/humor_count"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:background="@drawable/rounded_background"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorWhite"
+                android:textSize="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="14개" />
+
+            <TextView
+                android:id="@+id/humor_count_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/humor_count"
+                app:layout_constraintStart_toEndOf="@id/humor_count"
+                tools:text="더 작성하면 등급업!" />
+
+            <ProgressBar
+                style="@style/HumorGradeProgressbar"
+                android:layout_width="0dp"
+                android:layout_height="9dp"
+                android:layout_marginTop="11dp"
+                android:progressDrawable="@drawable/humor_grade_progressbar"
+                app:layout_constraintEnd_toEndOf="@id/humor_count_text"
+                app:layout_constraintStart_toStartOf="@id/humor_count"
+                app:layout_constraintTop_toBottomOf="@id/humor_count"
+                tools:progress="70" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
