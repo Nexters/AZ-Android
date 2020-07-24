@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -7,7 +9,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorDarkGrey">
+
+        <TextView
+            android:id="@+id/user_grade"
+            android:layout_width="0dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="85dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="45dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="유머쪼랩ㅋ" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="45dp"
+            app:layout_constraintStart_toStartOf="@id/user_grade"
+            app:layout_constraintTop_toBottomOf="@id/user_grade"
+            tools:text="분발하자^^" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
