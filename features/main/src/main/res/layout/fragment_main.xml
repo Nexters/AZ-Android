@@ -7,104 +7,110 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorDarkGrey">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/user_info_grade"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="54dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/user_grade_guide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <TextView
-                android:id="@+id/user_grade"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/user_info_grade"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:textColor="@color/colorWhite"
-                android:textSize="45dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/user_grade_guide"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="유머쪼랩ㅋ" />
-
-            <TextView
-                android:id="@+id/user_grade_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:textSize="45dp"
-                app:layout_constraintStart_toStartOf="@id/user_grade"
-                app:layout_constraintTop_toBottomOf="@id/user_grade"
-                tools:text="분발하자^^" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="154dp"
-                android:src="@drawable/sinip_main"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="54dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_info_grade">
-
-            <TextView
-                android:id="@+id/humor_count"
-                android:layout_width="106dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="34dp"
-                android:background="@drawable/rounded_background"
-                android:gravity="center_horizontal"
-                android:textColor="@color/colorWhite"
-                android:textSize="30dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="14개" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/humor_count_text"
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/user_grade_guide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <TextView
+                    android:id="@+id/user_grade"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="45dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/user_grade_guide"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="유머쪼랩ㅋ" />
+
+                <TextView
+                    android:id="@+id/user_grade_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="45dp"
+                    app:layout_constraintStart_toStartOf="@id/user_grade"
+                    app:layout_constraintTop_toBottomOf="@id/user_grade"
+                    tools:text="분발하자^^" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="154dp"
+                    android:src="@drawable/sinip_main"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/user_info_progress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:textColor="@color/colorWhite"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="@id/humor_count"
-                app:layout_constraintStart_toEndOf="@id/humor_count"
-                tools:text="더 작성하면 등급업!" />
+                android:layout_marginTop="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_info_grade">
 
-            <ProgressBar
-                style="@style/HumorGradeProgressbar"
-                android:layout_width="0dp"
-                android:layout_height="9dp"
-                android:layout_marginTop="11dp"
-                android:progressDrawable="@drawable/humor_grade_progressbar"
-                app:layout_constraintEnd_toEndOf="@id/humor_count_text"
-                app:layout_constraintStart_toStartOf="@id/humor_count"
-                app:layout_constraintTop_toBottomOf="@id/humor_count"
-                tools:progress="70" />
+                <TextView
+                    android:id="@+id/humor_count"
+                    android:layout_width="106dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="34dp"
+                    android:background="@drawable/rounded_background_for_humor_count"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="14개" />
+
+                <TextView
+                    android:id="@+id/humor_count_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp"
+                    app:layout_constraintBottom_toBottomOf="@id/humor_count"
+                    app:layout_constraintStart_toEndOf="@id/humor_count"
+                    tools:text="더 작성하면 등급업!" />
+
+                <ProgressBar
+                    style="@style/HumorGradeProgressbar"
+                    android:layout_width="0dp"
+                    android:layout_height="9dp"
+                    android:layout_marginTop="11dp"
+                    android:progressDrawable="@drawable/humor_grade_progressbar"
+                    app:layout_constraintEnd_toEndOf="@id/humor_count_text"
+                    app:layout_constraintStart_toStartOf="@id/humor_count"
+                    app:layout_constraintTop_toBottomOf="@id/humor_count"
+                    tools:progress="70" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
