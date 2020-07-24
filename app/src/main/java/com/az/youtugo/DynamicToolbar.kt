@@ -26,14 +26,14 @@ class DynamicToolbar @JvmOverloads constructor(
     // TODO 모듈에 맞는 툴바 여기에 추가
     // TODO navigation에 label추가하 것
     fun onDestinationChanged(destination: Int, destinationName: String?) {
-        Log.d("destination", destination.toString())
         when (destination) {
-            // R.id.homeFragment -> setDefaultToolbar()
-//             R.id.loginFragment -> setLogoToolbar()
+            R.id.homeFragment -> setDefaultToolbar()  // TODO Main으로 변경 후에 제거
+            // R.id.loginFragment -> setLogoToolbar()
             // R.id.alarmFragment -> setBackspaceToolbar()
             R.id.myPageFragment -> setBackspaceToolbar("마이페이지")
             else -> removeAllViews()
-        } }
+        }
+    }
 
     // 로고만 있는 툴바
     private fun setLogoToolbar() {

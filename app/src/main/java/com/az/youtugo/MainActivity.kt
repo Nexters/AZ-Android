@@ -2,6 +2,7 @@ package com.az.youtugo
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -10,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var toolbar: DynamicToolbar
+    lateinit var navHostFragment: NavHostFragment
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,32 +21,24 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        initBottomNavigation()
-
-        // 핸들러를 달아서 어떤 fragment를 보여줄 지 정의
-        toolbar.myPageHandler = {
-            myPage()
-        }
+        initNavigation()
+        initToolbarHandler()
     }
 
-    // navController를 사용해서 화면 이동
-    private fun myPage() {
-        val navHostFragment =
+    private fun initNavigation() {
+        navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.findNavController()
+
+        navController = navHostFragment.findNavController()
+        navController.navigate(R.id.homeFragment)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             toolbar.onDestinationChanged(destination.id, null)
         }
-        navController.navigate(R.id.myPageFragment)
-
     }
 
-    // TODO 제거 예정 (바텀 네비게이션 사용하지 않음)
-    private fun initBottomNavigation() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.findNavController()
-
-        bottomNavigation.setupWithNavController(navController = navController)
+    private fun initToolbarHandler() {
+        toolbar.myPageHandler = {
+            navController.navigate(R.id.myPageFragment)
+        }
     }
 }
