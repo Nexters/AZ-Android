@@ -42,7 +42,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/user_grade_guide"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:text="유머쪼랩ㅋ" />
+                    android:text="유머쪼랩ㅋ" />
 
                 <TextView
                     android:id="@+id/user_grade_text"
@@ -52,7 +52,7 @@
                     android:textSize="45dp"
                     app:layout_constraintStart_toStartOf="@id/user_grade"
                     app:layout_constraintTop_toBottomOf="@id/user_grade"
-                    tools:text="분발하자^^" />
+                    android:text="분발하자^^" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
                     android:textSize="30dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="14개" />
+                    android:text="14개" />
 
                 <TextView
                     android:id="@+id/humor_count_text"
@@ -97,7 +97,7 @@
                     android:textSize="16dp"
                     app:layout_constraintBottom_toBottomOf="@id/humor_count"
                     app:layout_constraintStart_toEndOf="@id/humor_count"
-                    tools:text="더 작성하면 등급업!" />
+                    android:text="더 작성하면 등급업!" />
 
                 <ProgressBar
                     style="@style/HumorGradeProgressbar"
@@ -108,7 +108,7 @@
                     app:layout_constraintEnd_toEndOf="@id/humor_count_text"
                     app:layout_constraintStart_toStartOf="@id/humor_count"
                     app:layout_constraintTop_toBottomOf="@id/humor_count"
-                    tools:progress="70" />
+                    android:progress="70" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
