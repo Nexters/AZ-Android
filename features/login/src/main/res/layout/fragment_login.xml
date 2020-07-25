@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="65dp"
-        android:letterSpacing="-0.05em"
-        android:lineHeight="54sp"
+        android:letterSpacing="-0.05"
         android:text="@string/login_sub_guide"
         android:textColor="@color/colorWhite"
         android:textSize="45sp"
@@ -25,8 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="22dp"
-        android:letterSpacing="-0.05em"
-        android:lineHeight="54sp"
+        android:letterSpacing="-0.05"
         android:text="@string/login_guide"
         android:textColor="@color/colorWhite"
         android:textSize="45sp"
@@ -51,14 +49,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_heart" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layout_edit_text_wrap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
+        android:layout_marginBottom="47dp"
         android:orientation="vertical"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
+        app:layout_constraintBottom_toTopOf="@id/layout_button_wrap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_guide">
@@ -77,11 +77,51 @@
             android:id="@+id/edt_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/edt_login_id"
             android:backgroundTint="@color/colorDarkLightGrey"
             android:hint="@string/password_placeholder"
             android:paddingBottom="20dp"
             android:textColor="@color/colorDarkLightGrey"
             android:textColorHint="@color/colorDarkLightGrey" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_login_password"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:text="@string/forgot_password"
+            android:textColor="@color/colorDarkLightGrey" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_button_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_edit_text_wrap">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/rounded_button_color_purple"
+            android:text="@string/login_button"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/signin_button"
+            android:textColor="@color/colorDarkLightGrey" />
+
     </LinearLayout>
 
 
