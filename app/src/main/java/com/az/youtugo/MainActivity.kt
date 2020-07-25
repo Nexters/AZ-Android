@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
                 .findNavController()
                 .apply {
-                    navigate(R.id.homeFragment)
+                    navigate(R.id.mainFragment)
                     addOnDestinationChangedListener { _, destination, _ ->
                         toolbar.onDestinationChanged(destination.id, null)
                     }
