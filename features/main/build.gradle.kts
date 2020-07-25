@@ -44,4 +44,7 @@ dependencies {
     implementation(Libraries.koinExt)
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
+
+    implementation(Libraries.navigationFragment)
+    implementation(Libraries.navigationUI)
 }

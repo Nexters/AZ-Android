@@ -136,18 +136,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:background="@color/colorGrey"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:defaultNavHost="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/humor_card_title" />
+                app:layout_constraintTop_toBottomOf="@id/humor_card_title"
+                app:navGraph="@navigation/main_humor_nav_gragh" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.az.main.StickyScrollView>
