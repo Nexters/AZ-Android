@@ -122,6 +122,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_info_progress">
 
+                <TextView
+                    android:layout_width="225dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/rounded_background_for_humor_card_title"
+                    android:gravity="center"
+                    android:text="오늘의 개그"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
