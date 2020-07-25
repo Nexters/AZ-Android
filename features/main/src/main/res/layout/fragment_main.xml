@@ -6,14 +6,14 @@
 
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <com.az.main.StickyScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorDarkGrey">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_info_grade"
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
                 android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@id/humor_card"
+                app:layout_constraintBottom_toTopOf="@id/humor_card_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_info_grade">
@@ -112,9 +112,9 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/humor_card"
+                android:id="@+id/humor_card_title"
                 android:layout_width="0dp"
-                android:layout_height="450dp"
+                android:layout_height="84dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/rounded_background_for_humor_card"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -125,6 +125,16 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/colorGrey"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/humor_card_title" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </com.az.main.StickyScrollView>
 </layout>
