@@ -73,6 +73,7 @@ dependencies {
     implementation(Libraries.navigationUI)
     implementation(Libraries.navigationDynamicFeature)
     implementation(Libraries.fragments)
+    api(Libraries.materialComponents)
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testRunner)

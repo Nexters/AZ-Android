@@ -1,27 +1,45 @@
 package com.az.youtugo
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initBottomNavigation()
+        setSupportActionBar(toolbar)
+
+        initNavigation()
+        initToolbarHandler()
     }
 
-    private fun initBottomNavigation() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.findNavController()
 
-        bottomNavigation.setupWithNavController(navController = navController)
+    private fun initNavigation() {
+        navController =
+            (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
+                .findNavController()
+                .apply {
+                    navigate(R.id.homeFragment)
+                    addOnDestinationChangedListener { _, destination, _ ->
+                        toolbar.onDestinationChanged(destination.id, null)
+                    }
+                }
+    }
+
+    private fun initToolbarHandler() {
+        toolbar.myPageHandler = {
+            navController.navigate(R.id.myPageFragment)
+        }
+        toolbar.backspaceHandler = {
+            navController.popBackStack()
+        }
     }
 }

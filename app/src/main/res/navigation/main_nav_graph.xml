@@ -18,7 +18,8 @@
 
     <fragment
         android:id="@+id/myPageFragment"
-        android:name="com.az.mypage.ui.views.MyPageFragment">
+        android:name="com.az.mypage.ui.views.MyPageFragment"
+        app:moduleName="mypage">
 
     </fragment>
 </navigation>
