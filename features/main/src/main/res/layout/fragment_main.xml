@@ -173,7 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
-                    android:background="@drawable/rounded_background_for_humor_card_title"
+                    android:background="@drawable/bg_humor_card_title"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -230,6 +230,7 @@
             android:layout_margin="24dp"
             android:elevation="8dp"
             android:src="@drawable/ic_create_post"
+            app:backgroundTint="@color/colorPurple"
             app:pressedTranslationZ="10dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
