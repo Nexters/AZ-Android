@@ -32,9 +32,10 @@
 
                 <TextView
                     android:id="@+id/user_grade"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
+                    android:gravity="center"
                     android:text="유머쪼랩ㅋ"
                     android:textColor="@color/colorWhite"
                     android:textSize="45dp"
@@ -44,8 +45,9 @@
 
                 <TextView
                     android:id="@+id/user_grade_text"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="분발하자^^"
                     android:textColor="@color/colorWhite"
                     android:textSize="45dp"
@@ -66,36 +68,87 @@
                 android:id="@+id/user_info_progress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@id/humor_card_title"
+                android:layout_marginTop="37dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_info_grade">
 
                 <TextView
-                    android:id="@+id/humor_count"
-                    android:layout_width="106dp"
+                    android:id="@+id/post_number_text"
+                    android:layout_width="35dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/bg_humor_grade_progress_button"
+                    android:gravity="center"
+                    android:text="게시글"
+                    android:textColor="@color/colorPurple"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/post_number"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/post_number" />
+
+                <TextView
+                    android:id="@+id/post_number"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="34dp"
-                    android:background="@drawable/rounded_background_for_humor_count"
-                    android:gravity="center_horizontal"
+                    android:layout_marginStart="4dp"
                     android:text="14개"
                     android:textColor="@color/colorWhite"
-                    android:textSize="30dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/post_number_text"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/humor_count_text"
-                    android:layout_width="0dp"
+                    android:id="@+id/comment_number_text"
+                    android:layout_width="29dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_humor_grade_progress_button"
+                    android:gravity="center"
+                    android:text="댓글"
+                    android:textColor="@color/colorPurple"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/post_number_text"
+                    app:layout_constraintStart_toEndOf="@id/post_number"
+                    app:layout_constraintTop_toTopOf="@id/post_number_text" />
+
+                <TextView
+                    android:id="@+id/comment_number"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
+                    android:layout_marginStart="4dp"
+                    android:text="4개"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/comment_number_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="0.8dp"
+                    android:layout_height="11.5dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@color/colorWhite"
+                    app:layout_constraintBottom_toBottomOf="@id/humor_count_text"
+                    app:layout_constraintEnd_toStartOf="@id/humor_count_text"
+                    app:layout_constraintStart_toEndOf="@id/comment_number"
+                    app:layout_constraintTop_toTopOf="@id/humor_count_text" />
+
+
+                <TextView
+                    android:id="@+id/humor_count_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
                     android:text="더 작성하면 등급업!"
                     android:textColor="@color/colorWhite"
-                    android:textSize="16dp"
-                    app:layout_constraintBottom_toBottomOf="@id/humor_count"
-                    app:layout_constraintStart_toEndOf="@id/humor_count" />
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="@id/comment_number"
+                    app:layout_constraintStart_toEndOf="@id/comment_number" />
 
                 <ProgressBar
                     style="@style/HumorGradeProgressbar"
@@ -105,8 +158,8 @@
                     android:progress="70"
                     android:progressDrawable="@drawable/humor_grade_progressbar"
                     app:layout_constraintEnd_toEndOf="@id/humor_count_text"
-                    app:layout_constraintStart_toStartOf="@id/humor_count"
-                    app:layout_constraintTop_toBottomOf="@id/humor_count" />
+                    app:layout_constraintStart_toStartOf="@id/post_number_text"
+                    app:layout_constraintTop_toBottomOf="@id/post_number_text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -114,7 +167,7 @@
                 android:id="@+id/humor_card_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/rounded_background_for_humor_card_title"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
