@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <corners android:radius="20dp" />
+    <!--  TODO : 이거 app 모듈에 있는 color 리소스 사용하도록 바꾸기  -->
+    <solid android:color="#6C6C6C" />
+</shape>
