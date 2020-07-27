@@ -1,6 +1,5 @@
 package com.az.main
 
-import android.util.Log
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 
