@@ -7,16 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.az.main.databinding.FragmentMainBinding
 import com.az.main.di.loadFeature
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
     private fun injectFeature() = loadFeature
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        injectFeature()
-    }
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,5 +22,15 @@ class MainFragment : Fragment() {
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        injectFeature()
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            lifecycleOwner = requireActivity()
+            vm = viewModel
+            humorCardRv.adapter = MainHumorsAdapter()
+        }
     }
 }
