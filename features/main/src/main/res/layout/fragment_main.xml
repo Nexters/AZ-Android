@@ -12,18 +12,16 @@
         android:layout_height="match_parent"
         android:background="@color/colorDarkGrey">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_info_grade"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_marginTop="25dp">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/user_grade_guide"
@@ -66,7 +64,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_info_progress"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
                 android:layout_marginBottom="8dp"
@@ -114,18 +112,57 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/humor_card_title"
-                android:layout_width="0dp"
-                android:layout_height="84dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_background_for_humor_card"
+                android:background="@drawable/rounded_background_for_humor_card_title"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_info_progress">
 
+                <View
+                    android:layout_width="44dp"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorGreyGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="54dp"
+                    android:layout_marginBottom="28dp"
+                    android:text="개그 목록"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:layout_width="110dp"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="39dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/btn_hall_of_fame"
+                    android:button="@null"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGrey"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_humor_card" />
+
+        </LinearLayout>
     </com.az.main.StickyScrollView>
 </layout>
