@@ -4,9 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewTreeObserver
-import androidx.core.widget.NestedScrollView
+import android.widget.ScrollView
 
-class StickyScrollView : NestedScrollView, ViewTreeObserver.OnGlobalLayoutListener {
+class StickyScrollView : ScrollView, ViewTreeObserver.OnGlobalLayoutListener {
 
     constructor(context: Context) : this(context, null, 0)
     constructor(context: Context, attr: AttributeSet?) : this(context, attr, 0)

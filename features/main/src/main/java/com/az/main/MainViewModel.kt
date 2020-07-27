@@ -22,6 +22,9 @@ class MainViewModel : ViewModel() {
     private val _humors = MutableLiveData<List<TempHumorData>>()
     val humors: LiveData<List<TempHumorData>> = _humors
 
+    private val _isRecyclerViewScrollable = MutableLiveData<Boolean>()
+    val isRecyclerViewScrollable: LiveData<Boolean> = _isRecyclerViewScrollable
+
     private val humor = TempHumorData(
         "신입 가나다님",
         "2020.02.22",
@@ -42,5 +45,10 @@ class MainViewModel : ViewModel() {
         _commentCount.value = 4
         _humorGradeProgress.value = 70
         _humors.value = listOf(humor, humor, humor, humor, humor)
+        _isRecyclerViewScrollable.value = false
+    }
+
+    fun setScrollable(b: Boolean) {
+        _isRecyclerViewScrollable.value = b
     }
 }

@@ -16,6 +16,7 @@
         android:layout_height="match_parent">
 
         <com.az.main.StickyScrollView
+            android:id="@+id/sticky_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorDarkGrey">
@@ -76,7 +77,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="37dp">
+                    android:layout_marginTop="37dp"
+                    android:layout_marginBottom="50dp">
 
                     <TextView
                         android:id="@+id/post_number_text"
@@ -173,9 +175,9 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/humor_card_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
                     android:background="@drawable/bg_humor_card_title">
 
                     <View
@@ -188,16 +190,15 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/humor_card_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="54dp"
-                        android:layout_marginBottom="28dp"
                         android:text="@string/humors_list_title"
                         android:textColor="@color/colorWhite"
                         android:textSize="18dp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -211,16 +212,21 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/humor_card_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:background="@color/colorGrey"
+                        android:nestedScrollingEnabled="@{vm.isRecyclerViewScrollable()}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/humor_card_title"
+                        bind:setItems="@{vm.humors}"
+                        tools:listitem="@layout/item_humor_card" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/humor_card_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorGrey"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    bind:setItems="@{vm.humors}"
-                    tools:listitem="@layout/item_humor_card" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </com.az.main.StickyScrollView>
 
