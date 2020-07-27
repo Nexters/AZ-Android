@@ -10,7 +10,7 @@
     <style name="NoTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorDarkGrey</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPurple</item>
 
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>

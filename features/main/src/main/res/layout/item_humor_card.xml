@@ -102,7 +102,7 @@
         app:layout_constraintStart_toEndOf="@id/comment"
         app:layout_constraintTop_toTopOf="@id/comment" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_marginEnd="26dp"
