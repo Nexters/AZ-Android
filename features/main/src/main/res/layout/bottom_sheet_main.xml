@@ -17,7 +17,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_humor_card_title"
         app:behavior_hideable="false"
-        app:behavior_peekHeight="500dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <View
