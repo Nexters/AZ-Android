@@ -17,18 +17,30 @@
         android:layout_marginBottom="27dp"
         android:background="@drawable/bg_humor_card_item">
 
+        <ImageView
+            android:id="@+id/crown"
+            android:layout_width="22dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/ic_crown"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/user_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/user_name" />
+
         <TextView
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="17dp"
             android:text="@{humorItem.user}"
             android:textColor="@color/colorDarkGrey"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/crown"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginStart="30dp"
             tools:text="신입 가나다님" />
 
         <TextView
@@ -67,7 +79,8 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_heart"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/user_name" />
+            app:layout_constraintStart_toStartOf="@id/crown"
+            app:layout_goneMarginStart="30dp" />
 
         <TextView
             android:id="@+id/heart_count"
