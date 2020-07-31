@@ -23,7 +23,7 @@
         <View
             android:layout_width="44dp"
             android:layout_height="6dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_humor_card_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,29 +34,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="54dp"
+            android:layout_marginTop="32dp"
             android:text="@string/humors_list_title"
             android:textColor="@color/colorWhite"
-            android:textSize="18dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
             android:layout_width="110dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="39dp"
+            android:layout_height="34dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_hall_of_fame"
             android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@id/humor_card_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/humor_card_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/humor_card_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="22dp"
             android:background="@color/colorGrey"
             android:clipToPadding="false"
             android:paddingBottom="85dp"
