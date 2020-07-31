@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.az.main.databinding.FragmentMainBinding
 import com.az.main.di.loadFeature
+import kotlinx.android.synthetic.main.bottom_sheet_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
@@ -30,6 +31,7 @@ class MainFragment : Fragment() {
         binding.apply {
             lifecycleOwner = requireActivity()
             vm = viewModel
+            humor_card_rv.adapter = MainHumorsAdapter()
         }
     }
 }
