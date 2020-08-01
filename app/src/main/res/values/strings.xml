@@ -4,4 +4,5 @@
     <string name="title_humors">humors</string>
     <string name="title_mypage">mypage</string>
     <string name="title_login">login</string>
+    <string name="title_signup">signup</string>
 </resources>
