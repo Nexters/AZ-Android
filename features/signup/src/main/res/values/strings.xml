@@ -9,4 +9,5 @@
     <string name="signup_id_check_error">중복됨. 아이디 다시 확인 ㄱ</string>
     <string name="signup_password_check_error">패스워드 제대로 확ㄱ인좀 ㅎ</string>
     <string name="signup_nickname_check_error">이미 사용중인 닉네임입니다. 창의력을 발휘하세요 ^^</string>
+    <string name="btn_signup">회원가입</string>
 </resources>
