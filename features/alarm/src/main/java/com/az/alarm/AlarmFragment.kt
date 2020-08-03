@@ -38,12 +38,11 @@ class AlarmFragment : Fragment() {
         }
     }
 
-    private fun getDividerAlarmDecorations(): DividerItemDecoration {
-        return DividerItemDecoration(
-            this@AlarmFragment.context,
-            DividerItemDecoration.VERTICAL
-        ).apply {
-            setDrawable(requireContext().getDrawable(R.drawable.divider_alarm_items)!!)
-        }
+    private fun getDividerAlarmDecorations(): DividerItemDecorator {
+        return DividerItemDecorator(
+            this.requireContext(),
+            DividerItemDecoration.VERTICAL,
+            requireContext().getDrawable(R.drawable.divider_alarm_items)!!
+        )
     }
 }
