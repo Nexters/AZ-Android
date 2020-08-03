@@ -98,6 +98,7 @@ object BuildModules {
         const val Home = ":features:home"
         const val Humors = ":features:humors"
         const val MyPage = ":features:mypage"
+        const val Alarm = ":features:alarm"
     }
 
     object Libraries {
