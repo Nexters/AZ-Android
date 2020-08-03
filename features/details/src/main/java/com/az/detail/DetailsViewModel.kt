@@ -32,6 +32,6 @@ class DetailsViewModel : ViewModel() {
 
     private fun initDummyValues() {
         _details.value = detail
-        _comments.value = listOf(comment, comment, comment)
+        _comments.value = listOf(comment, comment, comment, comment, comment, comment, comment)
     }
 }
