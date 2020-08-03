@@ -23,7 +23,7 @@ class DetailsViewModel : ViewModel() {
         "신입 가나다님",
         "한시간 전",
         isHeart = true,
-        isComment = false
+        isBookmark = false
     )
 
     init {

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.az.detail.DetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,13 +29,16 @@
 
                 <include
                     android:id="@+id/contents_detail_include"
-                    layout="@layout/layout_contents_detail" />
+                    layout="@layout/layout_contents_detail"
+                    bind:detail="@{vm.details}" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/comments_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    bind:setItems="@{vm.comments}"
                     tools:listitem="@layout/item_comments" />
 
             </LinearLayout>
@@ -49,8 +56,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:hint="댓글달기"
                 android:background="@null"
+                android:hint="댓글달기"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGrey"
                 android:textSize="15sp"

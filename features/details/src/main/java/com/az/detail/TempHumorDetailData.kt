@@ -7,5 +7,5 @@ data class TempHumorDetailData(
     val user: String,
     val time: String,
     val isHeart: Boolean,
-    val isComment: Boolean
+    val isBookmark: Boolean
 )
