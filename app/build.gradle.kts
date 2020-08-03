@@ -46,7 +46,8 @@ android {
     dynamicFeatures = mutableSetOf(
         BuildModules.Features.Home,
         BuildModules.Features.Humors,
-        BuildModules.Features.MyPage, ":alarm"
+        BuildModules.Features.MyPage,
+        BuildModules.Features.Alarm
     )
 }
 
