@@ -2,6 +2,7 @@ plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
+    id(BuildPlugins.safeArgs)
 }
 
 android {
@@ -62,7 +63,7 @@ dependencies {
     implementation(Libraries.kotlinStandardLibrary)
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
-    implementation(Libraries.constraintLayout)
+    api(Libraries.constraintLayout)
 
     // Koin
     implementation(Libraries.koinAndroid)
@@ -70,10 +71,10 @@ dependencies {
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
 
-    implementation(Libraries.navigationFragment)
-    implementation(Libraries.navigationUI)
-    implementation(Libraries.navigationDynamicFeature)
-    implementation(Libraries.fragments)
+    api(Libraries.navigationFragment)
+    api(Libraries.navigationUI)
+    api(Libraries.navigationDynamicFeature)
+    api(Libraries.fragments)
     api(Libraries.materialComponents)
 
     testImplementation(TestLibraries.junit4)

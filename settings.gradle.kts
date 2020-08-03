@@ -12,6 +12,7 @@ pluginManagement {
         id(BuildPlugins.kotlinAndroidExtensions) version Versions.kotlin
         id(BuildPlugins.dynamicFeature) version Versions.buildToolsVersion
         id(BuildPlugins.androidLibrary) version Versions.buildToolsVersion
+        id(BuildPlugins.safeArgs) version Versions.navVersion
     }
 
     resolutionStrategy {
@@ -20,6 +21,7 @@ pluginManagement {
                 BuildPlugins.androidApplication,
                 BuildPlugins.androidLibrary,
                 BuildPlugins.dynamicFeature -> useModule(BuildPlugins.androidGradlePlugin)
+                BuildPlugins.safeArgs -> useModule(BuildPlugins.safeArgsGradlePlugin)
             }
         }
     }

@@ -12,6 +12,8 @@ object Versions {
     const val v7 = "28.0.0"
     const val material = "1.1.0-rc02"
 
+    const val bindingCompiler = "3.5.3"
+
     const val junit4 = "4.12"
     const val testRunner = "1.0.2"
     const val espresso = "3.0.2"
@@ -61,6 +63,9 @@ object Libraries {
     const val koinExt = "org.koin:koin-android-ext:${Versions.koin}"
     const val koinCore = "org.koin:koin-core:${Versions.koin}"
 
+    // binding compiler
+    const val bindingCompiler = "com.android.databinding:compiler:${Versions.buildToolsVersion}"
+
     // networking
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gson}"
@@ -76,6 +81,7 @@ object Libraries {
     const val navigationDynamicFeature =
         "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navVersion}"
     const val fragments = "androidx.fragment:fragment-ktx:${Versions.fragments}"
+
 
     // material design
     const val materialComponents = "com.google.android.material:material:${Versions.material}"

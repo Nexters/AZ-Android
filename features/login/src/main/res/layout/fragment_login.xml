@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <data>
+
+        <variable
+            name="vm"
+            type="com.az.login.view.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorDarkGrey">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_sub_guide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +27,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_guide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +41,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_sub_guide" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_heart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -51,7 +58,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_heart" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edt_login_id"
             android:layout_width="match_parent"
             android:layout_height="52dp"
@@ -60,12 +67,13 @@
             android:backgroundTint="@color/colorDarkLightGrey"
             android:hint="@string/id_placeholder"
             android:paddingBottom="20dp"
+            android:text="@={vm.id}"
             android:textColor="@color/colorDarkLightGrey"
             android:textColorHint="@color/colorDarkLightGrey"
             app:layout_constraintBottom_toTopOf="@+id/edt_login_password"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edt_login_password"
             android:layout_width="match_parent"
             android:layout_height="52dp"
@@ -75,14 +83,16 @@
             android:layout_marginBottom="58dp"
             android:backgroundTint="@color/colorDarkLightGrey"
             android:hint="@string/password_placeholder"
+            android:inputType="textPassword"
             android:paddingBottom="20dp"
+            android:text="@={vm.password}"
             android:textColor="@color/colorDarkLightGrey"
             android:textColorHint="@color/colorDarkLightGrey"
             app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,7 +104,7 @@
             app:layout_constraintEnd_toEndOf="@id/edt_login_password"
             app:layout_constraintTop_toBottomOf="@+id/edt_login_password" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="44dp"
@@ -102,11 +112,12 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button_color_purple"
+            android:gravity="center"
             android:text="@string/login_button"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toTopOf="@+id/txt_guest_login_button" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_guest_login_button"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
@@ -118,8 +129,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/btn_signin"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_signup"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

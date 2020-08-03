@@ -24,7 +24,17 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.az.login.LoginFragment">
+        android:name="com.az.login.view.LoginFragment">
+
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.az.signup.SignupFragment">
 
     </fragment>
 </navigation>

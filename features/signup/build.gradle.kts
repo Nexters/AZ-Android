@@ -44,7 +44,8 @@ dependencies {
     implementation(Libraries.koinExt)
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
+    kapt(Libraries.bindingCompiler)
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testRunner)
