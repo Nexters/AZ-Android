@@ -1,3 +1,4 @@
+include(":alarm")
 pluginManagement {
     repositories {
         jcenter()
