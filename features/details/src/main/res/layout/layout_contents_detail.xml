@@ -1,133 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="30dp"
-    android:background="@drawable/bg_contents_detail">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <CheckBox
-        android:id="@+id/btn_heart"
-        android:layout_width="19dp"
-        android:layout_height="18dp"
-        android:layout_marginEnd="9dp"
-        android:background="@drawable/btn_heart"
-        android:button="@null"
-        app:layout_constraintBottom_toBottomOf="@id/btn_bookmark"
-        app:layout_constraintEnd_toStartOf="@id/btn_bookmark"
-        app:layout_constraintTop_toTopOf="@id/btn_bookmark" />
-
-    <CheckBox
-        android:id="@+id/btn_bookmark"
-        android:layout_width="16dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/btn_bookmark"
-        android:button="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/content_detail"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="33dp"
-        android:gravity="center"
-        android:text="소나무가 삐지면?\n\n칫솔"
-        android:textColor="@color/colorBlack"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/divider_details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_heart" />
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/bg_contents_detail">
 
-    <View
-        android:id="@+id/divider_details"
-        android:layout_width="0dp"
-        android:layout_height="0.4dp"
-        android:layout_marginHorizontal="21dp"
-        android:layout_marginTop="40dp"
-        android:background="@color/colorGrey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content_detail" />
+        <CheckBox
+            android:id="@+id/btn_heart"
+            android:layout_width="19dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="9dp"
+            android:background="@drawable/btn_heart"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@id/btn_bookmark"
+            app:layout_constraintEnd_toStartOf="@id/btn_bookmark"
+            app:layout_constraintTop_toTopOf="@id/btn_bookmark" />
 
-    <ImageView
-        android:id="@+id/ic_heart"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_heart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_details" />
+        <CheckBox
+            android:id="@+id/btn_bookmark"
+            android:layout_width="16dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_bookmark"
+            android:button="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/count_heart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:text="48개"
-        android:textColor="@color/colorBlack"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/ic_heart"
-        app:layout_constraintStart_toEndOf="@id/ic_heart"
-        app:layout_constraintTop_toTopOf="@id/ic_heart" />
+        <TextView
+            android:id="@+id/content_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="33dp"
+            android:gravity="center"
+            android:text="소나무가 삐지면?\n\n칫솔"
+            android:textColor="@color/colorBlack"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/divider_details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_heart" />
+
+        <View
+            android:id="@+id/divider_details"
+            android:layout_width="0dp"
+            android:layout_height="0.4dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content_detail" />
+
+        <ImageView
+            android:id="@+id/ic_heart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_heart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_details" />
+
+        <TextView
+            android:id="@+id/count_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="48개"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ic_heart"
+            app:layout_constraintStart_toEndOf="@id/ic_heart"
+            app:layout_constraintTop_toTopOf="@id/ic_heart" />
 
 
-    <ImageView
-        android:id="@+id/ic_comment"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="12dp"
-        android:src="@drawable/ic_comment"
-        app:layout_constraintBottom_toBottomOf="@id/ic_heart"
-        app:layout_constraintStart_toEndOf="@id/count_heart"
-        app:layout_constraintTop_toTopOf="@id/ic_heart" />
+        <ImageView
+            android:id="@+id/ic_comment"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_comment"
+            app:layout_constraintBottom_toBottomOf="@id/ic_heart"
+            app:layout_constraintStart_toEndOf="@id/count_heart"
+            app:layout_constraintTop_toTopOf="@id/ic_heart" />
 
-    <TextView
-        android:id="@+id/count_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="10개"
-        android:textColor="@color/colorBlack"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/ic_heart"
-        app:layout_constraintStart_toEndOf="@id/ic_comment"
-        app:layout_constraintTop_toTopOf="@id/ic_heart" />
+        <TextView
+            android:id="@+id/count_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="10개"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ic_heart"
+            app:layout_constraintStart_toEndOf="@id/ic_comment"
+            app:layout_constraintTop_toTopOf="@id/ic_heart" />
 
-    <TextView
-        android:id="@+id/user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="20dp"
-        android:text="신입 가나다님"
-        android:textColor="@color/colorBlack"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_details" />
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="end"
+            android:text="신입 가나다님"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/count_comment"
+            app:layout_constraintTop_toBottomOf="@id/divider_details" />
 
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="16dp"
-        android:text="신입 가나다님"
-        android:textColor="@color/colorBlack"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/user"
-        app:layout_constraintTop_toBottomOf="@id/user" />
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="16dp"
+            android:text="한시간 전"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/user"
+            app:layout_constraintTop_toBottomOf="@id/user" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
