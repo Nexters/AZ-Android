@@ -48,6 +48,7 @@ android {
         BuildModules.Features.Home,
         BuildModules.Features.Humors,
         BuildModules.Features.MyPage,
+        BuildModules.Features.Alarm
         BuildModules.Features.Login,
         BuildModules.Features.Signup
     )

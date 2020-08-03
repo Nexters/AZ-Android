@@ -106,6 +106,7 @@ object BuildModules {
         const val MyPage = ":features:mypage"
         const val Login = ":features:login"
         const val Signup = ":features:signup"
+        const val Alarm = ":features:alarm"
     }
 
     object Libraries {
