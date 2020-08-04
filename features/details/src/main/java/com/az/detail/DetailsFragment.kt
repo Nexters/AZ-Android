@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.az.detail.databinding.FragmentDetailsBinding
+import com.az.detail.di.loadFeature
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailsFragment : Fragment() {
