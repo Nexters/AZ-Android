@@ -32,10 +32,10 @@ include(
     BuildModules.Libraries.Repository,
     BuildModules.Libraries.Network,
 
-    BuildModules.Features.Home,
+    BuildModules.Features.Main,
     BuildModules.Features.Humors,
     BuildModules.Features.MyPage,
-    BuildModules.Features.Main
+    BuildModules.Features.Alarm
 )
 
 rootProject.name = "Youtugo"
