@@ -38,8 +38,7 @@ include(
     BuildModules.Features.Humors,
     BuildModules.Features.MyPage,
     BuildModules.Features.Login,
-    BuildModules.Features.Signup
-    BuildModules.Features.MyPage,
+    BuildModules.Features.Signup,
     BuildModules.Features.Alarm
 )
 
