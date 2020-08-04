@@ -2,13 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.az.home.ui.views.HomeFragment">
+        android:id="@+id/mainFragment"
+        android:name="com.az.main.MainFragment">
 
     </fragment>
+
 
     <fragment
         android:id="@+id/humorsFragment"
