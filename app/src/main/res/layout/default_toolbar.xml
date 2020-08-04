@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/az_logo_toolbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,15 +45,15 @@
             android:id="@+id/img_alarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="11dp"
             android:layout_marginEnd="7dp"
-            android:src="@drawable/alarm" />
+            android:src="@drawable/ic_alarm" />
 
         <ImageView
             android:id="@+id/img_my_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/ic_sinip_small" />
     </LinearLayout>
 
