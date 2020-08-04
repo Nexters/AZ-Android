@@ -5,10 +5,11 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.az.home.ui.views.HomeFragment">
+        android:id="@+id/mainFragment"
+        android:name="com.az.main.MainFragment">
 
     </fragment>
+
 
     <fragment
         android:id="@+id/humorsFragment"
