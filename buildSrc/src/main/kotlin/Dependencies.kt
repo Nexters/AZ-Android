@@ -95,9 +95,10 @@ object AndroidSDK {
 
 object BuildModules {
     object Features {
-        const val Home = ":features:home"
+        const val Main = ":features:main"
         const val Humors = ":features:humors"
         const val MyPage = ":features:mypage"
+        const val Alarm = ":features:alarm"
         const val Details = ":features:details"
     }
 
