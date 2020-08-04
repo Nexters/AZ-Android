@@ -10,11 +10,6 @@
 
     </fragment>
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.az.home.ui.views.HomeFragment">
-
-    </fragment>
 
     <fragment
         android:id="@+id/humorsFragment"
