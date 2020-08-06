@@ -1,2 +1,2 @@
-package com.olaf.model.posts
+package com.az.model.posts
 
