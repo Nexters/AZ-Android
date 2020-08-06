@@ -13,6 +13,11 @@ import com.az.create.di.loadFeature
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class CreateFragment : Fragment() {
+
+    companion object {
+        private const val DELAY_TO_SHOW_SOFT_INPUT = 30L
+    }
+
     private fun injectFeature() = loadFeature
     private var _binding: FragmentCreateBinding? = null
     private val binding get() = _binding!!
@@ -43,9 +48,10 @@ class CreateFragment : Fragment() {
     private fun showSoftInput(view: EditText) {
         val inputMethodManager =
             activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        // softInput 이 30 mills 동안 delay 되었다가 보여지도록 했음
         view.postDelayed(
             { inputMethodManager.showSoftInput(view, 0) }
-            , 30
+            , DELAY_TO_SHOW_SOFT_INPUT
         )
     }
 }
