@@ -1,6 +1,8 @@
-package com.az.model.users.rating
+package com.az.network.users.rating
 
-interface UserRatingRepository {
+import com.az.model.users.rating.UserRatingData
+
+interface UserRatingRemoteDataSource {
     // TODO: onResponse, onFailure 부분 추상화하기
     fun getUserRating(
         userId: Int,
