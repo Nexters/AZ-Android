@@ -6,7 +6,7 @@ import com.az.network.posts.postsApiModule
 import com.az.network.users.rating.userRatingApiModule
 import com.az.repository.posts.postsRepositoryModule
 import com.az.repository.users.rating.userRatingRepositoryModule
-import com.olaf.network.networkModule
+import com.az.network.networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
