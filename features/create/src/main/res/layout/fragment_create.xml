@@ -27,6 +27,7 @@
             android:background="@drawable/bg_create_humor"
             android:gravity="center"
             android:hint="100자이내\n입력 부탁이용"
+            android:lineSpacingExtra="5sp"
             android:maxLength="100"
             android:padding="30dp"
             android:textColor="@color/colorBlack"
