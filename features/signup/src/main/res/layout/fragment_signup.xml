@@ -3,6 +3,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.az.signup.SignupViewModel" />
@@ -26,10 +28,10 @@
             android:hint="@string/signup_id"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
+            android:text="@={vm.id}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorDarkLightGrey"
             android:textSize="15sp"
-            android:text="@={vm.id}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -55,6 +57,7 @@
             android:text="@string/signup_id_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
+            android:visibility="@={vm.validId() ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_id_with_check" />
 
@@ -67,10 +70,10 @@
             android:hint="@string/signup_password"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
+            android:text="@={vm.password}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorDarkLightGrey"
             android:textSize="15sp"
-            android:text="@={vm.password}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_id_error" />
@@ -84,10 +87,10 @@
             android:hint="@string/signup_password_check"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
+            android:text="@={vm.passwordCheck}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorDarkLightGrey"
             android:textSize="15sp"
-            android:text="@={vm.passwordCheck}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_text_password" />
@@ -102,6 +105,7 @@
             android:text="@string/signup_password_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
+            android:visibility="@={vm.validPassword() ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_password_check" />
 
@@ -114,10 +118,10 @@
             android:hint="@string/signup_nickname"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
+            android:text="@={vm.nickname}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorDarkLightGrey"
             android:textSize="15sp"
-            android:text="@={vm.nickname}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_password_check_error" />
@@ -132,6 +136,7 @@
             android:text="@string/signup_nickname_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
+            android:visibility="@={vm.validNickname() ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_nickname" />
 

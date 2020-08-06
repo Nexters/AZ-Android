@@ -28,35 +28,10 @@ class SignupViewModel : ViewModel() {
         return !id.value.isNullOrEmpty()
     }
 
-    fun validPassword(): Boolean {
-        return !password.value.isNullOrEmpty() && password.value.equals(passwordCheck.value)
-    }
+    fun validPassword(): Boolean = !password.value.isNullOrEmpty() && password.value.equals(passwordCheck.value)
 
     fun validNickname(): Boolean {
         return !nickname.value.isNullOrEmpty()
-    }
-
-    fun visibleIdError(): Int {
-        if (validId()) {
-            return View.GONE
-        }
-        return View.VISIBLE
-    }
-
-    fun visiblePasswordError(): Int {
-        if (validPassword()) {
-            return View.GONE
-        }
-
-        return View.VISIBLE
-    }
-
-    fun visibleNicknameError(): Int {
-        if (validPassword()) {
-            return View.GONE
-        }
-
-        return View.VISIBLE
     }
 
     fun onClick() {

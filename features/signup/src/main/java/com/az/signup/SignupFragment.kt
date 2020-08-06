@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.BaseObservable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.az.signup.databinding.FragmentSignupBinding
@@ -45,18 +46,27 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
     }
 
     fun observerEditText() {
+
         viewModel.id.observe(viewLifecycleOwner, Observer {
-            binding.txtIdError.visibility = viewModel.visibleIdError()
+            viewModel.validId()
         })
         viewModel.nickname.observe(viewLifecycleOwner, Observer {
-            binding.txtNicknameCheckError.visibility = viewModel.visibleNicknameError()
+            viewModel.validNickname()
         })
         viewModel.password.observe(viewLifecycleOwner, Observer {
-            binding.txtPasswordCheckError.visibility = viewModel.visiblePasswordError()
+            viewModel.validPassword()
         })
         viewModel.passwordCheck.observe(viewLifecycleOwner, Observer {
-            binding.txtPasswordCheckError.visibility = viewModel.visiblePasswordError()
+            viewModel.validPassword()
         })
     }
+
+}
+
+// 확장함수
+// 메디에이터 라이브데이터
+
+
+class test: BaseObservable() {
 
 }
