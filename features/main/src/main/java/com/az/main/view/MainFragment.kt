@@ -1,4 +1,4 @@
-package com.az.main
+package com.az.main.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.az.core.Preferences
+import com.az.main.viewmodel.MainViewModel
 import com.az.main.databinding.FragmentMainBinding
 import com.az.main.di.loadFeature
 import kotlinx.android.synthetic.main.bottom_sheet_main.*

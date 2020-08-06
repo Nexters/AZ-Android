@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.az.main.MainViewModel" />
+            type="com.az.main.viewmodel.MainViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

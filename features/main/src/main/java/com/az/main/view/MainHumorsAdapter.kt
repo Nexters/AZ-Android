@@ -1,9 +1,11 @@
-package com.az.main
+package com.az.main.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.az.main.R
+import com.az.main.TempHumorData
 import com.az.main.databinding.ItemHumorCardBinding
 
 class MainHumorsAdapter : RecyclerView.Adapter<MainHumorItemViewHolder>() {

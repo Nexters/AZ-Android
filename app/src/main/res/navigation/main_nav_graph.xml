@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.az.main.MainFragment">
+        android:name="com.az.main.view.MainFragment">
 
     </fragment>
 

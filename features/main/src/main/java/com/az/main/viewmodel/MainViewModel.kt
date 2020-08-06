@@ -1,8 +1,9 @@
-package com.az.main
+package com.az.main.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.az.main.TempHumorData
 
 class MainViewModel : ViewModel() {
 

@@ -1,4 +1,4 @@
-package com.az.main
+package com.az.main.view
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
