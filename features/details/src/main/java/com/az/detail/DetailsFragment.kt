@@ -1,32 +1,26 @@
-package com.az.main
+package com.az.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.az.core.Preferences
-import com.az.main.databinding.FragmentMainBinding
-import com.az.main.di.loadFeature
-import kotlinx.android.synthetic.main.bottom_sheet_main.*
-import org.koin.android.ext.android.inject
+import com.az.detail.databinding.FragmentDetailsBinding
+import com.az.detail.di.loadFeature
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MainFragment : Fragment() {
+class DetailsFragment : Fragment() {
     private fun injectFeature() = loadFeature
-
-    private val sharedPrefs: Preferences by inject()
-
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MainViewModel by viewModel()
+    private val viewModel: DetailsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,10 +30,7 @@ class MainFragment : Fragment() {
         binding.apply {
             lifecycleOwner = requireActivity()
             vm = viewModel
-            humor_card_rv.adapter = MainHumorsAdapter()
+            commentsRv.adapter = CommentsAdapter()
         }
-
-        // TODO used shared preferences
-        val status = sharedPrefs.getLoginStatus()
     }
 }

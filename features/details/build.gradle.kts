@@ -1,7 +1,8 @@
 plugins {
-    id(BuildPlugins.androidLibrary)
+    id(BuildPlugins.dynamicFeature)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
+    id(BuildPlugins.kotlinKapt)
 }
 
 android {
@@ -10,28 +11,15 @@ android {
     defaultConfig {
         minSdkVersion(AndroidSDK.min)
         targetSdkVersion(AndroidSDK.target)
-        versionCode = Versions.code
-        versionName = Versions.name
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
-    dataBinding {
-        isEnabled = true
     }
 
     viewBinding {
+        isEnabled = true
+    }
+
+    dataBinding {
         isEnabled = true
     }
 
@@ -47,19 +35,12 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Libraries.kotlinStandardLibrary)
-    implementation(Libraries.coroutinesLibrary)
-    implementation(Libraries.appCompat)
-    implementation(Libraries.ktxCore)
+    implementation(project(BuildModules.Libraries.App))
+    implementation(Libraries.constraintLayout)
 
     // Koin
     implementation(Libraries.koinAndroid)
     implementation(Libraries.koinExt)
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
-
-    testImplementation(TestLibraries.junit4)
-
-    androidTestImplementation(TestLibraries.testRunner)
-    androidTestImplementation(TestLibraries.espresso)
-}
+} 
