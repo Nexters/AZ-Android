@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.az.main.R
 import com.az.main.TempHumorData
 import com.az.main.databinding.ItemHumorCardBinding
+import com.az.model.posts.PostData
 
 class MainHumorsAdapter : RecyclerView.Adapter<MainHumorItemViewHolder>() {
 
-    private val humors = mutableListOf<TempHumorData>()
+    private val humors = mutableListOf<PostData>()
 
-    fun replaceAll(list: List<TempHumorData>) {
+    fun replaceAll(list: List<PostData>) {
         list.let {
             humors.clear()
             humors.addAll(it)

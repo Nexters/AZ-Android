@@ -3,54 +3,62 @@ package com.az.main.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.az.main.TempHumorData
+import com.az.model.posts.PostData
+import com.az.model.posts.PostsRepository
+import com.az.model.posts.SimplePageData
+import com.az.model.users.rating.UserRatingData
+import com.az.model.users.rating.UserRatingRepository
 
-class MainViewModel : ViewModel() {
+const val userId = 1
+const val size = 10
 
-    private val _userGrade = MutableLiveData<String>()
-    val userGrade: LiveData<String> = _userGrade
-    private val _userGradeText = MutableLiveData<String>()
-    val userGradeText: LiveData<String> = _userGradeText
+class MainViewModel(
+    private val userRatingRepository: UserRatingRepository,
+    private val postsRepository: PostsRepository
+) : ViewModel() {
 
-    private val _postCount = MutableLiveData<Int>()
-    val postCount: LiveData<Int> = _postCount
-    private val _commentCount = MutableLiveData<Int>()
-    val commentCount: LiveData<Int> = _commentCount
+    private val _userRating = MutableLiveData<UserRatingData>()
+    val userRating: LiveData<UserRatingData> = _userRating
 
-    private val _humorGradeProgress = MutableLiveData<Int>()
-    val humorGradeProgress: LiveData<Int> = _humorGradeProgress
-
-    private val _humors = MutableLiveData<List<TempHumorData>>()
-    val humors: LiveData<List<TempHumorData>> = _humors
-
-    private val _isRecyclerViewScrollable = MutableLiveData<Boolean>()
-    val isRecyclerViewScrollable: LiveData<Boolean> = _isRecyclerViewScrollable
-
-    private val humor = TempHumorData(
-        "신입",
-        "가나다",
-        "2020.02.22",
-        "소나무가\n삐지면?",
-        48,
-        10,
-        false
-    )
+    private val _humors = MutableLiveData<List<PostData>>()
+    val humors: LiveData<List<PostData>> = _humors
+    private lateinit var simplePageData: SimplePageData
 
     init {
-        initDummyValues()
+        initSimplePageData()
+        getUserRating()
+        getPosts()
     }
 
-    private fun initDummyValues() {
-        _userGrade.value = "유머쪼랩ㅋ"
-        _userGradeText.value = "분발하자^^"
-        _postCount.value = 14
-        _commentCount.value = 4
-        _humorGradeProgress.value = 70
-        _humors.value = listOf(humor, humor, humor, humor, humor)
-        _isRecyclerViewScrollable.value = false
+    private fun initSimplePageData() {
+        simplePageData = SimplePageData(1, 0, 0)
     }
 
-    fun setScrollable(b: Boolean) {
-        _isRecyclerViewScrollable.value = b
+    private fun getUserRating() {
+        userRatingRepository.getUserRating(
+            userId,
+            onSuccess = { response ->
+                _userRating.value = response
+            },
+            onFailure = {
+                // TODO : 바꿔야됨
+            }
+        )
+    }
+
+    private fun getPosts() {
+        postsRepository.getPosts(
+            simplePageData.currentPage,
+            size,
+            onSuccess = { response ->
+                response.let {
+                    _humors.value = it.posts
+                    simplePageData = it.simplePage
+                }
+            },
+            onFailure = {
+                // TODO : 바꿔야됨
+            }
+        )
     }
 }

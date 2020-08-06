@@ -27,12 +27,12 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="25dp"
                 android:gravity="center"
-                android:text="@{vm.userGrade}"
                 android:textColor="@color/colorWhite"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                bind:setConciergeGrade="@{vm.userRating.ratingForPromotionData.currentRating}"
                 tools:text="유머쪼랩ㅋ" />
 
             <TextView
@@ -40,11 +40,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@{vm.userGradeText}"
                 android:textColor="@color/colorWhite"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="@id/user_grade"
                 app:layout_constraintTop_toBottomOf="@id/user_grade"
+                bind:setConciergeMessage="@{vm.userRating.ratingForPromotionData.currentRating}"
                 tools:text="분발하자^^" />
 
             <ImageView
@@ -64,7 +64,7 @@
                 android:gravity="center"
                 android:paddingHorizontal="9dp"
                 android:paddingVertical="3dp"
-                android:text="게시글"
+                android:text="@string/post"
                 android:textColor="@color/colorLightGrey"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:text="@{@string/count(vm.postCount)}"
+                android:text="@{@string/count(vm.userRating.ratingForPromotionData.postCountForPromotion)}"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -94,7 +94,7 @@
                 android:gravity="center"
                 android:paddingHorizontal="9dp"
                 android:paddingVertical="3dp"
-                android:text="댓글"
+                android:text="@string/comment"
                 android:textColor="@color/colorLightGrey"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:text="@{@string/count(vm.commentCount)}"
+                android:text="@{@string/count(vm.userRating.ratingForPromotionData.commentCountForPromotion)}"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -135,13 +135,16 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="9dp"
                 android:layout_marginBottom="42dp"
-                android:progress="@{vm.humorGradeProgress}"
+                android:max="1000"
                 android:progressDrawable="@drawable/humor_grade_progressbar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/post_number_text"
-                tools:progress="70" />
+                bind:commentCount="@{vm.userRating.ratingForPromotionData.commentCountForPromotion}"
+                bind:nextRating="@{vm.userRating.ratingForPromotionData.nextRating}"
+                bind:postCount="@{vm.userRating.ratingForPromotionData.postCountForPromotion}"
+                tools:progress="700" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

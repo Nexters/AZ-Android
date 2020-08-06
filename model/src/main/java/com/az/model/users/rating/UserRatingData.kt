@@ -1,10 +1,10 @@
 package com.az.model.users.rating
 
 data class UserRatingData(
-    val ratingForPromotion: RatingForPromotion
+    val ratingForPromotionData: RatingForPromotionData
 )
 
-data class RatingForPromotion(
+data class RatingForPromotionData(
     val commentCountForPromotion: Int,
     val currentRating: String,
     val nextRating: String,
