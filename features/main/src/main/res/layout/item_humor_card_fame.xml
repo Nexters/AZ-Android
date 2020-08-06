@@ -21,7 +21,7 @@
             android:id="@+id/title_humor_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_humor_card_title"
+            android:background="@drawable/bg_humor_card_title_fame"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -44,21 +44,30 @@
 
             <TextView
                 android:id="@+id/user_name"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="17dp"
-                android:layout_marginBottom="15dp"
                 android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
                 android:text="@{humorItem.user}"
-                android:textColor="@color/colorDarkGrey"
+                android:textColor="@color/colorWhite"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@id/date"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/user_grade"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="가나다" />
+
+            <ImageView
+                android:id="@+id/crown"
+                android:layout_width="12dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_crown"
+                app:layout_constraintBottom_toBottomOf="@id/user_name"
+                app:layout_constraintStart_toEndOf="@id/user_name"
+                app:layout_constraintTop_toTopOf="@id/user_name" />
 
             <TextView
                 android:id="@+id/date"
@@ -66,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:text="@{humorItem.date}"
-                android:textColor="@color/colorDarkGrey"
+                android:textColor="@color/colorWhite"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/user_name"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -95,12 +104,12 @@
             android:id="@+id/heart"
             android:layout_width="18dp"
             android:layout_height="17dp"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="14dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_heart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
             app:layout_goneMarginStart="30dp" />
 
         <TextView

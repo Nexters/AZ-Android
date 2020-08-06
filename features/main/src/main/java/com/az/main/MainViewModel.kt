@@ -26,7 +26,8 @@ class MainViewModel : ViewModel() {
     val isRecyclerViewScrollable: LiveData<Boolean> = _isRecyclerViewScrollable
 
     private val humor = TempHumorData(
-        "신입 가나다님",
+        "신입",
+        "가나다",
         "2020.02.22",
         "소나무가\n삐지면?",
         48,
