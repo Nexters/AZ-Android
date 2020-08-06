@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorDarkGrey"
+        android:background="@color/colorSemiBlack"
         android:paddingHorizontal="30dp"
         android:paddingTop="10dp"
         tools:context=".CreateFragment">
@@ -30,7 +30,7 @@
             android:lineSpacingExtra="5sp"
             android:maxLength="100"
             android:padding="30dp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorSemiBlack"
             android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/guide"

@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorDarkGrey"
+        android:background="@color/colorSemiBlack"
         android:paddingTop="10dp"
         tools:context=".DetailsFragment">
 
@@ -62,7 +62,7 @@
                 android:background="@null"
                 android:hint="댓글달기"
                 android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorGrey"
+                android:textColorHint="@color/colorGray"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_comment_send"
