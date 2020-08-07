@@ -8,9 +8,8 @@
     android:paddingEnd="23dp">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
+        android:layout_width="41dp"
+        android:layout_height="25dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_toolbar_logo"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -39,9 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:layout_marginEnd="30dp"
         android:orientation="horizontal"
-\        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView

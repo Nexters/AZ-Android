@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:bind="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,11 +11,10 @@
             type="com.az.signup.SignupViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorDarkGrey"
+        android:background="@color/colorSemiBlack"
         android:paddingStart="30dp"
         android:paddingTop="20dp"
         android:paddingEnd="30dp"
@@ -30,7 +30,7 @@
             android:paddingEnd="100dp"
             android:text="@={vm.id}"
             android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorDarkLightGrey"
+            android:textColorHint="@color/colorGray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
             android:paddingEnd="100dp"
             android:text="@={vm.password}"
             android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorDarkLightGrey"
+            android:textColorHint="@color/colorGray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
             android:paddingEnd="100dp"
             android:text="@={vm.passwordCheck}"
             android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorDarkLightGrey"
+            android:textColorHint="@color/colorGray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +120,7 @@
             android:paddingEnd="100dp"
             android:text="@={vm.nickname}"
             android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorDarkLightGrey"
+            android:textColorHint="@color/colorGray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
