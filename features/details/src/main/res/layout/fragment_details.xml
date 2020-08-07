@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:background="@null"
+                android:fontFamily="@font/app_main_font"
                 android:hint="댓글달기"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGray"
