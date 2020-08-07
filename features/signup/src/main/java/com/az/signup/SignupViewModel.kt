@@ -20,18 +20,35 @@ class SignupViewModel : ViewModel() {
     private val _nickname = MutableLiveData<String>()
     val nickname get() = _nickname
 
-    fun enabledSignup() = validId() && validPassword() && validNickname()
+    private val _validId = MutableLiveData<Boolean>(false)
+    val validId get() = _validId
 
+    private val _validPassword = MutableLiveData<Boolean>(false)
+    val validPassword get() = _validPassword
 
-    fun validId(): Boolean {
+    private val _validNickname = MutableLiveData<Boolean>(false)
+    val validNickname get() = _validNickname
+
+    private val _validSignUp = MutableLiveData<Boolean>(false)
+    val validSignUp get() = _validSignUp
+
+    fun validId() {
         // TODO API Call check id
-        return !id.value.isNullOrEmpty()
+        validId.value = !id.value.isNullOrEmpty()
     }
 
-    fun validPassword(): Boolean = !password.value.isNullOrEmpty() && password.value.equals(passwordCheck.value)
+    fun validPassword() {
+        validPassword.value =
+            !password.value.isNullOrEmpty() && password.value.equals(passwordCheck.value)
+    }
 
-    fun validNickname(): Boolean {
-        return !nickname.value.isNullOrEmpty()
+    fun validNickname() {
+        // TODO Call API
+        validNickname.value = !nickname.value.isNullOrEmpty()
+    }
+
+    fun validSignUp() {
+        validSignUp.value = (validId.value!! && validPassword.value!! && validNickname.value!!)
     }
 
     fun onClick() {

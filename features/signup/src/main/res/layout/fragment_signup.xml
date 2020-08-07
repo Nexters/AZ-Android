@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -24,7 +24,7 @@
             android:id="@+id/edit_text_id_with_check"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@drawable/bg_rounded_button_white_border"
+            android:background="@{vm.validId ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
             android:hint="@string/signup_id"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
@@ -57,7 +57,7 @@
             android:text="@string/signup_id_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
-            android:visibility="@={vm.validId() ? View.VISIBLE : View.GONE}"
+            android:visibility="@{vm.validId ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_id_with_check" />
 
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/bg_rounded_button_white_border"
+            android:background="@{vm.validPassword ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
             android:hint="@string/signup_password"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/bg_rounded_button_white_border"
+            android:background="@{vm.validPassword ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
             android:hint="@string/signup_password_check"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
@@ -105,7 +105,7 @@
             android:text="@string/signup_password_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
-            android:visibility="@={vm.validPassword() ? View.VISIBLE : View.GONE}"
+            android:visibility="@{vm.validPassword ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_password_check" />
 
@@ -114,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/bg_rounded_button_white_border"
+            android:background="@{vm.validNickname ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
             android:hint="@string/signup_nickname"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
@@ -136,7 +136,7 @@
             android:text="@string/signup_nickname_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
-            android:visibility="@={vm.validNickname() ? View.VISIBLE : View.GONE}"
+            android:visibility="@{vm.validNickname ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_nickname" />
 
@@ -158,7 +158,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button_color_purple"
+            android:background="@{vm.validSignUp ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
             android:text="@string/btn_signup"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent" />

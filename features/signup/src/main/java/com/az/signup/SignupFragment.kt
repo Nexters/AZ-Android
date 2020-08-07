@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.BaseObservable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.az.signup.databinding.FragmentSignupBinding
@@ -20,7 +19,8 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
     private val viewModel: SignupViewModel by viewModel()
 
-    private lateinit var binding: FragmentSignupBinding
+    private var _binding: FragmentSignupBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +31,10 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSignupBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.vm = viewModel
+        _binding = FragmentSignupBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            vm = viewModel
+        }
         return binding.root
     }
 
@@ -45,28 +46,24 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         }
     }
 
-    fun observerEditText() {
+    private fun observerEditText() {
 
         viewModel.id.observe(viewLifecycleOwner, Observer {
             viewModel.validId()
+            viewModel.validSignUp()
         })
         viewModel.nickname.observe(viewLifecycleOwner, Observer {
             viewModel.validNickname()
+            viewModel.validSignUp()
         })
         viewModel.password.observe(viewLifecycleOwner, Observer {
             viewModel.validPassword()
+            viewModel.validSignUp()
         })
         viewModel.passwordCheck.observe(viewLifecycleOwner, Observer {
             viewModel.validPassword()
+            viewModel.validSignUp()
         })
     }
-
-}
-
-// 확장함수
-// 메디에이터 라이브데이터
-
-
-class test: BaseObservable() {
 
 }
