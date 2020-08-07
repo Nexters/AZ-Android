@@ -9,9 +9,9 @@ object SHARED_PREF_KEY {
     const val LOGIN_STATUS = "loginStatus"
 }
 
-enum class LOGIN_STATUS {
-    USER_LOGIN,
-    GUEST_LOGIN,
-    ADMIN_LOGIN,
-    UNDEFINED
+enum class LoginStatus(val status: Int) {
+    UNDEFINED(0),
+    USER_LOGIN(1),
+    GUEST_LOGIN(2),
+    ADMIN_LOGIN(3),
 }

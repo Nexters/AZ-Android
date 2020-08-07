@@ -107,6 +107,8 @@ object BuildModules {
         const val Login = ":features:login"
         const val Signup = ":features:signup"
         const val Alarm = ":features:alarm"
+        const val Create = ":features:create"
+        const val Details = ":features:details"
     }
 
     object Libraries {

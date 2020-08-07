@@ -5,13 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.az.core.Preferences
 import com.az.main.databinding.FragmentMainBinding
 import com.az.main.di.loadFeature
 import kotlinx.android.synthetic.main.bottom_sheet_main.*
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
     private fun injectFeature() = loadFeature
+
+    private val sharedPrefs: Preferences by inject()
+
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -33,5 +38,8 @@ class MainFragment : Fragment() {
             vm = viewModel
             humor_card_rv.adapter = MainHumorsAdapter()
         }
+
+        // TODO used shared preferences
+        val status = sharedPrefs.getLoginStatus()
     }
 }

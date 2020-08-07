@@ -50,7 +50,10 @@ android {
         BuildModules.Features.MyPage,
         BuildModules.Features.Alarm,
         BuildModules.Features.Login,
-        BuildModules.Features.Signup
+        BuildModules.Features.Signup,
+        BuildModules.Features.Alarm,
+        BuildModules.Features.Create,
+        BuildModules.Features.Details
     )
 }
 

@@ -39,7 +39,9 @@ include(
     BuildModules.Features.MyPage,
     BuildModules.Features.Login,
     BuildModules.Features.Signup,
-    BuildModules.Features.Alarm
+    BuildModules.Features.Alarm,
+    BuildModules.Features.Create,
+    BuildModules.Features.Details
 )
 
 rootProject.name = "Youtugo"

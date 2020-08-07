@@ -14,7 +14,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorDarkGrey">
+        android:background="@color/colorSemiBlack">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,11 +26,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="25dp"
+                android:fontFamily="@font/sdgnh"
                 android:gravity="center"
                 android:text="@{vm.userGrade}"
                 android:textColor="@color/colorWhite"
                 android:textSize="35sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="유머쪼랩ㅋ" />
@@ -39,6 +39,7 @@
                 android:id="@+id/user_grade_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/app_main_font"
                 android:gravity="center"
                 android:text="@{vm.userGradeText}"
                 android:textColor="@color/colorWhite"
@@ -52,6 +53,7 @@
                 android:layout_width="42dp"
                 android:layout_height="18dp"
                 android:layout_marginTop="33dp"
+                android:fontFamily="@font/app_main_font"
                 android:background="@drawable/bg_humor_grade_progress_button"
                 android:gravity="center"
                 android:text="게시글"
@@ -70,6 +72,7 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="17sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/app_main_font"
                 app:layout_constraintBottom_toBottomOf="@id/post_number_text"
                 app:layout_constraintStart_toEndOf="@id/post_number_text"
                 app:layout_constraintTop_toTopOf="@id/post_number_text"
@@ -83,6 +86,7 @@
                 android:background="@drawable/bg_humor_grade_progress_button"
                 android:gravity="center"
                 android:text="댓글"
+                android:fontFamily="@font/app_main_font"
                 android:textColor="@color/colorPurple"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -98,6 +102,7 @@
                 android:text="@{@string/count(vm.commentCount)}"
                 android:textColor="@color/colorWhite"
                 android:textSize="17sp"
+                android:fontFamily="@font/app_main_font"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/comment_number_text"
                 app:layout_constraintStart_toEndOf="@id/comment_number_text"
@@ -112,6 +117,7 @@
                 android:text="@string/humor_count_text"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp"
+                android:fontFamily="@font/app_main_font"
                 app:layout_constraintBottom_toBottomOf="@id/comment_number"
                 app:layout_constraintStart_toEndOf="@id/comment_number"
                 app:layout_constraintTop_toTopOf="@id/comment_number" />
