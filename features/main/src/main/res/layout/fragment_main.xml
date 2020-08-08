@@ -32,7 +32,7 @@
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                bind:ConciergeGrade="@{vm.userRating.ratingForPromotionData.message}"
+                bind:conciergeGrade="@{vm.userRating.ratingForPromotionData.message}"
                 tools:text="어이신입ㅋ" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="@id/user_grade"
                 app:layout_constraintTop_toBottomOf="@id/user_grade"
-                bind:ConciergeMessage="@{vm.userRating.ratingForPromotionData.message}"
+                bind:conciergeMessage="@{vm.userRating.ratingForPromotionData.message}"
                 tools:text="유머 좀 하나?" />
 
             <ImageView
