@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.az.main.R
-import com.az.main.TempHumorData
 import com.az.main.databinding.ItemHumorCardBinding
 import com.az.model.posts.PostData
 

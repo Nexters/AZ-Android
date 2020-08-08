@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.az.model.posts.PostData
+import com.az.model.users.rating.Rating
 
 @BindingAdapter("setItems")
 fun setItems(view: RecyclerView, items: List<PostData>?) {
@@ -27,4 +28,17 @@ fun setConciergeMessage(view: TextView, message: String) {
 @BindingAdapter("humorGradeProgress")
 fun setHumorGradeProgress(view: ProgressBar, progress: Float) {
     view.progress = (progress * 1000).toInt()
+}
+
+@BindingAdapter("grade")
+fun setGrade(view: TextView, code: String) {
+    val grade = when (code) {
+        Rating.ASSISTANT_MANAGE.code -> Rating.ASSISTANT_MANAGE.gradeName
+        Rating.DEPARTMENT_HEAD.code -> Rating.DEPARTMENT_HEAD.gradeName
+        Rating.MANAGING_DIRECTOR.code -> Rating.MANAGING_DIRECTOR.gradeName
+        Rating.BOSS.code -> Rating.BOSS.gradeName
+        else -> Rating.NEW_RECRUIT.gradeName
+    }.let {
+        view.text = it
+    }
 }

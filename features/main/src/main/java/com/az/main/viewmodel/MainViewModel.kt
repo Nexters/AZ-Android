@@ -3,13 +3,11 @@ package com.az.main.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.az.model.posts.PostData
-import com.az.model.posts.PostsRepository
-import com.az.model.posts.SimplePageData
+import com.az.model.posts.*
+import com.az.model.users.rating.RatingForPromotionData
 import com.az.model.users.rating.UserRatingData
 import com.az.model.users.rating.UserRatingRepository
 
-const val userId = 1
 const val size = 10
 
 class MainViewModel(
@@ -35,30 +33,39 @@ class MainViewModel(
     }
 
     private fun getUserRating() {
-        userRatingRepository.getUserRating(
-            userId,
-            onSuccess = { response ->
-                _userRating.value = response
-            },
-            onFailure = {
-                // TODO : 바꿔야됨
-            }
+        _userRating.value = UserRatingData(
+            RatingForPromotionData(
+                commentCountForPromotion = 4,
+                currentRating = "NEW_RECRUIT",
+                message = "어이신입ㅋ\n유머 좀 하나?",
+                nextRating = "ASSISTANT_MANAGE",
+                postCountForPromotion = 14,
+                progress = 0.7F
+            )
+        )
+    }
+
+    private fun fakeSimplePageDataResponse(): SimplePageData {
+        return SimplePageData(
+            simplePageData.currentPage + 1,
+            30,
+            3
         )
     }
 
     private fun getPosts() {
-        postsRepository.getPosts(
-            simplePageData.currentPage,
-            size,
-            onSuccess = { response ->
-                response.let {
-                    _humors.value = it.posts
-                    simplePageData = it.simplePage
-                }
-            },
-            onFailure = {
-                // TODO : 바꿔야됨
-            }
+        val post = PostData(
+            Author(10, "string", "가나다", "NEW_RECRUIT"),
+            0, 10, "소나무가 삐지면?", "2020-08-08T20:41:52.995Z",
+            23, 48, "2020-08-08T20:41:52.995Z", true
         )
+
+        PostsData(
+            listOf(post, post, post, post, post, post, post, post, post, post),
+            fakeSimplePageDataResponse()
+        ).let {
+            _humors.value = it.posts
+            simplePageData = it.simplePage
+        }
     }
 }

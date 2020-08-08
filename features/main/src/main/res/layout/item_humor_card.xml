@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -33,13 +34,13 @@
                 android:gravity="center"
                 android:paddingHorizontal="7dp"
                 android:paddingVertical="4dp"
-                android:text="@{humorItem.authorNickname}"
                 android:textColor="@color/colorWhite"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/user_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/user_name"
+                bind:grade="@{humorItem.author.rating}"
                 tools:text="신입" />
 
             <TextView
@@ -50,7 +51,7 @@
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="15dp"
-                android:text="@{humorItem.authorNickname}"
+                android:text="@{humorItem.author.nickname}"
                 android:textColor="@color/colorSemiBlack"
                 android:textSize="13sp"
                 android:textStyle="bold"
