@@ -1,6 +1,7 @@
 package com.az.youtugo
 
 import android.app.Application
+import com.az.core.di.sharedPreferencesModule
 import com.olaf.network.githubApiModule
 import com.olaf.network.networkModule
 import com.olaf.repository.di.githubRepositoryModule
@@ -17,7 +18,8 @@ class YoutugoApp : Application() {
             modules(
                 networkModule,
                 githubApiModule,
-                githubRepositoryModule
+                githubRepositoryModule,
+                sharedPreferencesModule
             )
         }
     }

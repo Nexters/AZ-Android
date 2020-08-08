@@ -4,16 +4,19 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
-    <color name="colorBlack">#000000</color>
-    <color name="colorDarkGrey">#222222</color>
-    <color name="colorGrey">#404040</color>
-    <color name="colorLightGrey">#737373</color>
+    <color name="colorBlack">#161616</color>
+    <color name="colorSemiBlack">#222222</color>
+    <color name="colorDarkGray">#404040</color>
+    <color name="colorCoolGray">#5F5F5F</color>
+    <color name="colorWarmGray">#737373</color>
+    <color name="colorGray">#999999</color>
+    <color name="colorLightGray">#D4D4D4</color>
     <color name="colorWhite">#FFFFFF</color>
 
-    <color name="colorPurple">#B029DF</color>
-    <color name="colorGreen">#1EC57E</color>
+    <color name="colorRed">#EA4040</color>
+    <color name="colorCoralRed">#E2594E</color>
     <color name="colorYellow">#FFE111</color>
-    <color name="colorRed">#E2594E</color>
-
-    <color name="bottomNavItemColor">#03DAC5</color>
+    <color name="colorGreen">#1EC57E</color>
+    <color name="colorPurple">#B029DF</color>
+    <color name="colorLightPurple">#E495FF</color>
 </resources>

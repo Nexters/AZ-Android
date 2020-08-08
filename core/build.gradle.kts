@@ -52,6 +52,12 @@ dependencies {
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
 
+    // Koin
+    implementation(Libraries.koinAndroid)
+    implementation(Libraries.koinExt)
+    implementation(Libraries.koinScope)
+    implementation(Libraries.koinViewModel)
+
     testImplementation(TestLibraries.junit4)
 
     androidTestImplementation(TestLibraries.testRunner)

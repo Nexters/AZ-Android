@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="detail"
+            type="com.az.detail.TempHumorDetailData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/bg_contents_detail">
+
+        <CheckBox
+            android:id="@+id/btn_heart"
+            android:layout_width="19dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="9dp"
+            android:background="@drawable/btn_heart"
+            android:button="@null"
+            android:checked="@{detail.isHeart}"
+            app:layout_constraintBottom_toBottomOf="@id/btn_bookmark"
+            app:layout_constraintEnd_toStartOf="@id/btn_bookmark"
+            app:layout_constraintTop_toTopOf="@id/btn_bookmark" />
+
+        <CheckBox
+            android:id="@+id/btn_bookmark"
+            android:layout_width="16dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_bookmark"
+            android:button="@null"
+            android:checked="@{detail.isBookmark}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/content_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="33dp"
+            android:fontFamily="@font/sdgnh"
+            android:gravity="center"
+            android:lineSpacingExtra="5sp"
+            android:text="@{detail.content}"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="35sp"
+            app:layout_constraintBottom_toTopOf="@id/divider_details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_heart"
+            tools:text="소나무가 삐지면?\n\n칫솔" />
+
+        <View
+            android:id="@+id/divider_details"
+            android:layout_width="0dp"
+            android:layout_height="0.4dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorDarkGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content_detail" />
+
+        <ImageView
+            android:id="@+id/ic_heart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_heart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_details" />
+
+        <TextView
+            android:id="@+id/count_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/app_main_font"
+            android:text="@{@string/count(detail.heart)}"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ic_heart"
+            app:layout_constraintStart_toEndOf="@id/ic_heart"
+            app:layout_constraintTop_toTopOf="@id/ic_heart"
+            tools:text="48개" />
+
+
+        <ImageView
+            android:id="@+id/ic_comment"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_comment"
+            app:layout_constraintBottom_toBottomOf="@id/ic_heart"
+            app:layout_constraintStart_toEndOf="@id/count_heart"
+            app:layout_constraintTop_toTopOf="@id/ic_heart" />
+
+        <TextView
+            android:id="@+id/count_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/app_main_font"
+            android:text="@{@string/count(detail.comment)}"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ic_heart"
+            app:layout_constraintStart_toEndOf="@id/ic_comment"
+            app:layout_constraintTop_toTopOf="@id/ic_heart"
+            tools:text="10개" />
+
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/app_main_font"
+            android:gravity="end"
+            android:text="@{detail.user}"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/count_comment"
+            app:layout_constraintTop_toBottomOf="@id/divider_details"
+            tools:text="신입 가나다님" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/app_main_font"
+            android:text="@{detail.time}"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/user"
+            app:layout_constraintTop_toBottomOf="@id/user"
+            tools:text="한시간 전" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

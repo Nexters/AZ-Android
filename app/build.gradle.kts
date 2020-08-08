@@ -44,9 +44,12 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     dynamicFeatures = mutableSetOf(
-        BuildModules.Features.Home,
+        BuildModules.Features.Main,
         BuildModules.Features.Humors,
-        BuildModules.Features.MyPage
+        BuildModules.Features.MyPage,
+        BuildModules.Features.Alarm,
+        BuildModules.Features.Create,
+        BuildModules.Features.Details
     )
 }
 

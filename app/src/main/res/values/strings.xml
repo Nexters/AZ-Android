@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">아재트</string>
-    <string name="title_home">Home</string>
+    <string name="title_main">main</string>
     <string name="title_humors">humors</string>
     <string name="title_mypage">mypage</string>
+    <string name="title_alarm">alarm</string>
+    <string name="title_create">create</string>
+    <string name="title_details">details</string>
 </resources>
