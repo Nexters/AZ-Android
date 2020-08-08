@@ -1,5 +1,6 @@
 package com.az.main.view
 
+import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -32,7 +33,7 @@ fun setHumorGradeProgress(view: ProgressBar, progress: Float) {
 
 @BindingAdapter("grade")
 fun setGrade(view: TextView, code: String) {
-    val grade = when (code) {
+    when (code) {
         Rating.ASSISTANT_MANAGE.code -> Rating.ASSISTANT_MANAGE.gradeName
         Rating.DEPARTMENT_HEAD.code -> Rating.DEPARTMENT_HEAD.gradeName
         Rating.MANAGING_DIRECTOR.code -> Rating.MANAGING_DIRECTOR.gradeName
