@@ -1,6 +1,6 @@
 package com.olaf.network
 
-import com.olaf.model.GithubUserInfo
+import com.olaf.model.post.GithubUserInfoData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
@@ -11,13 +11,13 @@ class GithubRemoteDataSourceImpl(
 ) : GithubRemoteDataSource {
     override fun getUserInfo(
         name: String,
-        onSuccess: (response: GithubUserInfo) -> Unit,
+        onSuccess: (response: GithubUserInfoData) -> Unit,
         onFailure: (e: Throwable) -> Unit
     ) {
-        githubApi.getUserInfo(name).enqueue(object : Callback<GithubUserInfo> {
+        githubApi.getUserInfo(name).enqueue(object : Callback<GithubUserInfoData> {
             override fun onResponse(
-                call: Call<GithubUserInfo>,
-                response: Response<GithubUserInfo>
+                call: Call<GithubUserInfoData>,
+                response: Response<GithubUserInfoData>
             ) {
                 val body = response.body()
                 if (body != null && response.isSuccessful) {
@@ -27,7 +27,7 @@ class GithubRemoteDataSourceImpl(
                 }
             }
 
-            override fun onFailure(call: Call<GithubUserInfo>, t: Throwable) {
+            override fun onFailure(call: Call<GithubUserInfoData>, t: Throwable) {
                 onFailure(t)
             }
         })
