@@ -32,7 +32,7 @@
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                bind:setConciergeGrade="@{vm.userRating.ratingForPromotionData.currentRating}"
+                bind:ConciergeGrade="@{vm.userRating.ratingForPromotionData.message}"
                 tools:text="어이신입ㅋ" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="@id/user_grade"
                 app:layout_constraintTop_toBottomOf="@id/user_grade"
-                bind:setConciergeMessage="@{vm.userRating.ratingForPromotionData.currentRating}"
+                bind:ConciergeMessage="@{vm.userRating.ratingForPromotionData.message}"
                 tools:text="유머 좀 하나?" />
 
             <ImageView
@@ -147,9 +147,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/post_number_text"
-                bind:commentCount="@{vm.userRating.ratingForPromotionData.commentCountForPromotion}"
-                bind:nextRating="@{vm.userRating.ratingForPromotionData.nextRating}"
-                bind:postCount="@{vm.userRating.ratingForPromotionData.postCountForPromotion}"
+                bind:humorGradeProgress="@{vm.userRating.ratingForPromotionData.progress}"
                 tools:progress="700" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

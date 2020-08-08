@@ -7,6 +7,8 @@ data class UserRatingData(
 data class RatingForPromotionData(
     val commentCountForPromotion: Int,
     val currentRating: String,
+    val message: String,
     val nextRating: String,
-    val postCountForPromotion: Int
+    val postCountForPromotion: Int,
+    val progress: Float
 )
