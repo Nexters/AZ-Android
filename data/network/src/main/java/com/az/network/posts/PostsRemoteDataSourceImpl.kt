@@ -1,11 +1,12 @@
 package com.az.network.posts
 
 import com.az.model.posts.PostsData
+import com.az.network.ResponseHandler
 import org.koin.dsl.module
 import retrofit2.*
 
 val postsApiModule = module {
-    factory<PostsRemoteDataSource> { PostsRemoteDataSourceImpl(get()) }
+    factory<PostsRemoteDataSource> { PostsRemoteDataSourceImpl(get(), get()) }
 
     factory {
         get<Retrofit>().create(
@@ -15,7 +16,8 @@ val postsApiModule = module {
 }
 
 class PostsRemoteDataSourceImpl(
-    private val postsApi: PostsApi
+    private val postsApi: PostsApi,
+    private val responseHandler: ResponseHandler
 ) : PostsRemoteDataSource {
     override fun getPosts(
         currentPage: Int,

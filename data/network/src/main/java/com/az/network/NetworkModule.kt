@@ -34,4 +34,6 @@ val networkModule = module {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    factory { ResponseHandler() }
 }
