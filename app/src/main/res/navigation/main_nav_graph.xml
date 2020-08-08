@@ -31,6 +31,16 @@
             android:id="@+id/action_loginFragment_to_signupFragment"
             app:destination="@id/signupFragment"/>
 
+        <action
+            android:id="@+id/action_loginFragment_to_forgotFragment"
+            app:destination="@id/forgotPasswordFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.az.login.view.ForgotPasswordFragment">
+
     </fragment>
 
     <fragment

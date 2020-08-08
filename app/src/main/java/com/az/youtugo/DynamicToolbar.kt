@@ -26,9 +26,9 @@ class DynamicToolbar @JvmOverloads constructor(
     fun onDestinationChanged(destination: Int, destinationName: String?) {
         when (destination) {
             R.id.mainFragment -> setDefaultToolbar()
-            R.id.loginFragment -> setLogoToolbar()
+            R.id.loginFragment,
             R.id.signupFragment -> setLogoToolbar()
-            // R.id.alarmFragment -> setBackspaceToolbar()
+            R.id.forgotPasswordFragment -> setBackspaceToolbar("비밀번호찾기")
             R.id.myPageFragment -> setBackspaceToolbar("마이페이지")
             else -> removeAllViews()
         }

@@ -39,11 +39,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnSignup.setOnClickListener { toSignupPage() }
+        binding.txtForgotPassword.setOnClickListener { toForgotPassworPage() }
     }
 
     fun toSignupPage() {
         val action =
             LoginFragmentDirections.actionLoginFragmentToSignupFragment()
+        findNavController().navigate(action)
+    }
+
+    fun toForgotPassworPage() {
+        val action = LoginFragmentDirections.actionLoginFragmentToForgotFragment()
         findNavController().navigate(action)
     }
 
