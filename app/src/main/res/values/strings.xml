@@ -3,6 +3,8 @@
     <string name="title_main">main</string>
     <string name="title_humors">humors</string>
     <string name="title_mypage">mypage</string>
+    <string name="title_login">login</string>
+    <string name="title_signup">signup</string>
     <string name="title_alarm">alarm</string>
     <string name="title_create">create</string>
     <string name="title_details">details</string>

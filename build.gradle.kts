@@ -6,7 +6,7 @@ plugins {
     id(BuildPlugins.androidApplication) apply false
     id(BuildPlugins.kotlinAndroid) apply false
     id(BuildPlugins.kotlinAndroidExtensions) apply false
-    
+    id(BuildPlugins.safeArgs) apply false
 }
 
 allprojects {
