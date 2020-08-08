@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -19,8 +19,33 @@
 
     <fragment
         android:id="@+id/myPageFragment"
-        android:name="com.az.mypage.ui.views.MyPageFragment"
-        app:moduleName="mypage">
+        android:name="com.az.mypage.ui.views.MyPageFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.az.login.view.LoginFragment">
+
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment"/>
+
+        <action
+            android:id="@+id/action_loginFragment_to_forgotFragment"
+            app:destination="@id/forgotPasswordFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.az.login.view.ForgotPasswordFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.az.signup.SignupFragment">
 
     </fragment>
 </navigation>
