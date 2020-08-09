@@ -40,6 +40,16 @@ class MainViewModel(
         simplePageData = SimplePageData(1, 0, 0)
     }
 
+    fun toggleFame() {
+        _isHumorsFame.value = (isHumorsFame.value ?: false).let { !it }.also {
+            initSimplePageData()
+            when (it) {
+                true -> getPopularPosts()
+                false -> getPosts()
+            }
+        }
+    }
+
     private fun getUserRating() {
         _userRating.value = UserRatingData(
             RatingForPromotionData(
@@ -64,8 +74,24 @@ class MainViewModel(
     private fun getPosts() {
         val post = PostData(
             Author(10, "string", "가나다", "NEW_RECRUIT"),
-            0, 10, "소나무가 삐지면?", "2020-08-08T20:41:52.995Z",
-            23, 48, "2020-08-08T20:41:52.995Z", true
+            0, 5, "소나무가 삐지면?", "2020-08-08T20:41:52.995Z",
+            23, 2, "2020-08-08T20:41:52.995Z", true
+        )
+
+        PostsData(
+            listOf(post, post, post, post, post, post, post, post, post, post),
+            fakeSimplePageDataResponse()
+        ).let {
+            _humors.value = it.posts
+            simplePageData = it.simplePage
+        }
+    }
+
+    private fun getPopularPosts() {
+        val post = PostData(
+            Author(11, "string", "라마바사", "NEW_RECRUIT"),
+            0, 17, "쌀이 불에 타면?", "2020-08-08T20:41:52.995Z",
+            25, 56, "2020-08-08T20:41:52.995Z", true
         )
 
         PostsData(
