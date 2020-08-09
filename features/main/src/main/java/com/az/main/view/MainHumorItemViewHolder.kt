@@ -8,8 +8,9 @@ class MainHumorItemViewHolder(
     private val binding: ItemHumorCardBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: PostData) {
+    fun bind(item: PostData, b: Boolean) {
         with(binding) {
+            isFame = b
             humorItem = item
             executePendingBindings()
         }
