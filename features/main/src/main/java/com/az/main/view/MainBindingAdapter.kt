@@ -43,3 +43,26 @@ fun setGrade(view: TextView, code: String) {
         view.text = it
     }
 }
+
+@BindingAdapter("isFame")
+fun setFame(view: ConstraintLayout, isFame: Boolean) {
+    if (isFame) {
+        view.let {
+            it.background = it.context.getDrawable(R.drawable.bg_humor_card_title_fame)
+            it.user_name.setTextColor(getColorInt(it, R.color.colorWhite))
+            it.date.setTextColor(getColorInt(it, R.color.colorWhite))
+            it.crown.visibility = View.VISIBLE
+        }
+    } else {
+        view.let {
+            it.background = it.context.getDrawable(R.drawable.bg_humor_card_title)
+            it.user_name.setTextColor(getColorInt(it, R.color.colorSemiBlack))
+            it.date.setTextColor(getColorInt(it, R.color.colorSemiBlack))
+            it.crown.visibility = View.GONE
+        }
+    }
+}
+
+private fun getColorInt(view: View, colorId: Int): Int {
+    return ResourcesCompat.getColor(view.resources, colorId, null)
+}

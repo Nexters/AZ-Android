@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="isFame"
+            type="Boolean" />
+
+        <variable
             name="humorItem"
             type="com.az.model.posts.PostData" />
     </data>
@@ -23,7 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_humor_card_title"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            bind:isFame="@{isFame}">
 
             <TextView
                 android:id="@+id/user_grade"
@@ -48,7 +53,7 @@
                 android:id="@+id/user_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="6dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="15dp"
@@ -57,10 +62,20 @@
                 android:textColor="@color/colorSemiBlack"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/date"
                 app:layout_constraintStart_toEndOf="@id/user_grade"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="가나다" />
+
+            <ImageView
+                android:id="@+id/crown"
+                android:layout_width="12dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_crown"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/user_name"
+                app:layout_constraintStart_toEndOf="@id/user_name"
+                app:layout_constraintTop_toTopOf="@id/user_name" />
 
             <TextView
                 android:id="@+id/date"
