@@ -30,6 +30,9 @@ class DynamicToolbar @JvmOverloads constructor(
             R.id.signupFragment -> setLogoToolbar()
             R.id.forgotPasswordFragment -> setBackspaceToolbar("비밀번호찾기")
             R.id.myPageFragment -> setBackspaceToolbar("마이페이지")
+            R.id.alarmFragment -> setBackspaceToolbar("알림")
+            R.id.detailsFragment -> setLogoCloseToolbar()
+            R.id.createFragment -> setCloseToolbar("개그작성")
             else -> removeAllViews()
         }
     }

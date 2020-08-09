@@ -34,10 +34,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initToolbarHandler() {
+        toolbar.alarmHandler = {
+            navController.navigate(R.id.alarmFragment)
+        }
         toolbar.myPageHandler = {
             navController.navigate(R.id.myPageFragment)
         }
         toolbar.backspaceHandler = {
+            navController.popBackStack()
+        }
+        toolbar.closeHandler = {
             navController.popBackStack()
         }
     }
