@@ -3,15 +3,27 @@ package com.az.main.view
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.az.main.R
 import com.az.model.posts.PostData
 import com.az.model.users.rating.Rating
+import kotlinx.android.synthetic.main.item_humor_card.view.*
 
 @BindingAdapter("setItems")
 fun setItems(view: RecyclerView, items: List<PostData>?) {
     (view.adapter as? MainHumorsAdapter)?.run {
         items?.let { replaceAll(it) }
+        notifyDataSetChanged()
+    }
+}
+
+@BindingAdapter("setFame")
+fun setFame(view: RecyclerView, b: Boolean?) {
+    (view.adapter as? MainHumorsAdapter)?.run {
+        b?.let { setIsHumorFame(it) }
         notifyDataSetChanged()
     }
 }

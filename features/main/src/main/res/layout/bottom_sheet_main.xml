@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="isFame"
+            type="Boolean" />
+
+        <variable
             name="humors"
             type="java.util.List&lt;com.az.model.posts.PostData&gt;" />
     </data>
@@ -76,6 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/humor_sheet_divider"
+            bind:setFame="@{isFame}"
             bind:setItems="@{humors}"
             tools:listitem="@layout/item_humor_card" />
 
