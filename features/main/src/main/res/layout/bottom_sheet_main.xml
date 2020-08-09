@@ -43,8 +43,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
-            android:layout_width="90dp"
-            android:layout_height="27dp"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_hall_of_fame"
             android:button="@null"

@@ -49,8 +49,8 @@
                 tools:text="유머 좀 하나?" />
 
             <ImageView
-                android:layout_width="56dp"
-                android:layout_height="80dp"
+                android:layout_width="60dp"
+                android:layout_height="0dp"
                 android:src="@drawable/ic_sinip_sticker"
                 app:layout_constraintBottom_toBottomOf="@id/user_grade_text"
                 app:layout_constraintEnd_toEndOf="parent"
