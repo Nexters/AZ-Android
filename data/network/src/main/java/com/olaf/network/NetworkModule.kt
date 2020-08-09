@@ -1,12 +1,13 @@
 package com.olaf.network
 
+import com.olaf.network.auth.AuthApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "http://api.github.com/"
+private const val BASE_URL = "http://ec2-3-34-24-138.ap-northeast-2.compute.amazonaws.com:8080/v1/api/"
 
 val networkModule = module {
 
@@ -36,7 +37,7 @@ val networkModule = module {
 
     single {
         get<Retrofit>().create(
-            GithubApi::class.java
+            AuthApi::class.java
         )
     }
 }
