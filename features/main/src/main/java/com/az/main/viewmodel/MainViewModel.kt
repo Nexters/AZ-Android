@@ -18,14 +18,22 @@ class MainViewModel(
     private val _userRating = MutableLiveData<UserRatingData>()
     val userRating: LiveData<UserRatingData> = _userRating
 
+    private val _isHumorsFame = MutableLiveData<Boolean>()
+    val isHumorsFame: LiveData<Boolean> = _isHumorsFame
+
     private val _humors = MutableLiveData<List<PostData>>()
     val humors: LiveData<List<PostData>> = _humors
     private lateinit var simplePageData: SimplePageData
 
     init {
+        initHumorsFameData()
         initSimplePageData()
         getUserRating()
         getPosts()
+    }
+
+    private fun initHumorsFameData() {
+        _isHumorsFame.value = false
     }
 
     private fun initSimplePageData() {
