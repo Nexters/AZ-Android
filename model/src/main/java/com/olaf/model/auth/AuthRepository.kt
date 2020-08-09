@@ -3,7 +3,7 @@ package com.olaf.model.auth
 import com.olaf.model.auth.request.SignUpRequestData
 import com.olaf.model.auth.response.SignInResponseData
 
-interface SignUpRepository {
+interface AuthRepository {
 
     fun signUp(
         signUpRqData: SignUpRequestData,
