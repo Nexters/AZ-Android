@@ -3,6 +3,7 @@ package com.az.main.view
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
@@ -54,6 +55,22 @@ fun setGrade(view: TextView, code: String) {
     }.let {
         view.text = it
     }
+}
+
+@BindingAdapter("flexibleSizeText")
+fun setFlexibleSizeText(view: TextView, text: String) {
+    val length = text.length
+    when {
+        (length in 0..12) -> {
+            view.setTextSize(Dimension.SP, 35F)
+        }
+        (length in 13..49) -> {
+            view.setTextSize(Dimension.SP, 22F)
+        }
+        else -> {
+            view.setTextSize(Dimension.SP, 16F)
+        }
+    }.also { view.text = text }
 }
 
 @BindingAdapter("isFame")
