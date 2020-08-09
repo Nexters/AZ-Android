@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.az.signup.SignupViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSemiBlack"
+        android:paddingStart="30dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="20dp">
+
+        <EditText
+            android:id="@+id/edit_text_id_with_check"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@{vm.validId ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
+            android:hint="@string/signup_id"
+            android:paddingStart="26dp"
+            android:paddingEnd="100dp"
+            android:text="@={vm.id}"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGray"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_id_check_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:paddingBottom="1dp"
+            android:text="@string/signup_duplicate_check"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_text_id_with_check"
+            app:layout_constraintEnd_toEndOf="@+id/edit_text_id_with_check"
+            app:layout_constraintTop_toTopOf="@+id/edit_text_id_with_check" />
+
+        <TextView
+            android:id="@+id/txt_id_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/signup_id_check_error"
+            android:textColor="@color/colorRed"
+            android:textSize="15sp"
+            android:visibility="@{vm.validId ? View.GONE : View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_id_with_check" />
+
+        <EditText
+            android:id="@+id/edit_text_password"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="18dp"
+            android:background="@{vm.validPassword ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
+            android:hint="@string/signup_password"
+            android:paddingStart="26dp"
+            android:paddingEnd="100dp"
+            android:text="@={vm.password}"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGray"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_id_error" />
+
+        <EditText
+            android:id="@+id/edit_text_password_check"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="18dp"
+            android:background="@{vm.validPassword ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
+            android:hint="@string/signup_password_check"
+            android:paddingStart="26dp"
+            android:paddingEnd="100dp"
+            android:text="@={vm.passwordCheck}"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGray"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_text_password" />
+
+        <TextView
+            android:id="@+id/txt_password_check_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:paddingBottom="1dp"
+            android:text="@string/signup_password_check_error"
+            android:textColor="@color/colorRed"
+            android:textSize="15sp"
+            android:visibility="@{vm.validPassword ? View.GONE : View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_password_check" />
+
+        <EditText
+            android:id="@+id/edit_text_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="18dp"
+            android:background="@{vm.validNickname ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
+            android:hint="@string/signup_nickname"
+            android:paddingStart="26dp"
+            android:paddingEnd="100dp"
+            android:text="@={vm.nickname}"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGray"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_password_check_error" />
+
+        <TextView
+            android:id="@+id/txt_nickname_check_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:paddingBottom="1dp"
+            android:text="@string/signup_nickname_check_error"
+            android:textColor="@color/colorRed"
+            android:textSize="15sp"
+            android:visibility="@{vm.validNickname ? View.GONE : View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_nickname" />
+
+        <TextView
+            android:id="@+id/txt_nickname_check_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:paddingBottom="1dp"
+            android:text="@string/signup_duplicate_check"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_text_nickname"
+            app:layout_constraintEnd_toEndOf="@+id/edit_text_nickname"
+            app:layout_constraintTop_toTopOf="@+id/edit_text_nickname" />
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="40dp"
+            android:background="@{vm.validSignUp ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
+            android:text="@string/btn_signup"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
