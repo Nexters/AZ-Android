@@ -13,6 +13,10 @@
         <variable
             name="humors"
             type="java.util.List&lt;com.az.model.posts.PostData&gt;" />
+
+        <variable
+            name="vm"
+            type="com.az.main.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,6 +56,8 @@
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_hall_of_fame"
             android:button="@null"
+            android:checked="@{vm.isHumorsFame}"
+            android:onClick="@{() -> vm.toggleFame()}"
             app:layout_constraintBottom_toBottomOf="@id/humor_card_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/humor_card_title" />
