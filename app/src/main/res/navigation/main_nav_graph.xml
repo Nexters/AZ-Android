@@ -5,47 +5,73 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.az.main.view.MainFragment">
-
-    </fragment>
-
-
-    <fragment
-        android:id="@+id/humorsFragment"
-        android:name="com.az.humors.ui.view.HumorsFragment">
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/myPageFragment"
-        android:name="com.az.mypage.ui.views.MyPageFragment">
-
-    </fragment>
-
-    <fragment
         android:id="@+id/loginFragment"
-        android:name="com.az.login.view.LoginFragment">
+        android:name="com.az.login.view.LoginFragment"
+        android:label="LoginFragment"
+        app:moduleName="login">
 
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
-            app:destination="@id/signupFragment"/>
+            app:destination="@id/signupFragment" />
 
         <action
             android:id="@+id/action_loginFragment_to_forgotFragment"
-            app:destination="@id/forgotPasswordFragment"/>
-
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.az.login.view.ForgotPasswordFragment">
+        android:name="com.az.login.view.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment"
+        app:moduleName="login">
 
     </fragment>
 
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.az.signup.SignupFragment">
+        android:name="com.az.signup.SignupFragment"
+        android:label="SignupFragment"
+        app:moduleName="signup">
 
     </fragment>
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.az.main.view.MainFragment"
+        android:label="MainFragment"
+        app:moduleName="main">
+
+        <action
+            android:id="@+id/action_mainFragment_to_createFragment"
+            app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.az.mypage.ui.views.MyPageFragment"
+        android:label="MyPageFragment"
+        app:moduleName="mypage">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/alarmFragment"
+        android:name="com.az.alarm.AlarmFragment"
+        android:label="AlarmFragment"
+        app:moduleName="alarm" />
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.az.detail.DetailsFragment"
+        android:label="DetailsFragment"
+        app:moduleName="details" />
+
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.az.create.CreateFragment"
+        android:label="CreateFragment"
+        app:moduleName="create" />
 </navigation>
