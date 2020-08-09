@@ -11,6 +11,11 @@ import com.az.model.posts.PostData
 class MainHumorsAdapter : RecyclerView.Adapter<MainHumorItemViewHolder>() {
 
     private val humors = mutableListOf<PostData>()
+    private var isFame: Boolean = false
+
+    fun setIsHumorFame(b: Boolean) {
+        isFame = b
+    }
 
     fun replaceAll(list: List<PostData>) {
         list.let {
@@ -34,6 +39,6 @@ class MainHumorsAdapter : RecyclerView.Adapter<MainHumorItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MainHumorItemViewHolder, position: Int) {
-        holder.bind(humors[position])
+        holder.bind(humors[position], isFame)
     }
 }
