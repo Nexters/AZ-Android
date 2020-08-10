@@ -1,9 +1,12 @@
-package com.az.detail
+package com.az.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.az.detail.adapter.holder.CommentItemViewHolder
+import com.az.detail.R
+import com.az.detail.TempCommentData
 import com.az.detail.databinding.ItemCommentsBinding
 
 class CommentsAdapter : RecyclerView.Adapter<CommentItemViewHolder>() {

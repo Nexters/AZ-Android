@@ -1,10 +1,12 @@
-package com.az.detail
+package com.az.detail.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.az.detail.viewmodel.DetailsViewModel
+import com.az.detail.adapter.CommentsAdapter
 import com.az.detail.databinding.FragmentDetailsBinding
 import com.az.detail.di.loadFeature
 import org.koin.android.viewmodel.ext.android.viewModel

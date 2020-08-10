@@ -1,7 +1,8 @@
-package com.az.detail
+package com.az.detail.view.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.az.detail.adapter.CommentsAdapter
 
 @BindingAdapter("setItems")
 fun setItems(view: RecyclerView, items: List<TempCommentData>?) {

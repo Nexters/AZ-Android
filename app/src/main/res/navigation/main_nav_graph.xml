@@ -65,7 +65,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.az.detail.DetailsFragment"
+        android:name="com.az.detail.view.DetailsFragment"
         android:label="DetailsFragment"
         app:moduleName="details" />
 

@@ -1,8 +1,10 @@
-package com.az.detail
+package com.az.detail.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.az.detail.TempCommentData
+import com.az.detail.TempHumorDetailData
 
 class DetailsViewModel : ViewModel() {
 
