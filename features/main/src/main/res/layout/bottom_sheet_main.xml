@@ -7,22 +7,30 @@
     <data>
 
         <variable
+            name="isFame"
+            type="Boolean" />
+
+        <variable
             name="humors"
-            type="java.util.List&lt;com.az.main.TempHumorData&gt;" />
+            type="java.util.List&lt;com.az.model.posts.PostData&gt;" />
+
+        <variable
+            name="vm"
+            type="com.az.main.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_sheet_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_humor_card_title"
+        android:background="@drawable/bg_humor_sheet_title"
         app:behavior_hideable="false"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <View
             android:layout_width="44dp"
             android:layout_height="6dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="14dp"
             android:background="@drawable/bg_humor_card_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="32dp"
-            android:text="@string/humors_list_title"
             android:fontFamily="@font/app_main_font"
+            android:text="@string/humors_list_title"
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -43,27 +51,42 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
-            android:layout_width="110dp"
-            android:layout_height="34dp"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_hall_of_fame"
             android:button="@null"
+            android:checked="@{vm.isHumorsFame}"
+            android:onClick="@{() -> vm.toggleFame()}"
             app:layout_constraintBottom_toBottomOf="@id/humor_card_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/humor_card_title" />
+
+        <View
+            android:id="@+id/humor_sheet_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="18dp"
+            android:background="@color/colorCoolGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/humor_card_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/humor_card_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
             android:background="@color/colorDarkGray"
             android:clipToPadding="false"
+            android:fitsSystemWindows="true"
+            android:paddingTop="12dp"
             android:paddingBottom="85dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/humor_card_title"
+            app:layout_constraintTop_toBottomOf="@id/humor_sheet_divider"
+            bind:setFame="@{isFame}"
             bind:setItems="@{humors}"
             tools:listitem="@layout/item_humor_card" />
 

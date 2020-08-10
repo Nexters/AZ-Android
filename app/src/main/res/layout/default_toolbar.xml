@@ -10,17 +10,15 @@
     <ImageView
         android:layout_width="41dp"
         android:layout_height="25dp"
-        android:layout_marginTop="16dp"
         android:src="@drawable/ic_toolbar_logo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <LinearLayout
         android:id="@+id/layout_default_delete_button_wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="31dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +28,7 @@
             android:id="@+id/img_close_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="7dp"
             android:src="@drawable/ic_close_button" />
     </LinearLayout>
 
@@ -37,25 +36,25 @@
         android:id="@+id/layout_default_button_wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_alarm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="7dp"
+            android:layout_width="20dp"
+            android:layout_height="21dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="14dp"
             android:src="@drawable/ic_alarm" />
 
         <ImageView
+            android:layout_gravity="center"
             android:id="@+id/img_my_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_sinip_small" />
+            android:layout_width="25dp"
+            android:layout_height="23dp"
+            android:src="@drawable/ic_mypage" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
