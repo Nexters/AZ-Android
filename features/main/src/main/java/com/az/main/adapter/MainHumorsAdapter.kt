@@ -1,10 +1,11 @@
-package com.az.main.view
+package com.az.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.az.main.R
+import com.az.main.adapter.holder.MainHumorItemViewHolder
 import com.az.main.databinding.ItemHumorCardBinding
 import com.az.model.posts.PostData
 

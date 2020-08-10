@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.az.core.Preferences
+import com.az.main.adapter.MainHumorsAdapter
 import com.az.main.databinding.FragmentMainBinding
 import com.az.main.di.loadFeature
 import com.az.main.viewmodel.MainViewModel

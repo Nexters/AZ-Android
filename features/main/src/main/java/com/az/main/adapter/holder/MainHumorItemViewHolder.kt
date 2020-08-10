@@ -1,4 +1,4 @@
-package com.az.main.view
+package com.az.main.adapter.holder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.az.main.databinding.ItemHumorCardBinding

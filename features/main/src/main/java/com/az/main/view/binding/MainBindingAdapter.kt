@@ -1,4 +1,4 @@
-package com.az.main.view
+package com.az.main.view.binding
 
 import android.view.View
 import android.widget.ProgressBar
@@ -9,6 +9,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.az.main.R
+import com.az.main.adapter.MainHumorsAdapter
 import com.az.model.posts.PostData
 import com.az.model.users.rating.Rating
 import kotlinx.android.synthetic.main.item_humor_card.view.*
@@ -30,22 +31,22 @@ fun setFame(view: RecyclerView, b: Boolean?) {
 }
 
 @BindingAdapter("conciergeGrade")
-fun setConciergeGrade(view: TextView, message: String) {
-    view.text = message.split("\n").first()
+fun setConciergeGrade(view: TextView, message: String?) {
+    view.text = message?.split("\n")?.first()
 }
 
 @BindingAdapter("conciergeMessage")
-fun setConciergeMessage(view: TextView, message: String) {
-    view.text = message.split("\n").last()
+fun setConciergeMessage(view: TextView, message: String?) {
+    view.text = message?.split("\n")?.last()
 }
 
 @BindingAdapter("humorGradeProgress")
-fun setHumorGradeProgress(view: ProgressBar, progress: Float) {
-    view.progress = (progress * 1000).toInt()
+fun setHumorGradeProgress(view: ProgressBar, progress: Float?) {
+    view.progress = ((progress ?: 0F) * 1000).toInt()
 }
 
 @BindingAdapter("grade")
-fun setGrade(view: TextView, code: String) {
+fun setGrade(view: TextView, code: String?) {
     when (code) {
         Rating.ASSISTANT_MANAGE.code -> Rating.ASSISTANT_MANAGE.gradeName
         Rating.DEPARTMENT_HEAD.code -> Rating.DEPARTMENT_HEAD.gradeName
@@ -58,8 +59,8 @@ fun setGrade(view: TextView, code: String) {
 }
 
 @BindingAdapter("flexibleSizeText")
-fun setFlexibleSizeText(view: TextView, text: String) {
-    val length = text.length
+fun setFlexibleSizeText(view: TextView, text: String?) {
+    val length = text?.length ?: 0
     when {
         (length in 0..12) -> {
             view.setTextSize(Dimension.SP, 35F)
@@ -74,8 +75,8 @@ fun setFlexibleSizeText(view: TextView, text: String) {
 }
 
 @BindingAdapter("isFame")
-fun setFame(view: ConstraintLayout, isFame: Boolean) {
-    if (isFame) {
+fun setFame(view: ConstraintLayout, isFame: Boolean?) {
+    if (isFame != null && isFame) {
         view.let {
             it.background = it.context.getDrawable(R.drawable.bg_humor_card_title_fame)
             it.user_name.setTextColor(getColorInt(it, R.color.colorWhite))
