@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="user_name"><b>신입</b> 웅웅님</string>
+    <string name="user_rating">신입</string>
+    <string name="user_nickname">웅웅님</string>
 </resources>
