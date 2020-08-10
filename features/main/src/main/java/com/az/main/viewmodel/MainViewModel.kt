@@ -73,7 +73,7 @@ class MainViewModel(
 
     private fun getPosts() {
         val post = PostData(
-            Author(10, "string", "가나다", "NEW_RECRUIT"),
+            AuthorData(10, "string", "가나다", "NEW_RECRUIT"),
             0, 5, "소나무가 삐지면?", "2020-08-08T20:41:52.995Z",
             23, 2, "2020-08-08T20:41:52.995Z", true
         )
@@ -89,7 +89,7 @@ class MainViewModel(
 
     private fun getPopularPosts() {
         val post = PostData(
-            Author(11, "string", "라마바사", "NEW_RECRUIT"),
+            AuthorData(11, "string", "라마바사", "NEW_RECRUIT"),
             0, 17, "쌀이 불에 타면?", "2020-08-08T20:41:52.995Z",
             25, 56, "2020-08-08T20:41:52.995Z", true
         )

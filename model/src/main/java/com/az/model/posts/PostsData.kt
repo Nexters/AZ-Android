@@ -6,7 +6,7 @@ data class PostsData(
 )
 
 data class PostData(
-    val author: Author,
+    val author: AuthorData,
     val bookMarks: Int,
     val comments: Int,
     val content: String,
@@ -17,7 +17,7 @@ data class PostData(
     val pressLike: Boolean
 )
 
-data class Author(
+data class AuthorData(
     val id: Int,
     val identification: String,
     val nickname: String,
