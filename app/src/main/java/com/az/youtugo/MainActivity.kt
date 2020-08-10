@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.myPageFragment)
         }
         toolbar.backspaceHandler = {
-            navController.popBackStack()
+            navController.navigateUp()
         }
         toolbar.closeHandler = {
             navController.popBackStack()
