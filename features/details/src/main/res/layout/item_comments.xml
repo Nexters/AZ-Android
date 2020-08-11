@@ -6,7 +6,7 @@
 
         <variable
             name="commentItem"
-            type="com.az.detail.TempCommentData" />
+            type="com.az.model.posts.detail.comments.CommentData" />
 
     </data>
 

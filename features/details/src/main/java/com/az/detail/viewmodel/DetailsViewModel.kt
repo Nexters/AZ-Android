@@ -3,29 +3,33 @@ package com.az.detail.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.az.detail.TempCommentData
-import com.az.detail.TempHumorDetailData
+import com.az.model.posts.AuthorData
+import com.az.model.posts.detail.DetailedPostData
+import com.az.model.posts.detail.PostDetailData
+import com.az.model.posts.detail.comments.CommentData
 
 class DetailsViewModel : ViewModel() {
 
-    private val _details = MutableLiveData<TempHumorDetailData>()
-    val details: LiveData<TempHumorDetailData> = _details
-    private val _comments = MutableLiveData<List<TempCommentData>>()
-    val comments: LiveData<List<TempCommentData>> = _comments
+    private val _details = MutableLiveData<PostDetailData>()
+    val details: LiveData<PostDetailData> = _details
+    private val _comments = MutableLiveData<List<CommentData>>()
+    val comments: LiveData<List<CommentData>> = _comments
 
-    private val comment = TempCommentData(
-        "신입 가나다님",
-        "ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+    private val comment = CommentData(
+        "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+        "2020-08-11T11:25:39.639Z",
+        1234,
+        "2020-08-11T11:25:39.639Z",
+        123,
+        "가나다"
     )
 
-    private val detail = TempHumorDetailData(
-        "소나무가 삐지면?\n\n칫솔",
-        48,
-        10,
-        "신입 가나다님",
-        "한시간 전",
-        isHeart = true,
-        isBookmark = false
+    private val detail = PostDetailData(
+        DetailedPostData(
+            AuthorData(0, "string", "가나다", "NEW_RECRUIT"),
+            0, 0, "소나무가 삐지면?", "2020-08-11T11:27:10.860Z",
+            0, 0, "2020-08-11T11:27:10.860Z", true
+        )
     )
 
     init {
