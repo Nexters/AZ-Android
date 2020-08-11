@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="detail"
-            type="com.az.detail.TempHumorDetailData" />
+            type="com.az.model.posts.detail.PostDetailData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +24,7 @@
             android:layout_marginEnd="9dp"
             android:background="@drawable/btn_heart"
             android:button="@null"
-            android:checked="@{detail.isHeart}"
+            android:checked="@{detail.detailedPost.pressLike}"
             app:layout_constraintBottom_toBottomOf="@id/btn_bookmark"
             app:layout_constraintEnd_toStartOf="@id/btn_bookmark"
             app:layout_constraintTop_toTopOf="@id/btn_bookmark" />
@@ -36,7 +37,7 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/btn_bookmark"
             android:button="@null"
-            android:checked="@{detail.isBookmark}"
+            android:checked="@{detail.detailedPost.pressLike}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,30 +45,18 @@
             android:id="@+id/content_detail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="33dp"
+            android:layout_marginHorizontal="34dp"
+            android:layout_marginTop="34dp"
             android:fontFamily="@font/sdgnh"
             android:gravity="center"
             android:lineSpacingExtra="5sp"
-            android:text="@{detail.content}"
+            android:text="@{detail.detailedPost.content}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="35sp"
-            app:layout_constraintBottom_toTopOf="@id/divider_details"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_heart"
             tools:text="소나무가 삐지면?\n\n칫솔" />
-
-        <View
-            android:id="@+id/divider_details"
-            android:layout_width="0dp"
-            android:layout_height="0.4dp"
-            android:layout_marginHorizontal="21dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/colorDarkGray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/content_detail" />
 
         <ImageView
             android:id="@+id/ic_heart"
@@ -78,8 +67,7 @@
             android:layout_marginBottom="20dp"
             android:src="@drawable/ic_heart"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_details" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/count_heart"
@@ -87,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{@string/count(detail.heart)}"
+            android:text="@{@string/count(detail.detailedPost.likes)}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -113,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{@string/count(detail.comment)}"
+            android:text="@{@string/count(detail.detailedPost.comments)}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -127,17 +115,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="54dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/app_main_font"
             android:gravity="end"
-            android:text="@{detail.user}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/count_comment"
-            app:layout_constraintTop_toBottomOf="@id/divider_details"
+            app:layout_constraintTop_toBottomOf="@id/content_detail"
+            bind:nickname="@{detail.detailedPost.author.nickname}"
+            bind:rating="@{detail.detailedPost.author.rating}"
             tools:text="신입 가나다님" />
 
         <TextView
@@ -147,7 +136,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{detail.time}"
+            android:text="@{detail.detailedPost.createdDate}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
