@@ -1,4 +1,4 @@
-package com.olaf.model.token
+package com.az.model.token
 
 data class AccessTokenData (
     val token: String,

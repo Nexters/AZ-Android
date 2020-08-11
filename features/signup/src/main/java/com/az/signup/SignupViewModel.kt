@@ -3,8 +3,8 @@ package com.az.signup
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.olaf.model.auth.AuthRepository
-import com.olaf.model.auth.request.SignUpRequestData
+import com.az.model.auth.AuthRepository
+import com.az.model.auth.request.SignUpRequestData
 
 class SignupViewModel(val repo: AuthRepository) : ViewModel() {
 
@@ -54,7 +54,11 @@ class SignupViewModel(val repo: AuthRepository) : ViewModel() {
     fun onClick() {
         Log.d("TAG", "${id.value} / ${password.value} / ${passwordCheck.value} / ${nickname.value}")
         repo.signUp(
-            SignUpRequestData(id.value!!, password.value!!, nickname.value!!),
+            SignUpRequestData(
+                id.value!!,
+                password.value!!,
+                nickname.value!!
+            ),
             onSuccess = { it ->
                 Log.d("TAG", it.user.nickname)
             },

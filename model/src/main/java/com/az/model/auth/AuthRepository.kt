@@ -1,7 +1,7 @@
-package com.olaf.model.auth
+package com.az.model.auth
 
-import com.olaf.model.auth.request.SignUpRequestData
-import com.olaf.model.auth.response.SignInResponseData
+import com.az.model.auth.request.SignUpRequestData
+import com.az.model.auth.response.SignInResponseData
 
 interface AuthRepository {
 

@@ -24,6 +24,7 @@ class MainViewModel(
 ) : ViewModel() {
 
     private val loginStatus = sharedPrefs.getLoginStatus()
+    private val loginSession = sharedPrefs.getLoginSession()
 
     private val _userRating = MutableLiveData<UserRatingData>()
     val userRating: LiveData<UserRatingData> = _userRating

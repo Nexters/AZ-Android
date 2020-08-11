@@ -1,8 +1,8 @@
 package com.olaf.network.auth
 
 import android.util.Log
-import com.olaf.model.auth.request.SignUpRequestData
-import com.olaf.model.auth.response.SignInResponseData
+import com.az.model.auth.request.SignUpRequestData
+import com.az.model.auth.response.SignInResponseData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.olaf.model.auth.request
+package com.az.model.auth.request
 
 data class SignUpRequestData(
     val identification: String,

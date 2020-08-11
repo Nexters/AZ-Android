@@ -1,7 +1,7 @@
 package com.az.core
 
 import android.content.SharedPreferences
-import com.olaf.model.auth.response.SignInResponseData
+import com.az.model.auth.response.SignInResponseData
 
 interface Preferences {
     val sharedPref: SharedPreferences
