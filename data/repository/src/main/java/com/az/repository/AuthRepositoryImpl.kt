@@ -1,4 +1,4 @@
-package com.olaf.repository.auth
+package com.az.repository
 
 import com.az.model.auth.AuthRepository
 import com.az.model.auth.request.SignUpRequestData
