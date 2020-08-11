@@ -9,6 +9,6 @@ interface Preferences {
     fun getLoginStatus(): Int
     fun setLoginStatus(status: LoginStatus)
 
-    fun getLoginSession(): SignInResponseData?
+    fun getLoginSession(): SignInResponseData
     fun setLoginSession(session: SignInResponseData)
 }

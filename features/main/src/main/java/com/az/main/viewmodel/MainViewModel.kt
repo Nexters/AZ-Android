@@ -63,7 +63,7 @@ class MainViewModel(
 
     private fun getUserRating() {
         viewModelScope.launch {
-            val response = userRatingRepository.getUserRating(123)
+            val response = userRatingRepository.getUserRating(loginSession.user.id)
             when (response.status) {
                 Status.SUCCESS -> _userRating.value = response.data
                 Status.ERROR -> Log.d(TAG, response.message!!)

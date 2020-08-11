@@ -2,8 +2,8 @@ package com.az.core
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.az.model.auth.response.SignInResponseData
 import com.google.gson.Gson
-import com.olaf.model.auth.response.SignInResponseData
 
 class PreferencesImpl(context: Context) : Preferences {
 
@@ -26,8 +26,8 @@ class PreferencesImpl(context: Context) : Preferences {
         }
     }
 
-    override fun getLoginSession(): SignInResponseData? {
-        val sessionJson = sharedPref.getString(SHARED_PREF_KEY.USER_SESSION, null) ?: return null
+    override fun getLoginSession(): SignInResponseData {
+        val sessionJson = sharedPref.getString(SHARED_PREF_KEY.USER_SESSION, null)
         return Gson().fromJson(sessionJson, SignInResponseData::class.java)
     }
 
