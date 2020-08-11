@@ -43,4 +43,6 @@ dependencies {
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
     implementation(Libraries.constraintLayout)
+
+    implementation(project(BuildModules.Libraries.Core))
 } 

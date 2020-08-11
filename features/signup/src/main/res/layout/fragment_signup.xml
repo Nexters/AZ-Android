@@ -161,6 +161,7 @@
             android:background="@{vm.validSignUp ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
             android:text="@string/btn_signup"
             android:textColor="@color/colorWhite"
+            android:onClick="@{() -> vm.onClick()}"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

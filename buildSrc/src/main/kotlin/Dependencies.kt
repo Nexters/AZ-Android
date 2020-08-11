@@ -14,6 +14,8 @@ object Versions {
 
     const val bindingCompiler = "3.5.3"
 
+    const val lifecycle = "2.2.0"
+
     const val junit4 = "4.12"
     const val testRunner = "1.0.2"
     const val espresso = "3.0.2"
@@ -47,6 +49,7 @@ object BuildPlugins {
 
 object Libraries {
     const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+
     const val coroutinesLibrary =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroidLibrary =
@@ -57,6 +60,11 @@ object Libraries {
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
+
+    const val lifecycleCommon = "androidx.lifecycle:lifecycle-common:${Versions.lifecycle}"
+    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle}"
+    const val lifecycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
+    const val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
 
     const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     const val koinScope = "org.koin:koin-android-scope:${Versions.koin}"

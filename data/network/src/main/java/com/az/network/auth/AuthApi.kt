@@ -1,17 +1,15 @@
-package com.olaf.network.auth
-
-import com.olaf.model.auth.request.SignUpRequestData
-import com.olaf.model.auth.response.SignInResponseData
-import retrofit2.Call
+package com.az.network.auth
+import com.az.core.data.auth.request.SignUpRequestData
+import com.az.core.data.auth.response.SignInResponseData
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 
 interface AuthApi {
 
-    @POST("auth/sign-up")
-    fun signUp(
+    @POST("v1/api/auth/sign-up")
+    suspend fun signUp(
         @Body
         signUpRequestData: SignUpRequestData
-    ): Call<SignInResponseData>
+    ): SignInResponseData
 }

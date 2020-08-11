@@ -75,6 +75,11 @@ dependencies {
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
 
+    implementation(Libraries.lifecycleCommon)
+    implementation(Libraries.lifecycleExtensions)
+    implementation(Libraries.lifecycleLiveData)
+    implementation(Libraries.lifecycleRuntime)
+
     api(Libraries.navigationFragment)
     api(Libraries.navigationUI)
     api(Libraries.navigationDynamicFeature)
