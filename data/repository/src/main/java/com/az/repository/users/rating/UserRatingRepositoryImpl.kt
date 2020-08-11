@@ -1,5 +1,6 @@
 package com.az.repository.users.rating
 
+import com.az.model.Resource
 import com.az.model.users.rating.UserRatingData
 import com.az.model.users.rating.UserRatingRepository
 import com.az.network.users.rating.UserRatingRemoteDataSource
@@ -10,13 +11,9 @@ val userRatingRepositoryModule = module {
 }
 
 class UserRatingRepositoryImpl(
-    private val userRatingApi: UserRatingRemoteDataSource
+    private val userRatingRemoteDataSource: UserRatingRemoteDataSource
 ) : UserRatingRepository {
-    override fun getUserRating(
-        userId: Int,
-        onSuccess: (response: UserRatingData) -> Unit,
-        onFailure: (e: Throwable) -> Unit
-    ) {
-        userRatingApi.getUserRating(userId, onSuccess, onFailure)
+    override suspend fun getUserRating(userId: Int): Resource<UserRatingData> {
+        return userRatingRemoteDataSource.getUserRating(userId)
     }
 }

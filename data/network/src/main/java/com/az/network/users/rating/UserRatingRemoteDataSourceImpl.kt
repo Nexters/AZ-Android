@@ -1,11 +1,13 @@
 package com.az.network.users.rating
 
+import com.az.model.Resource
 import com.az.model.users.rating.UserRatingData
+import com.az.network.responsehandler.ResponseHandler
 import org.koin.dsl.module
-import retrofit2.*
+import retrofit2.Retrofit
 
 val userRatingApiModule = module {
-    factory<UserRatingRemoteDataSource> { UserRatingRemoteDataSourceImpl(get()) }
+    factory<UserRatingRemoteDataSource> { UserRatingRemoteDataSourceImpl(get(), get()) }
 
     factory {
         get<Retrofit>().create(
@@ -15,29 +17,16 @@ val userRatingApiModule = module {
 }
 
 class UserRatingRemoteDataSourceImpl(
-    private val userRatingApi: UserRatingApi
+    private val userRatingApi: UserRatingApi,
+    private val responseHandler: ResponseHandler
 ) : UserRatingRemoteDataSource {
-    override fun getUserRating(
-        userId: Int,
-        onSuccess: (response: UserRatingData) -> Unit,
-        onFailure: (e: Throwable) -> Unit
-    ) {
-        userRatingApi.getPosts(userId).enqueue(object : Callback<UserRatingData> {
-            override fun onResponse(
-                call: Call<UserRatingData>,
-                response: Response<UserRatingData>
-            ) {
-                val body = response.body()
-                if (body != null && response.isSuccessful) {
-                    onSuccess(body)
-                } else {
-                    onFailure(HttpException(response))
-                }
+    override suspend fun getUserRating(userId: Int): Resource<UserRatingData> {
+        return try {
+            userRatingApi.getPosts(userId).let { response ->
+                responseHandler.handleSuccess(response)
             }
-
-            override fun onFailure(call: Call<UserRatingData>, t: Throwable) {
-                onFailure(t)
-            }
-        })
+        } catch (e: Exception) {
+            responseHandler.handleException(e)
+        }
     }
 }

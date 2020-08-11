@@ -1,4 +1,4 @@
-package com.az.network
+package com.az.model
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object {
