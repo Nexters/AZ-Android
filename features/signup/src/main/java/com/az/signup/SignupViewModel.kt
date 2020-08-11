@@ -1,6 +1,5 @@
 package com.az.signup
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
@@ -56,10 +55,10 @@ class SignupViewModel(val repo: AuthRepository) : ViewModel() {
         validSignUp.value = (validId.value!! && validPassword.value!! && validNickname.value!!)
     }
 
-    var signUp = requestData.switchMap { item ->
+    var signUp = requestData.switchMap { request ->
         liveData {
             emit(Resource.loading(null))
-            emit(repo.signUp(item))
+            emit(repo.signUp(request))
         }
     }
 

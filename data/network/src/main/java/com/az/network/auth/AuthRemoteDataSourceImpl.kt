@@ -1,6 +1,7 @@
 package com.az.network.auth
 
 import com.az.core.Resource
+import com.az.core.data.auth.request.SignInRequestData
 import com.az.core.data.auth.request.SignUpRequestData
 import com.az.core.data.auth.response.SignInResponseData
 import com.az.network.ResponseHandler
@@ -16,6 +17,15 @@ class AuthRemoteDataSourceImpl(
     ): Resource<SignInResponseData> {
         return try {
             val response = authApi.signUp(signUpRequestData)
+            return responseHandler.handleSuccess(response)
+        } catch (e: HttpException) {
+            responseHandler.handleException(e)
+        }
+    }
+
+    override suspend fun login(signInRequestData: SignInRequestData): Resource<SignInResponseData> {
+        return try {
+            val response = authApi.login(signInRequestData)
             return responseHandler.handleSuccess(response)
         } catch (e: HttpException) {
             responseHandler.handleException(e)

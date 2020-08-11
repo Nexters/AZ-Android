@@ -68,10 +68,10 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
             viewModel.validSignUp()
         })
 
-        viewModel.signUp.observe(viewLifecycleOwner, observer)
+        viewModel.signUp.observe(viewLifecycleOwner, signUpObserver)
     }
 
-    private val observer = Observer<Resource<SignInResponseData>> {
+    private val signUpObserver = Observer<Resource<SignInResponseData>> {
         when (it.status) {
             Status.SUCCESS -> findNavController().popBackStack()
             Status.ERROR -> Log.e("Error", it.message)

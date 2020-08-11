@@ -1,6 +1,7 @@
 package com.az.repository.auth
 
 import com.az.core.Resource
+import com.az.core.data.auth.request.SignInRequestData
 import com.az.core.data.auth.request.SignUpRequestData
 import com.az.core.data.auth.response.SignInResponseData
 import com.az.model.auth.AuthRepository
@@ -13,4 +14,7 @@ class AuthRepositoryImpl(
         return api.signUp(signUpRqData)
     }
 
+    override suspend fun login(signInRqData: SignInRequestData): Resource<SignInResponseData> {
+        return api.login(signInRqData)
+    }
 }
