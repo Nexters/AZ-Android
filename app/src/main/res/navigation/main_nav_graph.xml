@@ -67,7 +67,12 @@
         android:id="@+id/detailsFragment"
         android:name="com.az.detail.view.DetailsFragment"
         android:label="DetailsFragment"
-        app:moduleName="details" />
+        app:moduleName="details">
+        <argument
+            android:name="postId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/createFragment"
