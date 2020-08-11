@@ -58,6 +58,9 @@ dependencies {
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
 
+    implementation(project(BuildModules.Libraries.Model))
+    implementation(Libraries.gson)
+
     testImplementation(TestLibraries.junit4)
 
     androidTestImplementation(TestLibraries.testRunner)

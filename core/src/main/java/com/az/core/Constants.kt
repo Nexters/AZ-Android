@@ -7,6 +7,7 @@ object Constants {
 object SHARED_PREF_KEY {
 
     const val LOGIN_STATUS = "loginStatus"
+    const val USER_SESSION = "userSession"
 }
 
 enum class LoginStatus(val status: Int) {

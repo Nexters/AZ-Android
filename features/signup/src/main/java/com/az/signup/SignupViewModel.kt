@@ -1,12 +1,12 @@
 package com.az.signup
 
 import android.util.Log
-import android.view.View
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.olaf.model.auth.AuthRepository
+import com.olaf.model.auth.request.SignUpRequestData
 
-class SignupViewModel : ViewModel() {
+class SignupViewModel(val repo: AuthRepository) : ViewModel() {
 
     private val _id = MutableLiveData<String>()
     val id get() = _id
@@ -53,6 +53,15 @@ class SignupViewModel : ViewModel() {
 
     fun onClick() {
         Log.d("TAG", "${id.value} / ${password.value} / ${passwordCheck.value} / ${nickname.value}")
+        repo.signUp(
+            SignUpRequestData(id.value!!, password.value!!, nickname.value!!),
+            onSuccess = { it ->
+                Log.d("TAG", it.user.nickname)
+            },
+            onFailure = {
+                Log.e("Error", it.message)
+            }
+        )
     }
 
 }
