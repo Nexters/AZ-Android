@@ -1,88 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
+            name="isFame"
+            type="Boolean" />
+
+        <variable
             name="humorItem"
-            type="com.az.main.TempHumorData" />
+            type="com.az.model.posts.PostData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="354dp"
-        android:layout_height="315dp"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginBottom="14dp"
         android:background="@drawable/bg_humor_card_item">
 
-        <ImageView
-            android:id="@+id/crown"
-            android:layout_width="22dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/ic_crown"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/user_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/user_name" />
-
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/title_humor_card"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="17dp"
-            android:fontFamily="@font/app_main_font"
-            android:text="@{humorItem.user}"
-            android:textColor="@color/colorSemiBlack"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/crown"
+            android:background="@drawable/bg_humor_card_title"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_goneMarginStart="30dp"
-            tools:text="신입 가나다님" />
+            bind:isFame="@{isFame}">
+
+            <TextView
+                android:id="@+id/user_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/bg_humor_grade_button"
+                android:fontFamily="@font/app_main_font"
+                android:gravity="center"
+                android:paddingHorizontal="7dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/user_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/user_name"
+                bind:grade="@{humorItem.author.rating}"
+                tools:text="신입" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/sdgnh"
+                android:text="@{humorItem.author.nickname}"
+                android:textColor="@color/colorSemiBlack"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/user_grade"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="가나다" />
+
+            <ImageView
+                android:id="@+id/crown"
+                android:layout_width="12dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_crown"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/user_name"
+                app:layout_constraintStart_toEndOf="@id/user_name"
+                app:layout_constraintTop_toTopOf="@id/user_name" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/app_main_font"
+                android:text="@{humorItem.createdDate}"
+                android:textColor="@color/colorSemiBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/user_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/user_name"
+                tools:text="2020.02.22" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/app_main_font"
-            android:text="@{humorItem.date}"
-            android:textColor="@color/colorSemiBlack"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/user_name"
-            app:layout_constraintStart_toEndOf="@id/user_name"
-            tools:text="2020.02.22" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="66dp"
-            android:layout_marginBottom="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:fontFamily="@font/sdgnh"
             android:gravity="center"
-            android:lineSpacingExtra="5sp"
-            android:text="@{humorItem.content}"
+            android:maxLength="100"
+            android:paddingHorizontal="36dp"
             android:textColor="@color/colorSemiBlack"
             android:textSize="35sp"
             app:layout_constraintBottom_toTopOf="@id/comment_count"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/date"
-            tools:text="소나무가\n삐지면?" />
+            app:layout_constraintTop_toBottomOf="@id/title_humor_card"
+            bind:flexibleSizeText="@{humorItem.content}"
+            tools:text="소나무가 삐지면?" />
 
         <ImageView
             android:id="@+id/heart"
             android:layout_width="18dp"
             android:layout_height="17dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="14dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_heart"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/crown"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_goneMarginStart="30dp" />
 
         <TextView
@@ -91,7 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{@string/count(humorItem.heart)}"
+            android:text="@{@string/count(humorItem.likes)}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -115,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{@string/count(humorItem.comment)}"
+            android:text="@{@string/count(humorItem.comments)}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -123,17 +160,6 @@
             app:layout_constraintStart_toEndOf="@id/comment"
             app:layout_constraintTop_toTopOf="@id/heart_count"
             tools:text="10개" />
-
-        <ImageButton
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/bg_humor_card_more_button"
-            android:elevation="4dp"
-            android:src="@drawable/ic_humor_more_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/user_name"
-            app:pressedTranslationZ="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

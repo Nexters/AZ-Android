@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.az.main.MainViewModel" />
+            type="com.az.main.viewmodel.MainViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -25,15 +25,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="37dp"
                 android:fontFamily="@font/sdgnh"
                 android:gravity="center"
-                android:text="@{vm.userGrade}"
                 android:textColor="@color/colorWhite"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="유머쪼랩ㅋ" />
+                bind:conciergeGrade="@{vm.userRating.ratingForPromotionData.message}"
+                tools:text="어이신입ㅋ" />
 
             <TextView
                 android:id="@+id/user_grade_text"
@@ -41,24 +41,34 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/app_main_font"
                 android:gravity="center"
-                android:text="@{vm.userGradeText}"
                 android:textColor="@color/colorWhite"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="@id/user_grade"
                 app:layout_constraintTop_toBottomOf="@id/user_grade"
-                tools:text="분발하자^^" />
+                bind:conciergeMessage="@{vm.userRating.ratingForPromotionData.message}"
+                tools:text="유머 좀 하나?" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_sinip_sticker"
+                app:layout_constraintBottom_toBottomOf="@id/user_grade_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/user_grade" />
 
             <TextView
                 android:id="@+id/post_number_text"
-                android:layout_width="42dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="33dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:background="@drawable/bg_humor_grade_button_main"
                 android:fontFamily="@font/app_main_font"
-                android:background="@drawable/bg_humor_grade_progress_button"
                 android:gravity="center"
-                android:text="게시글"
-                android:textColor="@color/colorPurple"
-                android:textSize="13sp"
+                android:paddingHorizontal="9dp"
+                android:paddingVertical="3dp"
+                android:text="@string/post"
+                android:textColor="@color/colorWarmGray"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/user_grade"
                 app:layout_constraintTop_toBottomOf="@id/user_grade_text" />
@@ -67,12 +77,12 @@
                 android:id="@+id/post_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{@string/count(vm.postCount)}"
-                android:textColor="@color/colorWhite"
-                android:textSize="17sp"
-                android:textStyle="bold"
+                android:layout_marginStart="2dp"
                 android:fontFamily="@font/app_main_font"
+                android:text="@{@string/count(vm.userRating.ratingForPromotionData.postCountForPromotion)}"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/post_number_text"
                 app:layout_constraintStart_toEndOf="@id/post_number_text"
                 app:layout_constraintTop_toTopOf="@id/post_number_text"
@@ -80,15 +90,17 @@
 
             <TextView
                 android:id="@+id/comment_number_text"
-                android:layout_width="37dp"
-                android:layout_height="19dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/bg_humor_grade_progress_button"
-                android:gravity="center"
-                android:text="댓글"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/bg_humor_grade_button_main"
                 android:fontFamily="@font/app_main_font"
-                android:textColor="@color/colorPurple"
-                android:textSize="13sp"
+                android:gravity="center"
+                android:paddingHorizontal="9dp"
+                android:paddingVertical="3dp"
+                android:text="@string/comment"
+                android:textColor="@color/colorWarmGray"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/post_number_text"
                 app:layout_constraintStart_toEndOf="@id/post_number"
@@ -98,11 +110,11 @@
                 android:id="@+id/comment_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{@string/count(vm.commentCount)}"
-                android:textColor="@color/colorWhite"
-                android:textSize="17sp"
+                android:layout_marginStart="2dp"
                 android:fontFamily="@font/app_main_font"
+                android:text="@{@string/count(vm.userRating.ratingForPromotionData.commentCountForPromotion)}"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/comment_number_text"
                 app:layout_constraintStart_toEndOf="@id/comment_number_text"
@@ -113,11 +125,11 @@
                 android:id="@+id/humor_count_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:text="@string/humor_count_text"
-                android:textColor="@color/colorWhite"
-                android:textSize="14sp"
+                android:layout_marginStart="12dp"
                 android:fontFamily="@font/app_main_font"
+                android:text="@string/humor_count_text"
+                android:textColor="@color/colorWarmGray"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/comment_number"
                 app:layout_constraintStart_toEndOf="@id/comment_number"
                 app:layout_constraintTop_toTopOf="@id/comment_number" />
@@ -129,22 +141,26 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="9dp"
                 android:layout_marginBottom="42dp"
-                android:progress="@{vm.humorGradeProgress}"
+                android:max="1000"
                 android:progressDrawable="@drawable/humor_grade_progressbar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/post_number_text"
-                tools:progress="70" />
+                bind:humorGradeProgress="@{vm.userRating.ratingForPromotionData.progress}"
+                tools:progress="700" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include
             android:id="@+id/bottom_sheet_include"
             layout="@layout/bottom_sheet_main"
-            bind:humors="@{vm.humors}" />
+            bind:humors="@{vm.humors}"
+            bind:isFame="@{vm.isHumorsFame}"
+            bind:vm="@{vm}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_create_humor"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_gravity="bottom|end"

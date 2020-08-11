@@ -7,8 +7,4 @@ class CreateViewModel : ViewModel() {
 
     val humorText = MutableLiveData<String>()
 
-    init {
-        humorText.value = ""
-    }
-
 }
