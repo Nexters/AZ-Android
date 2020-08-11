@@ -55,18 +55,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         observer()
     }
 
-    fun toSignupPage() {
+    private fun toSignupPage() {
         val action =
             LoginFragmentDirections.actionLoginFragmentToSignupFragment()
         findNavController().navigate(action)
     }
 
-    fun toForgotPassworPage() {
+    private fun toForgotPassworPage() {
         val action = LoginFragmentDirections.actionLoginFragmentToForgotFragment()
         findNavController().navigate(action)
     }
 
-    fun toMainPage() {
+    private fun toMainPage() {
         val action = LoginFragmentDirections.actionLoginFragmentToMainFragment()
         findNavController().navigate(action)
     }
