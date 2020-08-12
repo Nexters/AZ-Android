@@ -24,7 +24,6 @@ val loadFeature by lazy { loadKoinModules(loginViewModelModule) }
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun injectFeature() = loadFeature
-    private val sharedPrefs: Preferences by inject()
 
     private val viewModel: LoginViewModel by viewModel()
 
@@ -78,7 +77,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val loginObserver = Observer<Resource<SignInResponseData>> {
         when (it.status) {
             Status.SUCCESS -> {
-                sharedPrefs.setLoginSession(it.data!!)
+                viewModel.setUserSession(it.data!!)
                 toMainPage()
             }
             Status.ERROR -> Log.e("Error", it.message)

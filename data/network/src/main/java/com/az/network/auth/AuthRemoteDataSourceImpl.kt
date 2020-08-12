@@ -17,7 +17,7 @@ class AuthRemoteDataSourceImpl(
     ): Resource<SignInResponseData> {
         return try {
             val response = authApi.signUp(signUpRequestData)
-            return responseHandler.handleSuccess(response)
+            responseHandler.handleSuccess(response)
         } catch (e: HttpException) {
             responseHandler.handleException(e)
         }
@@ -26,7 +26,7 @@ class AuthRemoteDataSourceImpl(
     override suspend fun login(signInRequestData: SignInRequestData): Resource<SignInResponseData> {
         return try {
             val response = authApi.login(signInRequestData)
-            return responseHandler.handleSuccess(response)
+            responseHandler.handleSuccess(response)
         } catch (e: HttpException) {
             responseHandler.handleException(e)
         }

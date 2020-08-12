@@ -161,7 +161,7 @@
             android:layout_height="56dp"
             android:layout_marginTop="40dp"
             android:background="@{vm.validSignUp ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
-            android:onClick="@{() -> vm.onClick()}"
+            android:onClick="@{() -> vm.onSignUpButtonClick()}"
             android:text="@string/btn_signup"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent" />

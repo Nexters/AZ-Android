@@ -113,7 +113,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button_color_purple"
             android:gravity="center"
-            android:onClick="@{() -> vm.onClick()}"
+            android:onClick="@{() -> vm.onLoginButtonClick()}"
             android:text="@string/login_button"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toTopOf="@+id/txt_guest_login_button" />

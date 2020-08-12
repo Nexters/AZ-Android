@@ -8,7 +8,7 @@ import com.az.core.Resource
 import com.az.core.data.auth.request.SignUpRequestData
 import com.az.model.auth.AuthRepository
 
-class SignupViewModel(val repo: AuthRepository) : ViewModel() {
+class SignupViewModel(private val repo: AuthRepository) : ViewModel() {
 
     private val _id = MutableLiveData<String>()
     val id get() = _id
@@ -62,7 +62,7 @@ class SignupViewModel(val repo: AuthRepository) : ViewModel() {
         }
     }
 
-    fun onClick() {
+    fun onSignUpButtonClick() {
         requestData.value = SignUpRequestData(id.value!!, password.value!!, nickname.value!!)
     }
 }

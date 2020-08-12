@@ -1,23 +1,24 @@
 package com.az.login.view
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
+import com.az.core.Preferences
 import com.az.core.Resource
 import com.az.core.data.auth.request.SignInRequestData
+import com.az.core.data.auth.response.SignInResponseData
 import com.az.model.auth.AuthRepository
 
-class LoginViewModel(val repo: AuthRepository) : ViewModel() {
+class LoginViewModel(private val repo: AuthRepository, private val sharedPrefs: Preferences) : ViewModel() {
 
-    val _id = MutableLiveData<String>()
+    private val _id = MutableLiveData<String>()
     val id get() = _id
 
-    val _password = MutableLiveData<String>()
+    private val _password = MutableLiveData<String>()
     val password get() = _password
 
-    val requestData = MutableLiveData<SignInRequestData>()
+    private val requestData = MutableLiveData<SignInRequestData>()
 
     val login = requestData.switchMap { request ->
         liveData {
@@ -26,8 +27,11 @@ class LoginViewModel(val repo: AuthRepository) : ViewModel() {
         }
     }
 
-    fun onClick() {
-        Log.d("tag", "click")
+    fun onLoginButtonClick() {
         requestData.value = SignInRequestData(id.value!!, password.value!!)
+    }
+
+    fun setUserSession(userData: SignInResponseData) {
+        sharedPrefs.setLoginSession(userData)
     }
 }
