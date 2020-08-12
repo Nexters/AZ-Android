@@ -23,8 +23,8 @@ class MainViewModel(
     sharedPrefs: Preferences
 ) : ViewModel() {
 
-    private val loginStatus = sharedPrefs.getLoginStatus()
-    private val loginSession = sharedPrefs.getLoginSession()
+    /* private val loginStatus = sharedPrefs.getLoginStatus()
+     private val loginSession = sharedPrefs.getLoginSession()*/
 
     private val _userRating = MutableLiveData<UserRatingData>()
     val userRating: LiveData<UserRatingData> = _userRating
@@ -61,7 +61,7 @@ class MainViewModel(
         }
     }
 
-    private fun getUserRating() {
+    /*private fun getUserRating() {
         viewModelScope.launch {
             val response = userRatingRepository.getUserRating(loginSession.user.id)
             when (response.status) {
@@ -69,7 +69,7 @@ class MainViewModel(
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
-    }
+    }*/
 
     private fun getPosts() {
         viewModelScope.launch {

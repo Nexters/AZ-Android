@@ -6,10 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.az.main.R
 import com.az.main.adapter.holder.MainHumorItemViewHolder
+import com.az.main.adapter.holder.listener.HumorItemListener
 import com.az.main.databinding.ItemHumorCardBinding
 import com.az.model.posts.PostData
 
-class MainHumorsAdapter : RecyclerView.Adapter<MainHumorItemViewHolder>() {
+class MainHumorsAdapter(
+    private val listener: HumorItemListener
+) : RecyclerView.Adapter<MainHumorItemViewHolder>() {
 
     private val humors = mutableListOf<PostData>()
     private var isFame: Boolean = false
@@ -32,7 +35,7 @@ class MainHumorsAdapter : RecyclerView.Adapter<MainHumorItemViewHolder>() {
             parent,
             false
         )
-        return MainHumorItemViewHolder(binding)
+        return MainHumorItemViewHolder(binding, listener)
     }
 
     override fun getItemCount(): Int {

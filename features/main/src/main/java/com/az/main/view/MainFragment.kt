@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.az.main.adapter.MainHumorsAdapter
+import com.az.main.adapter.holder.listener.HumorItemListener
 import com.az.main.databinding.FragmentMainBinding
 import com.az.main.di.loadFeature
 import com.az.main.viewmodel.MainViewModel
@@ -35,8 +36,16 @@ class MainFragment : Fragment() {
         binding.apply {
             lifecycleOwner = requireActivity()
             vm = viewModel
-            humor_card_rv.adapter = MainHumorsAdapter()
+            humor_card_rv.adapter = MainHumorsAdapter(getHumorItemListener())
             fabCreateHumor.setOnClickListener { toCreatePage.invoke() }
+        }
+    }
+
+    private fun getHumorItemListener(): HumorItemListener {
+        return object : HumorItemListener {
+            override fun onClickHumorItem(postId: Int) {
+                toDetailPage(postId)
+            }
         }
     }
 
