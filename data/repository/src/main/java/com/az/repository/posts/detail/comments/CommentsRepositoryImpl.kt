@@ -3,7 +3,7 @@ package com.az.repository.posts.detail.comments
 import com.az.model.Resource
 import com.az.model.posts.detail.comments.CommentsData
 import com.az.model.posts.detail.comments.CommentsRepository
-import com.az.network.posts.detail.comments.CommentsRemoteDataSourceImpl
+import com.az.network.posts.detail.comments.CommentsRemoteDataSource
 import org.koin.dsl.module
 
 val commentsRepositoryModule = module {
@@ -11,7 +11,7 @@ val commentsRepositoryModule = module {
 }
 
 class CommentsRepositoryImpl(
-    private val commentsRemoteDataSource: CommentsRemoteDataSourceImpl
+    private val commentsRemoteDataSource: CommentsRemoteDataSource
 ) : CommentsRepository {
     override suspend fun getComments(
         postId: Int,

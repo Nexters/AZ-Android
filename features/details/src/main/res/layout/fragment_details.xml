@@ -39,6 +39,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:clipToPadding="false"
+                    android:paddingBottom="50dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     bind:setItems="@{vm.comments}"
                     tools:listitem="@layout/item_comments" />

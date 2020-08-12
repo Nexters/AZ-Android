@@ -16,6 +16,8 @@ import com.az.model.posts.detail.comments.CommentData
 import com.az.model.posts.detail.comments.CommentsRepository
 import kotlinx.coroutines.launch
 
+const val size = 10
+
 class DetailsViewModel(
     private val postDetailRepository: PostDetailRepository,
     private val commentsRepository: CommentsRepository,
@@ -44,6 +46,19 @@ class DetailsViewModel(
             val response = postDetailRepository.getPostDetail(postId)
             when (response.status) {
                 Status.SUCCESS -> _details.value = response.data
+                Status.ERROR -> Log.d(TAG, response.message!!)
+            }
+        }
+    }
+
+    private fun getComments() {
+        viewModelScope.launch {
+            val response = commentsRepository.getComments(postId, simplePageData.currentPage, size)
+            when (response.status) {
+                Status.SUCCESS -> {
+                    _comments.value = response.data!!.commentList
+                    simplePageData = response.data!!.simplePage
+                }
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
