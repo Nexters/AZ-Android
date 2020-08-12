@@ -1,11 +1,16 @@
 package com.az.signup
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.az.core.Resource
+import com.az.core.Status
+import com.az.core.data.auth.response.SignInResponseData
 import com.az.signup.databinding.FragmentSignupBinding
 import com.az.signup.di.signupViewModelModule
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,13 +45,11 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observerEditText()
-        binding.btnSignup.setOnClickListener {
-            viewModel.onClick()
-        }
+        observeViewModel()
+
     }
 
-    private fun observerEditText() {
+    private fun observeViewModel() {
 
         viewModel.id.observe(viewLifecycleOwner, Observer {
             viewModel.validId()
@@ -64,6 +67,16 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
             viewModel.validPassword()
             viewModel.validSignUp()
         })
+
+        viewModel.signUp.observe(viewLifecycleOwner, signUpObserver)
     }
+
+    private val signUpObserver = Observer<Resource<SignInResponseData>> {
+        when (it.status) {
+            Status.SUCCESS -> findNavController().popBackStack()
+            Status.ERROR -> Log.e("Error", it.message)
+        }
+    }
+
 
 }

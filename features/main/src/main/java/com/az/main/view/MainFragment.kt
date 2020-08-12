@@ -1,6 +1,7 @@
 package com.az.main.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +45,9 @@ class MainFragment : Fragment() {
         }
 
         // TODO used shared preferences
-        val status = sharedPrefs.getLoginStatus()
+        val session = sharedPrefs.getLoginSession()
+
+        Log.d("Session", session?.user?.nickname)
     }
 
     private val toCreatePage: () -> Unit = {

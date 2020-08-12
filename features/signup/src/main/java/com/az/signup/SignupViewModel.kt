@@ -1,12 +1,14 @@
 package com.az.signup
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.olaf.model.auth.AuthRepository
-import com.olaf.model.auth.request.SignUpRequestData
+import androidx.lifecycle.liveData
+import androidx.lifecycle.switchMap
+import com.az.core.Resource
+import com.az.core.data.auth.request.SignUpRequestData
+import com.az.model.auth.AuthRepository
 
-class SignupViewModel(val repo: AuthRepository) : ViewModel() {
+class SignupViewModel(private val repo: AuthRepository) : ViewModel() {
 
     private val _id = MutableLiveData<String>()
     val id get() = _id
@@ -32,6 +34,8 @@ class SignupViewModel(val repo: AuthRepository) : ViewModel() {
     private val _validSignUp = MutableLiveData<Boolean>(false)
     val validSignUp get() = _validSignUp
 
+    private val requestData = MutableLiveData<SignUpRequestData>()
+
     fun validId() {
         // TODO API Call check id
         validId.value = !id.value.isNullOrEmpty()
@@ -51,17 +55,14 @@ class SignupViewModel(val repo: AuthRepository) : ViewModel() {
         validSignUp.value = (validId.value!! && validPassword.value!! && validNickname.value!!)
     }
 
-    fun onClick() {
-        Log.d("TAG", "${id.value} / ${password.value} / ${passwordCheck.value} / ${nickname.value}")
-        repo.signUp(
-            SignUpRequestData(id.value!!, password.value!!, nickname.value!!),
-            onSuccess = { it ->
-                Log.d("TAG", it.user.nickname)
-            },
-            onFailure = {
-                Log.e("Error", it.message)
-            }
-        )
+    var signUp = requestData.switchMap { request ->
+        liveData {
+            emit(Resource.loading(null))
+            emit(repo.signUp(request))
+        }
     }
 
+    fun onSignUpButtonClick() {
+        requestData.value = SignUpRequestData(id.value!!, password.value!!, nickname.value!!)
+    }
 }

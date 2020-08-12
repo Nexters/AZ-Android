@@ -45,6 +45,12 @@ dependencies {
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
 
+    implementation(Libraries.lifecycleCommon)
+    implementation(Libraries.lifecycleExtensions)
+    implementation(Libraries.lifecycleLiveData)
+    implementation(Libraries.lifecycleRuntime)
+
+
     kapt(Libraries.bindingCompiler)
 
     testImplementation(TestLibraries.junit4)

@@ -12,6 +12,10 @@ private const val BASE_URL = "http://ec2-3-34-24-138.ap-northeast-2.compute.amaz
 val networkModule = module {
 
     factory {
+        AuthInterceptor(get())
+    }
+
+    factory {
         HttpLoggingInterceptor().apply {
             level = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY
@@ -23,6 +27,7 @@ val networkModule = module {
 
     factory {
         OkHttpClient.Builder()
+            .addInterceptor(get<AuthInterceptor>())
             .addInterceptor(get<HttpLoggingInterceptor>())
             .build()
     }

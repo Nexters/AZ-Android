@@ -1,4 +1,4 @@
-package com.az.network
+package com.az.core
 
 enum class Status {
     SUCCESS,

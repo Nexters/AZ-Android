@@ -3,7 +3,7 @@ package com.az.core
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import com.olaf.model.auth.response.SignInResponseData
+import com.az.core.data.auth.response.SignInResponseData
 
 class PreferencesImpl(context: Context) : Preferences {
 

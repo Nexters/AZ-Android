@@ -49,6 +49,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libraries.kotlinStandardLibrary)
     implementation(Libraries.coroutinesLibrary)
+    implementation(Libraries.coroutinesAndroidLibrary)
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
 
@@ -58,7 +59,6 @@ dependencies {
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
 
-    implementation(project(BuildModules.Libraries.Model))
     implementation(Libraries.gson)
 
     testImplementation(TestLibraries.junit4)

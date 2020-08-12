@@ -1,5 +1,6 @@
 package com.az.network
 
+import com.az.core.Resource
 import retrofit2.HttpException
 import java.lang.Exception
 import java.net.SocketTimeoutException
