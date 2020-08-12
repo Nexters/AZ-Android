@@ -1,4 +1,4 @@
-package com.az.model.token
+package com.az.core.data.auth.token
 
 data class AccessTokenData (
     val token: String,

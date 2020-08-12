@@ -46,6 +46,7 @@ dependencies {
 
     implementation(project(BuildModules.Libraries.Model))
     implementation(project(BuildModules.Libraries.Network))
+    implementation(project(BuildModules.Libraries.Core))
 
     // Koin
     implementation(Libraries.koinAndroid)

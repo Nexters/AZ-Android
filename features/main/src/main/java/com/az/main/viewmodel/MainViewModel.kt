@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.az.core.Preferences
-import com.az.model.Status
+import com.az.core.Status
 import com.az.model.posts.*
 import com.az.model.posts.popular.PostsPopularRepository
 import com.az.model.users.rating.RatingForPromotionData

@@ -1,8 +1,8 @@
 package com.az.network.users.rating
 
-import com.az.model.Resource
+import com.az.core.Resource
 import com.az.model.users.rating.UserRatingData
-import com.az.network.responsehandler.ResponseHandler
+import com.az.network.ResponseHandler
 import org.koin.dsl.module
 import retrofit2.Retrofit
 

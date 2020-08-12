@@ -1,6 +1,6 @@
 package com.az.network.posts.detail
 
-import com.az.model.Resource
+import com.az.core.Resource
 import com.az.model.posts.detail.PostDetailData
 
 interface PostDetailRemoteDataSource {

@@ -1,8 +1,7 @@
 package com.az.repository.posts.popular
 
-import com.az.model.Resource
+import com.az.core.Resource
 import com.az.model.posts.PostsData
-import com.az.model.posts.PostsRepository
 import com.az.model.posts.popular.PostsPopularRepository
 import com.az.network.posts.popular.PostsPopularRemoteDataSource
 import org.koin.dsl.module

@@ -1,6 +1,5 @@
 package com.az.network
 
-import com.az.network.responsehandler.ResponseHandler
 import com.olaf.network.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,6 +10,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 private const val BASE_URL = "http://ec2-3-34-24-138.ap-northeast-2.compute.amazonaws.com:8080/"
 
 val networkModule = module {
+
+    factory {
+        AuthInterceptor(get())
+    }
 
     factory {
         HttpLoggingInterceptor().apply {
@@ -24,6 +27,7 @@ val networkModule = module {
 
     factory {
         OkHttpClient.Builder()
+            .addInterceptor(get<AuthInterceptor>())
             .addInterceptor(get<HttpLoggingInterceptor>())
             .addInterceptor(get<HeaderInterceptor>())
             .build()

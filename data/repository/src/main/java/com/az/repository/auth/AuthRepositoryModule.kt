@@ -1,8 +1,8 @@
-package com.az.repository
+package com.az.repository.auth
 
 import com.az.model.auth.AuthRepository
 import org.koin.dsl.module
 
-val authModule = module {
+val authRepositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl(get()) }
 }

@@ -1,13 +1,17 @@
 package com.az.model.auth
 
-import com.az.model.auth.request.SignUpRequestData
-import com.az.model.auth.response.SignInResponseData
+import com.az.core.Resource
+import com.az.core.data.auth.request.SignInRequestData
+import com.az.core.data.auth.request.SignUpRequestData
+import com.az.core.data.auth.response.SignInResponseData
 
 interface AuthRepository {
 
-    fun signUp(
-        signUpRqData: SignUpRequestData,
-        onSuccess: (response: SignInResponseData) -> Unit,
-        onFailure: (e: Throwable) -> Unit
-    )
+    suspend fun signUp(
+        signUpRqData: SignUpRequestData
+    ): Resource<SignInResponseData>
+
+    suspend fun login(
+        signInRqData: SignInRequestData
+    ): Resource<SignInResponseData>
 }

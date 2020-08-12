@@ -1,6 +1,6 @@
 package com.az.network.posts.popular
 
-import com.az.model.Resource
+import com.az.core.Resource
 import com.az.model.posts.PostsData
 
 interface PostsPopularRemoteDataSource {

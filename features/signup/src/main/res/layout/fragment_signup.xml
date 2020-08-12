@@ -68,6 +68,7 @@
             android:layout_marginTop="18dp"
             android:background="@{vm.validPassword ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
             android:hint="@string/signup_password"
+            android:inputType="textPassword"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
             android:text="@={vm.password}"
@@ -85,6 +86,7 @@
             android:layout_marginTop="18dp"
             android:background="@{vm.validPassword ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
             android:hint="@string/signup_password_check"
+            android:inputType="textPassword"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
             android:text="@={vm.passwordCheck}"
@@ -159,6 +161,7 @@
             android:layout_height="56dp"
             android:layout_marginTop="40dp"
             android:background="@{vm.validSignUp ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
+            android:onClick="@{() -> vm.onSignUpButtonClick()}"
             android:text="@string/btn_signup"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent" />

@@ -1,6 +1,6 @@
 package com.az.repository.users.rating
 
-import com.az.model.Resource
+import com.az.core.Resource
 import com.az.model.users.rating.UserRatingData
 import com.az.model.users.rating.UserRatingRepository
 import com.az.network.users.rating.UserRatingRemoteDataSource

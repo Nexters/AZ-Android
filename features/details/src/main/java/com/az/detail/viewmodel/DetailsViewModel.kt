@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.az.core.Preferences
-import com.az.model.Status
+import com.az.core.Status
 import com.az.model.posts.AuthorData
 import com.az.model.posts.SimplePageData
 import com.az.model.posts.detail.DetailedPostData

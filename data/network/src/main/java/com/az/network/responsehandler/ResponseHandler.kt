@@ -1,7 +1,8 @@
-package com.az.network.responsehandler
+package com.az.network
 
-import com.az.model.Resource
+import com.az.core.Resource
 import retrofit2.HttpException
+import java.lang.Exception
 import java.net.SocketTimeoutException
 
 enum class ErrorCodes(val code: Int) {

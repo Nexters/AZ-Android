@@ -1,13 +1,17 @@
-package com.olaf.network.auth
+package com.az.network.auth
 
-import com.az.model.auth.request.SignUpRequestData
-import com.az.model.auth.response.SignInResponseData
+import com.az.core.Resource
+import com.az.core.data.auth.request.SignInRequestData
+import com.az.core.data.auth.request.SignUpRequestData
+import com.az.core.data.auth.response.SignInResponseData
 
 interface AuthRemoteDataSource {
 
-    fun signUp(
-        signUpRequestData: SignUpRequestData,
-        onSuccess: (response: SignInResponseData) -> Unit,
-        onFailure: (e: Throwable) -> Unit
-    )
+    suspend fun signUp(
+        signUpRequestData: SignUpRequestData
+    ): Resource<SignInResponseData>
+
+    suspend fun login(
+        signInRequestData: SignInRequestData
+    ): Resource<SignInResponseData>
 }

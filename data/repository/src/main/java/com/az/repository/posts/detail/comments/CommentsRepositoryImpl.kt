@@ -1,6 +1,6 @@
 package com.az.repository.posts.detail.comments
 
-import com.az.model.Resource
+import com.az.core.Resource
 import com.az.model.posts.detail.comments.CommentsData
 import com.az.model.posts.detail.comments.CommentsRepository
 import com.az.network.posts.detail.comments.CommentsRemoteDataSource
