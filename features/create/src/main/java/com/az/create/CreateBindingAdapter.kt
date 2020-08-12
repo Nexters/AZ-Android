@@ -9,8 +9,8 @@ import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 
 @BindingAdapter("flexibleSizeText")
-fun setFlexibleSizeText(view: EditText, text: String) {
-    val length = text.length
+fun setFlexibleSizeText(view: EditText, text: String?) {
+    val length = text?.length ?: 0
     when {
         (length in 0..12) -> {
             view.setTextSize(Dimension.SP, 35F)

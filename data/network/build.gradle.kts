@@ -45,6 +45,7 @@ dependencies {
     implementation(Libraries.constraintLayout)
 
     implementation(project(BuildModules.Libraries.Model))
+    implementation(project(BuildModules.Libraries.Core))
 
     // Gson
     implementation(Libraries.gsonConverter)

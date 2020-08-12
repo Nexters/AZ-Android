@@ -14,6 +14,8 @@ object Versions {
 
     const val bindingCompiler = "3.5.3"
 
+    const val lifecycle = "2.2.0"
+
     const val junit4 = "4.12"
     const val testRunner = "1.0.2"
     const val espresso = "3.0.2"
@@ -25,7 +27,8 @@ object Versions {
     const val retrofit = "2.7.2"
     const val interceptor = "3.4.1"
     const val okHttp = "3.2.0"
-    const val gson = "2.3.0"
+    const val gsonConvertor = "2.3.0"
+    const val gson = "2.8.6"
     const val moshi = "1.9.3"
 }
 
@@ -46,6 +49,7 @@ object BuildPlugins {
 
 object Libraries {
     const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+
     const val coroutinesLibrary =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroidLibrary =
@@ -56,6 +60,11 @@ object Libraries {
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
+
+    const val lifecycleCommon = "androidx.lifecycle:lifecycle-common:${Versions.lifecycle}"
+    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle}"
+    const val lifecycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
+    const val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
 
     const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     const val koinScope = "org.koin:koin-android-scope:${Versions.koin}"
@@ -68,7 +77,7 @@ object Libraries {
 
     // networking
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gson}"
+    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gsonConvertor}"
     const val moshiConverter = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
@@ -82,6 +91,7 @@ object Libraries {
         "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navVersion}"
     const val fragments = "androidx.fragment:fragment-ktx:${Versions.fragments}"
 
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
 
     // material design
     const val materialComponents = "com.google.android.material:material:${Versions.material}"

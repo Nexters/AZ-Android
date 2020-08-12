@@ -64,12 +64,12 @@
             android:layout_height="52dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:backgroundTint="@color/colorWhite"
             android:hint="@string/id_placeholder"
             android:paddingBottom="20dp"
             android:text="@={vm.id}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorGray"
-            android:backgroundTint="@color/colorWhite"
             app:layout_constraintBottom_toTopOf="@+id/edt_login_password"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -81,13 +81,13 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="58dp"
+            android:backgroundTint="@color/colorWhite"
             android:hint="@string/password_placeholder"
             android:inputType="textPassword"
             android:paddingBottom="20dp"
             android:text="@={vm.password}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorGray"
-            android:backgroundTint="@color/colorWhite"
             app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -113,6 +113,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button_color_purple"
             android:gravity="center"
+            android:onClick="@{() -> vm.onLoginButtonClick()}"
             android:text="@string/login_button"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toTopOf="@+id/txt_guest_login_button" />

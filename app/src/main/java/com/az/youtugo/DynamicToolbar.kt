@@ -30,6 +30,9 @@ class DynamicToolbar @JvmOverloads constructor(
             R.id.signupFragment -> setLogoToolbar()
             R.id.forgotPasswordFragment -> setBackspaceToolbar("비밀번호찾기")
             R.id.myPageFragment -> setBackspaceToolbar("마이페이지")
+            R.id.alarmFragment -> setBackspaceToolbar("알림")
+            R.id.detailsFragment -> setLogoCloseToolbar()
+            R.id.createFragment -> setCloseToolbar("개그작성")
             else -> removeAllViews()
         }
     }
@@ -65,8 +68,8 @@ class DynamicToolbar @JvmOverloads constructor(
         removeAllViews()
         with(getView(R.layout.default_toolbar)) {
             layout_default_button_wrap.visibility = View.GONE
-            layout_backspace_close_button_wrap.apply {
-                visibility = View.GONE
+            layout_default_delete_button_wrap.apply {
+                visibility = View.VISIBLE
                 setOnClickListener {
                     closeHandler?.invoke()
                 }
