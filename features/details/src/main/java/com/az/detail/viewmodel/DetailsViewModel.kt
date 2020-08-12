@@ -1,19 +1,58 @@
 package com.az.detail.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.az.core.Preferences
+import com.az.model.Status
 import com.az.model.posts.AuthorData
+import com.az.model.posts.SimplePageData
 import com.az.model.posts.detail.DetailedPostData
 import com.az.model.posts.detail.PostDetailData
+import com.az.model.posts.detail.PostDetailRepository
 import com.az.model.posts.detail.comments.CommentData
+import com.az.model.posts.detail.comments.CommentsRepository
+import kotlinx.coroutines.launch
 
-class DetailsViewModel : ViewModel() {
+class DetailsViewModel(
+    private val postDetailRepository: PostDetailRepository,
+    private val commentsRepository: CommentsRepository,
+    sharedPrefs: Preferences
+) : ViewModel() {
+
+    private var postId = 0
 
     private val _details = MutableLiveData<PostDetailData>()
     val details: LiveData<PostDetailData> = _details
+
     private val _comments = MutableLiveData<List<CommentData>>()
     val comments: LiveData<List<CommentData>> = _comments
+    private lateinit var simplePageData: SimplePageData
+
+    init {
+        initDummyValues()
+    }
+
+    fun setPostId(id: Int) {
+        postId = id
+    }
+
+    private fun getPostDetail() {
+        viewModelScope.launch {
+            val response = postDetailRepository.getPostDetail(postId)
+            when (response.status) {
+                Status.SUCCESS -> _details.value = response.data
+                Status.ERROR -> Log.d(TAG, response.message!!)
+            }
+        }
+    }
+
+    /**
+     * 아직 api 통신이 가능하지 않아서
+     * 임시로 더미데이터를 반환하는 함수를 만들어두었습니다
+     * */
 
     private val comment = CommentData(
         "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
@@ -32,12 +71,12 @@ class DetailsViewModel : ViewModel() {
         )
     )
 
-    init {
-        initDummyValues()
-    }
-
     private fun initDummyValues() {
         _details.value = detail
         _comments.value = listOf(comment, comment, comment, comment, comment, comment, comment)
+    }
+
+    companion object {
+        private const val TAG = "DetailsViewModel"
     }
 }
