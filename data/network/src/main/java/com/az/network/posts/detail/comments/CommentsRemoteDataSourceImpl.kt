@@ -2,7 +2,7 @@ package com.az.network.posts.detail.comments
 
 import com.az.core.Resource
 import com.az.model.posts.detail.comments.CommentsData
-import com.az.network.ResponseHandler
+import com.az.network.responsehandler.ResponseHandler
 import org.koin.dsl.module
 import retrofit2.Retrofit
 

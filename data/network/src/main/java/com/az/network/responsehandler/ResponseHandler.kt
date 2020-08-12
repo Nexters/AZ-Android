@@ -1,4 +1,4 @@
-package com.az.network
+package com.az.network.responsehandler
 
 import com.az.core.Resource
 import retrofit2.HttpException
