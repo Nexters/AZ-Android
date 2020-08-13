@@ -3,11 +3,10 @@ package com.az.youtugo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import com.az.core.LoginStatus
 import com.az.core.Preferences
+import com.az.main.view.MainFragmentDirections
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
@@ -51,8 +50,11 @@ class MainActivity : AppCompatActivity() {
         toolbar.closeHandler = {
             navController.popBackStack()
         }
-        toolbar.signUpHandler = {
-            navController.navigate(R.id.signupFragment)
+        toolbar.toLoginHandler = {
+            sharedPrefs.clearLoginSession()
+            sharedPrefs.clearLoginStatus()
+            val action = MainFragmentDirections.actionMainFragmentToLoginFragment()
+            navController.navigate(action)
         }
     }
 }
