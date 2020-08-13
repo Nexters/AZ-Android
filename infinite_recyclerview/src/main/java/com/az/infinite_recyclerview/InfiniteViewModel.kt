@@ -13,13 +13,12 @@ abstract class InfiniteViewModel<ITEM : Any> : ViewModel() {
     abstract fun hasNextPage(): Boolean
 
     fun loadMore() {
-        toggleIsLoading()
         setItemLoadingView(true)
         getItems()
     }
 
-    protected fun toggleIsLoading() {
-        isLoading = !isLoading
+    protected fun setIsLoading(isLoading: Boolean) {
+        this.isLoading = isLoading
     }
 
     fun getIsLoading(): Boolean {

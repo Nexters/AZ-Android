@@ -52,6 +52,7 @@ class MainViewModel(
     }
 
     override fun getItems() {
+        setIsLoading(true)
         (isHumorsFame.value ?: false).let {
             when (it) {
                 true -> getPopularPosts()
@@ -65,7 +66,11 @@ class MainViewModel(
     }
 
     private fun initSimplePageData() {
-        simplePageData = SimplePageData(1, 0, 0)
+        simplePageData = SimplePageData(0, 0, 0)
+    }
+
+    private fun getCurrentPage(): Int {
+        return simplePageData.currentPage + 1
     }
 
     fun toggleFame() {
@@ -118,17 +123,17 @@ class MainViewModel(
 
     private fun getPosts() {
         viewModelScope.launch {
-            val response = postsRepository.getPosts(simplePageData.currentPage, size)
+            val response = postsRepository.getPosts(getCurrentPage(), size)
             handlePostResponse(response)
-            toggleIsLoading()
+            setIsLoading(false)
         }
     }
 
     private fun getPopularPosts() {
         viewModelScope.launch {
-            val response = postsPopularRepository.getPopularPosts(simplePageData.currentPage, size)
+            val response = postsPopularRepository.getPopularPosts(getCurrentPage(), size)
             handlePostResponse(response)
-            toggleIsLoading()
+            setIsLoading(false)
         }
     }
 
