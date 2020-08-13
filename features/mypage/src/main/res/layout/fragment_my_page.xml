@@ -1,47 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorSemiBlack">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/user_grade_sticker"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="52dp"
-            android:src="@drawable/ic_newbie_tag"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_my_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="3dp"
-            android:text="@string/user_rating"
-            android:textColor="@color/colorWhite"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/user_grade_sticker"
-            app:layout_constraintStart_toEndOf="@id/user_grade_sticker" />
+            <include
+                android:id="@+id/layout_my_info"
+                layout="@layout/layout_my_info" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@string/user_nickname"
-            android:textColor="@color/colorWhite"
-            android:textSize="30sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="@id/txt_my_rating"
-            app:layout_constraintStart_toEndOf="@id/txt_my_rating" />
+            <include
+                android:id="@+id/layout_tab"
+                layout="@layout/layout_tab"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="33dp"/>
 
+        </LinearLayout>
 
+        <include
+            android:id="@+id/layout_bottom_sheet"
+            layout="@layout/layout_bottom_sheet" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -28,7 +28,7 @@ class IndicatorRadioGroup @JvmOverloads constructor(
     }
 
     override fun addView(child: View?, index: Int, params: ViewGroup.LayoutParams?) {
-        if (child is RadioIndicatorButton) {
+        if (child is IndicatorRadioButton) {
             if (child.isChecked) {
                 protectFromCheckedChange = true
                 if (checkedId != View.NO_ID) {
@@ -63,7 +63,7 @@ class IndicatorRadioGroup @JvmOverloads constructor(
 
     private fun setCheckedStateForView(viewId: Int, checked: Boolean) {
         val checkedView = findViewById<View>(viewId)
-        if (checkedView != null && checkedView is RadioIndicatorButton) {
+        if (checkedView != null && checkedView is IndicatorRadioButton) {
             checkedView.isChecked = checked
         }
     }
@@ -93,7 +93,7 @@ class IndicatorRadioGroup @JvmOverloads constructor(
         var onHierarchyChangeListener: OnHierarchyChangeListener? = null
 
         override fun onChildViewAdded(parent: View, child: View) {
-            if (parent === this@IndicatorRadioGroup && child is RadioIndicatorButton) {
+            if (parent === this@IndicatorRadioGroup && child is IndicatorRadioButton) {
                 var id = child.id
                 if (id == View.NO_ID) {
                     id = View.generateViewId()
@@ -108,7 +108,7 @@ class IndicatorRadioGroup @JvmOverloads constructor(
         }
 
         override fun onChildViewRemoved(parent: View, child: View) {
-            if (parent === this@IndicatorRadioGroup && child is RadioIndicatorButton) {
+            if (parent === this@IndicatorRadioGroup && child is IndicatorRadioButton) {
                 childOnCheckedChangeListener?.let {
                     child.removeOnCheckChangeListener(it)
                 }

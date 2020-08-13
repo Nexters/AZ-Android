@@ -4,6 +4,7 @@
         <attr name="icon" format="reference" />
         <attr name="android:enabled" />
         <attr name="android:text" />
+        <attr name="android:visibility"/>
     </declare-styleable>
     <declare-styleable name="CheckableIndicatorButton">
         <attr name="android:checked" />

@@ -1,29 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/tab_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:src="@drawable/ic_pencil"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:text="작성개그"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+        <com.az.mypage.lib.IndicatorRadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.az.mypage.lib.IndicatorRadioButton
+                android:id="@+id/btn_my_write"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_page_humor"
+                app:icon="@drawable/image_selector_write" />
+
+            <com.az.mypage.lib.IndicatorRadioButton
+                android:id="@+id/btn_my_comment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_page_comment"
+                app:icon="@drawable/image_selector_comment" />
+
+            <com.az.mypage.lib.IndicatorRadioButton
+                android:id="@+id/btn_my_bookmark"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_page_bookmark"
+                app:icon="@drawable/image_selector_bookmark" />
+
+            <com.az.mypage.lib.IndicatorRadioButton
+                android:id="@+id/btn_my_setting"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_page_setting"
+                app:icon="@drawable/image_selector_setting" />
+
+        </com.az.mypage.lib.IndicatorRadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -29,9 +29,9 @@ open class CheckableIndicatorButton @JvmOverloads constructor(
             isChecked = it.getBoolean(R.styleable.CheckableIndicatorButton_android_checked, isChecked)
         }
 
-        img_icon.imageTintList = ContextCompat.getColorStateList(context, R.color.colorGray)
-        img_indicator.imageTintList = ContextCompat.getColorStateList(context, R.color.colorGray)
-        txt_label.setTextColor(ContextCompat.getColorStateList(context, R.color.colorGray))
+        img_icon.imageTintList = ContextCompat.getColorStateList(context, R.color.selector_text)
+        img_indicator.imageTintList = ContextCompat.getColorStateList(context, R.color.selector_text)
+        txt_label.setTextColor(ContextCompat.getColorStateList(context, R.color.selector_text))
     }
 
     fun addOnCheckChangeListener(onCheckedChangeListener: OnCheckedChangeListener) {

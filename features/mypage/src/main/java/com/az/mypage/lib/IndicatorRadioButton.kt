@@ -3,7 +3,7 @@ package com.az.mypage.lib
 import android.content.Context
 import android.util.AttributeSet
 
-class RadioIndicatorButton @JvmOverloads constructor(
+class IndicatorRadioButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
