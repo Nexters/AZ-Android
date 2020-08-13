@@ -1,4 +1,3 @@
-include(":infinite_recyclerview")
 pluginManagement {
     repositories {
         jcenter()
