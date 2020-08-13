@@ -27,7 +27,7 @@
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -53,8 +53,15 @@
         app:moduleName="main">
 
         <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+
+        <action
             android:id="@+id/action_mainFragment_to_createFragment"
             app:destination="@id/createFragment" />
+
         <action
             android:id="@+id/action_mainFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />

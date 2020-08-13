@@ -42,4 +42,10 @@ class PreferencesImpl(context: Context) : Preferences {
             it.remove(SHARED_PREF_KEY.USER_SESSION)
         }
     }
+
+    override fun clearLoginStatus() {
+        editSharedPreference {
+            it.remove(SHARED_PREF_KEY.LOGIN_STATUS)
+        }
+    }
 }

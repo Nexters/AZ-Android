@@ -22,7 +22,7 @@ class DynamicToolbar @JvmOverloads constructor(
     var alarmHandler: (() -> Unit)? = null
     var backspaceHandler: (() -> Unit)? = null
     var closeHandler: (() -> Unit)? = null
-    var signUpHandler: (() -> Unit)? = null
+    var toLoginHandler: (() -> Unit)? = null
 
     // TODO 모듈에 맞는 툴바 여기에 추가
     // TODO navigation에 label추가하 것
@@ -48,8 +48,8 @@ class DynamicToolbar @JvmOverloads constructor(
     private fun setLogoGuestToolbar() {
         removeAllViews()
         with(getView(R.layout.guest_toolbar)) {
-            btn_signUp.setOnClickListener {
-                signUpHandler?.invoke()
+            btn_to_login.setOnClickListener {
+                toLoginHandler?.invoke()
             }
             addView(this)
         }
