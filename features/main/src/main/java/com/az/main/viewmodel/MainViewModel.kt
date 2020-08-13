@@ -133,7 +133,7 @@ class MainViewModel(
     private fun handlePostResponse(response: Resource<PostsData>) {
         when (response.status) {
             Status.SUCCESS -> {
-                /*setItemLoadingView(false)*/
+                setItemLoadingView(false)
                 _items.value = items.value?.plus(response.data!!.posts) ?: response.data!!.posts
                 simplePageData = response.data!!.simplePage
             }
