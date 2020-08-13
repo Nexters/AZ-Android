@@ -47,7 +47,7 @@ class MainFragment : Fragment() {
         // TODO used shared preferences
         val session = sharedPrefs.getLoginSession()
 
-        Log.d("Session", session?.user?.nickname)
+//        Log.d("Session", session?.user?.nickname)
     }
 
     private val toCreatePage: () -> Unit = {

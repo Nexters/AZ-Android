@@ -12,4 +12,5 @@ interface Preferences {
 
     fun getLoginSession(): SignInResponseData?
     fun setLoginSession(session: SignInResponseData)
+    fun clearLoginSession()
 }

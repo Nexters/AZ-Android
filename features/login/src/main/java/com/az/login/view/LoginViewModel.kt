@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
+import com.az.core.LoginStatus
 import com.az.core.Preferences
 import com.az.core.Resource
 import com.az.core.data.auth.request.SignInRequestData
@@ -33,5 +34,15 @@ class LoginViewModel(private val repo: AuthRepository, private val sharedPrefs: 
 
     fun setUserSession(userData: SignInResponseData) {
         sharedPrefs.setLoginSession(userData)
+        sharedPrefs.setLoginStatus(LoginStatus.USER_LOGIN)
+    }
+
+    fun onGuestLoginClick() {
+        sharedPrefs.clearLoginSession()
+        sharedPrefs.setLoginStatus(LoginStatus.GUEST_LOGIN)
+    }
+
+    fun checkLogin(): Int {
+        return sharedPrefs.getLoginStatus()
     }
 }
