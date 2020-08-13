@@ -127,5 +127,6 @@ object BuildModules {
         const val Model = ":model"
         const val Repository = ":data:repository"
         const val Network = ":data:network"
+        const val InfiniteRecyclerview = ":infinite_recyclerview"
     }
 }
