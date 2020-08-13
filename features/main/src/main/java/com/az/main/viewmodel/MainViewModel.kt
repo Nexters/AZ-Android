@@ -120,6 +120,7 @@ class MainViewModel(
         viewModelScope.launch {
             val response = postsRepository.getPosts(simplePageData.currentPage, size)
             handlePostResponse(response)
+            toggleIsLoading()
         }
     }
 
@@ -127,6 +128,7 @@ class MainViewModel(
         viewModelScope.launch {
             val response = postsPopularRepository.getPopularPosts(simplePageData.currentPage, size)
             handlePostResponse(response)
+            toggleIsLoading()
         }
     }
 
