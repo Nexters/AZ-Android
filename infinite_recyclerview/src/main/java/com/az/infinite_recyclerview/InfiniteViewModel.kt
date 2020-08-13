@@ -8,11 +8,22 @@ abstract class InfiniteViewModel<ITEM : Any> : ViewModel() {
     protected val _items = MutableLiveData<List<ITEM?>>()
     val items: LiveData<List<ITEM?>> = _items
 
+    private var isLoading = false
+
     abstract fun hasNextPage(): Boolean
 
     fun loadMore() {
+        toggleIsLoading()
         setItemLoadingView(true)
         getItems()
+    }
+
+    protected fun toggleIsLoading() {
+        isLoading = !isLoading
+    }
+
+    fun getIsLoading(): Boolean {
+        return isLoading
     }
 
     protected abstract fun getItems()
