@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.az.mypage.lib.IndicatorRadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.az.mypage.lib.IndicatorRadioButton
+                android:id="@+id/btn_my_write"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_page_humor"
+                app:icon="@drawable/image_selector_write" />
+
+            <com.az.mypage.lib.IndicatorRadioButton
+                android:id="@+id/btn_my_comment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_page_comment"
+                app:icon="@drawable/image_selector_comment" />
+
+            <com.az.mypage.lib.IndicatorRadioButton
+                android:id="@+id/btn_my_bookmark"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_page_bookmark"
+                app:icon="@drawable/image_selector_bookmark" />
+
+            <com.az.mypage.lib.IndicatorRadioButton
+                android:id="@+id/btn_my_setting"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_page_setting"
+                app:icon="@drawable/image_selector_setting" />
+
+        </com.az.mypage.lib.IndicatorRadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
