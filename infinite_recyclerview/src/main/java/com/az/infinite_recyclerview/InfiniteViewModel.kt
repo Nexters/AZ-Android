@@ -17,19 +17,22 @@ abstract class InfiniteViewModel<ITEM : Any> : ViewModel() {
 
     protected abstract fun getItems()
 
-    private fun setItemLoadingView(b: Boolean) {
+    protected fun setItemLoadingView(isLoadingView: Boolean) {
         val list = items.value
         val nullPost: ITEM? = null
-        if (!list.isNullOrEmpty()) {
-            if (b) {
-                _items.value = list.plus(nullPost)
-            } else {
-                if (list[list.size - 1] == null) {
-                    _items.value = list.filterIndexed { index, _ ->
-                        index < list.size - 1
-                    }
-                }
-            }
+        if (list.isNullOrEmpty()) {
+            return
+        }
+        if (isLoadingView) {
+            _items.value = list.plus(nullPost)
+            return
+        }
+        if (list[list.size - 1] != null) {
+            return
+        }
+
+        _items.value = list.filterIndexed { index, _ ->
+            index < list.size - 1
         }
     }
 

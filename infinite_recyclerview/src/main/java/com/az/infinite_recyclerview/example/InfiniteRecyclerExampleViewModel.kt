@@ -28,22 +28,6 @@ class InfiniteRecyclerExampleViewModel : InfiniteViewModel<ExampleData>() {
         _items.value = _items.value?.plus(getExampleItems()) ?: getExampleItems()
     }
 
-    private fun setItemLoadingView(b: Boolean) {
-        val list = items.value
-        val nullPost: ExampleData? = null
-        if (!list.isNullOrEmpty()) {
-            if (b) {
-                _items.value = list.plus(nullPost)
-            } else {
-                if (list[list.size - 1] == null) {
-                    _items.value = list.filterIndexed { index, _ ->
-                        index < list.size - 1
-                    }
-                }
-            }
-        }
-    }
-
     private fun getExampleItems(): List<ExampleData> {
         val age = 0
         val list = mutableListOf<ExampleData>()
