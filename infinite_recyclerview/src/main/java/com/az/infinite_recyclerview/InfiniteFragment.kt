@@ -13,7 +13,7 @@ abstract class InfiniteFragment<VM : InfiniteViewModel<ITEM>, ITEM : Any> : Frag
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = view.layoutManager
-                if (viewModel.hasNextPage()) {
+                if (viewModel.hasNextPage() && !viewModel.getIsLoading()) {
                     val lastVisibleItem = (layoutManager as LinearLayoutManager)
                         .findLastCompletelyVisibleItemPosition()
                     if (layoutManager.itemCount <= lastVisibleItem + 5) {

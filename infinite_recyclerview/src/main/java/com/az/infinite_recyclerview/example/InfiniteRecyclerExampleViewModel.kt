@@ -26,6 +26,7 @@ class InfiniteRecyclerExampleViewModel : InfiniteViewModel<ExampleData>() {
         simplePageData = simplePageData.copy(currentPage = simplePageData.currentPage + 1)
         setItemLoadingView(false)
         _items.value = _items.value?.plus(getExampleItems()) ?: getExampleItems()
+        toggleIsLoading()
     }
 
     private fun getExampleItems(): List<ExampleData> {
