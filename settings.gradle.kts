@@ -33,6 +33,7 @@ include(
     BuildModules.Libraries.Model,
     BuildModules.Libraries.Repository,
     BuildModules.Libraries.Network,
+    BuildModules.Libraries.InfiniteRecyclerview,
 
     BuildModules.Features.Main,
     BuildModules.Features.Humors,

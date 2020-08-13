@@ -5,6 +5,11 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
+        android:id="@+id/infiniteRecyclerExampleFragment"
+        android:name="com.az.infinite_recyclerview.example.InfiniteRecyclerExampleFragment"
+        android:label="InfiniteRecyclerExampleFragment" />
+
+    <fragment
         android:id="@+id/loginFragment"
         android:name="com.az.login.view.LoginFragment"
         android:label="LoginFragment"
