@@ -1,3 +1,4 @@
+include(":infinite_recyclerview")
 pluginManagement {
     repositories {
         jcenter()
@@ -33,6 +34,7 @@ include(
     BuildModules.Libraries.Model,
     BuildModules.Libraries.Repository,
     BuildModules.Libraries.Network,
+    BuildModules.Libraries.InfiniteRecyclerview,
 
     BuildModules.Features.Main,
     BuildModules.Features.Humors,
