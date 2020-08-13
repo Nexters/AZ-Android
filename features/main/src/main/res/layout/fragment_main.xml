@@ -32,7 +32,7 @@
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                bind:conciergeGrade="@{vm.userRating.ratingForPromotionData.message}"
+                bind:conciergeGrade="@{vm.userRating.ratingForPromotion.message}"
                 tools:text="어이신입ㅋ" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="@id/user_grade"
                 app:layout_constraintTop_toBottomOf="@id/user_grade"
-                bind:conciergeMessage="@{vm.userRating.ratingForPromotionData.message}"
+                bind:conciergeMessage="@{vm.userRating.ratingForPromotion.message}"
                 tools:text="유머 좀 하나?" />
 
             <ImageView
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:fontFamily="@font/app_main_font"
-                android:text="@{@string/count(vm.userRating.ratingForPromotionData.postCountForPromotion)}"
+                android:text="@{@string/count(vm.userRating.ratingForPromotion.postCountForPromotion)}"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:fontFamily="@font/app_main_font"
-                android:text="@{@string/count(vm.userRating.ratingForPromotionData.commentCountForPromotion)}"
+                android:text="@{@string/count(vm.userRating.ratingForPromotion.commentCountForPromotion)}"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -147,7 +147,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/post_number_text"
-                bind:humorGradeProgress="@{vm.userRating.ratingForPromotionData.progress}"
+                bind:humorGradeProgress="@{vm.userRating.ratingForPromotion.progress}"
                 tools:progress="700" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

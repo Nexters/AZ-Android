@@ -30,12 +30,7 @@ val networkModule = module {
         OkHttpClient.Builder()
             .addInterceptor(get<AuthInterceptor>())
             .addInterceptor(get<HttpLoggingInterceptor>())
-            .addInterceptor(get<HeaderInterceptor>())
             .build()
-    }
-
-    single {
-        HeaderInterceptor(get())
     }
 
     single {

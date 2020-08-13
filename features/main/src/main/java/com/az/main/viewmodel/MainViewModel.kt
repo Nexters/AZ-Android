@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.az.core.LoginStatus
 import com.az.core.Preferences
 import com.az.core.Status
 import com.az.model.posts.*
@@ -23,8 +24,8 @@ class MainViewModel(
     sharedPrefs: Preferences
 ) : ViewModel() {
 
-    /* private val loginStatus = sharedPrefs.getLoginStatus()
-     private val loginSession = sharedPrefs.getLoginSession()*/
+    private val loginStatus = sharedPrefs.getLoginStatus()
+    private val loginSession = sharedPrefs.getLoginSession()
 
     private val _userRating = MutableLiveData<UserRatingData>()
     val userRating: LiveData<UserRatingData> = _userRating
@@ -39,8 +40,8 @@ class MainViewModel(
     init {
         initIsHumorsFameData()
         initSimplePageData()
-        getFakeUserRating()
-        getFakePosts()
+        getUserRating()
+        getPosts()
     }
 
     private fun initIsHumorsFameData() {
@@ -55,21 +56,49 @@ class MainViewModel(
         _isHumorsFame.value = (isHumorsFame.value ?: false).let { !it }.also {
             initSimplePageData()
             when (it) {
-                true -> getFakePopularPosts()
-                false -> getFakePosts()
+                true -> getPopularPosts()
+                false -> getPosts()
             }
         }
     }
 
-    /*private fun getUserRating() {
+    private fun getUserRating() {
+        val userId = loginSession?.user?.id
+
+        if (userId == null) {
+            handleLoginSessionExpired()
+            return
+        }
+
         viewModelScope.launch {
-            val response = userRatingRepository.getUserRating(loginSession.user.id)
+            val response = userRatingRepository.getUserRating(userId)
             when (response.status) {
                 Status.SUCCESS -> _userRating.value = response.data
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
-    }*/
+    }
+
+    private fun handleLoginSessionExpired() {
+        if (loginStatus == LoginStatus.GUEST_LOGIN.status) {
+            setGuestLoginStatus()
+        } else {
+            // TODO : 로그인 화면으로 보내기
+        }
+    }
+
+    private fun setGuestLoginStatus() {
+        _userRating.value = UserRatingData(
+            RatingForPromotionData(
+                commentCountForPromotion = 0,
+                currentRating = "NEW_RECRUIT",
+                message = "게스트 로그인\n회원가입 필요",
+                nextRating = "ASSISTANT_MANAGE",
+                postCountForPromotion = 0,
+                progress = 0F
+            )
+        )
+    }
 
     private fun getPosts() {
         viewModelScope.launch {
