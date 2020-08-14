@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{@string/count(detail.detailedPost.comments)}"
+            android:text="@{@string/count(detail.detailedPost.commentCount)}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"
