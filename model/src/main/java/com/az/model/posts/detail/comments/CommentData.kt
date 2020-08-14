@@ -6,5 +6,5 @@ data class CommentData(
     val id: Int,
     val modifiedDate: String,
     val postId: Int,
-    val writer: String
+    val writer: WriterData
 )

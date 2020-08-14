@@ -1,4 +1,4 @@
-package com.az.model.posts.detail.comments.create
+package com.az.model.posts.detail.comments
 
 data class WriterData(
     val id: Int,
