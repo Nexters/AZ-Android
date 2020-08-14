@@ -4,20 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.az.detail.adapter.CommentsAdapter
 import com.az.detail.databinding.FragmentDetailsBinding
 import com.az.detail.di.loadFeature
 import com.az.detail.viewmodel.DetailsViewModel
+import com.az.infinite_recyclerview.InfiniteFragment
+import com.az.model.posts.detail.comments.CommentData
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class DetailsFragment : Fragment() {
+class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
     private fun injectFeature() = loadFeature
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: DetailsViewModel by viewModel()
+    override val viewModel: DetailsViewModel by viewModel()
 
     private val args: DetailsFragmentArgs by navArgs()
 
