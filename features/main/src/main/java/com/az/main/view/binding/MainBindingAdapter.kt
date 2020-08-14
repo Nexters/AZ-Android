@@ -42,7 +42,13 @@ fun setConciergeMessage(view: TextView, message: String?) {
 
 @BindingAdapter("humorGradeProgress")
 fun setHumorGradeProgress(view: ProgressBar, progress: Float?) {
-    view.progress = ((progress ?: 0F) * 1000).toInt()
+    ((progress ?: 0F) * 1000).toInt().let {
+        if (it < 1) {
+            view.progress = 10
+        } else {
+            view.progress = it
+        }
+    }
 }
 
 @BindingAdapter("grade")
