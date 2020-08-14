@@ -1,9 +1,13 @@
 package com.az.detail.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.az.detail.adapter.CommentsAdapter
 import com.az.detail.databinding.FragmentDetailsBinding
@@ -11,6 +15,7 @@ import com.az.detail.di.loadFeature
 import com.az.detail.viewmodel.DetailsViewModel
 import com.az.infinite_recyclerview.InfiniteFragment
 import com.az.model.posts.detail.comments.CommentData
+import kotlinx.android.synthetic.main.fragment_details.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
@@ -38,5 +43,23 @@ class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
             vm = viewModel.apply { setPostId(args.postId) }
             commentsRv.adapter = CommentsAdapter()
         }
+        setSoftInputMode()
+        observeHideSoftInput()
+    }
+
+    private fun observeHideSoftInput() {
+        viewModel.hideSoftInput.observe(viewLifecycleOwner, Observer {
+            if (it) hideSoftInput()
+        })
+    }
+
+    private fun setSoftInputMode() {
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+    }
+
+    private fun hideSoftInput() {
+        val inputMethodManager =
+            activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(comment_input.windowToken, 0)
     }
 }

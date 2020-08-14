@@ -44,6 +44,7 @@ class DetailsViewModel(
     private lateinit var simplePageData: SimplePageData
 
     val comment = MutableLiveData<String>()
+    val hideSoftInput = MutableLiveData<Boolean>()
 
     init {
         initSimplePageData()
@@ -110,6 +111,7 @@ class DetailsViewModel(
                 )
             when (response.status) {
                 Status.SUCCESS -> {
+                    hideSoftInput()
                     initSimplePageData()
                     clearComment()
                     clearComments()
@@ -118,6 +120,11 @@ class DetailsViewModel(
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
+    }
+
+    private fun hideSoftInput() {
+        hideSoftInput.value = true
+        hideSoftInput.value = false
     }
 
     private fun isCommentInvalid(): Boolean {
