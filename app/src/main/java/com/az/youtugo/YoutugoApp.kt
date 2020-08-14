@@ -6,6 +6,7 @@ import com.az.network.auth.authApiModule
 import com.az.network.networkModule
 import com.az.network.posts.detail.comments.commentsApiModule
 import com.az.network.posts.detail.comments.create.createCommentApiModule
+import com.az.network.posts.detail.likes.likePostApiModule
 import com.az.network.posts.detail.postDetailApiModule
 import com.az.network.posts.popular.postsPopularApiModule
 import com.az.network.posts.postsApiModule
@@ -13,6 +14,7 @@ import com.az.network.users.rating.userRatingApiModule
 import com.az.repository.auth.authRepositoryModule
 import com.az.repository.posts.detail.comments.commentsRepositoryModule
 import com.az.repository.posts.detail.comments.create.createCommentRepositoryModule
+import com.az.repository.posts.detail.likes.likePostRepositoryModule
 import com.az.repository.posts.detail.postDetailRepositoryModule
 import com.az.repository.posts.popular.postsPopularRepositoryModule
 import com.az.repository.posts.postsRepositoryModule
@@ -40,6 +42,8 @@ class YoutugoApp : Application() {
                 userRatingRepositoryModule,
                 postDetailApiModule,
                 postDetailRepositoryModule,
+                likePostApiModule,
+                likePostRepositoryModule,
                 commentsApiModule,
                 commentsRepositoryModule,
                 createCommentApiModule,
