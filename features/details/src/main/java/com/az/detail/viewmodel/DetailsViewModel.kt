@@ -3,10 +3,10 @@ package com.az.detail.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.az.core.Preferences
 import com.az.core.Status
+import com.az.infinite_recyclerview.InfiniteViewModel
 import com.az.model.posts.SimplePageData
 import com.az.model.posts.detail.PostDetailData
 import com.az.model.posts.detail.PostDetailRepository
@@ -20,7 +20,7 @@ class DetailsViewModel(
     private val postDetailRepository: PostDetailRepository,
     private val commentsRepository: CommentsRepository,
     sharedPrefs: Preferences
-) : ViewModel() {
+) : InfiniteViewModel<CommentData>() {
 
     private var postId = 0
 
@@ -30,8 +30,7 @@ class DetailsViewModel(
     private val _details = MutableLiveData<PostDetailData>()
     val details: LiveData<PostDetailData> = _details
 
-    private val _comments = MutableLiveData<List<CommentData>>()
-    val comments: LiveData<List<CommentData>> = _comments
+    val comments: LiveData<List<CommentData?>> = items
     private lateinit var simplePageData: SimplePageData
 
     init {
@@ -41,11 +40,20 @@ class DetailsViewModel(
     fun setPostId(id: Int) {
         postId = id
         getPostDetail()
-        getComments()
+        getItems()
     }
 
     private fun initSimplePageData() {
         simplePageData = SimplePageData(1, 0, 0)
+    }
+
+    override fun hasNextPage(): Boolean {
+        return simplePageData.let { it.currentPage < it.totalPages }
+    }
+
+    override fun getItems() {
+        setIsLoading(true)
+        getComments()
     }
 
     private fun getPostDetail() {
@@ -63,11 +71,14 @@ class DetailsViewModel(
             val response = commentsRepository.getComments(postId, simplePageData.currentPage, size)
             when (response.status) {
                 Status.SUCCESS -> {
-                    _comments.value = response.data!!.commentList
+                    setItemLoadingView(false)
+                    _items.value = items.value?.plus(response.data!!.commentList)
+                        ?: response.data!!.commentList
                     simplePageData = response.data!!.simplePage
                 }
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
+            setIsLoading(false)
         }
     }
 

@@ -44,7 +44,7 @@ class MainViewModel(
         initIsHumorsFameData()
         initSimplePageData()
         getUserRating()
-        getPosts()
+        getItems()
     }
 
     override fun hasNextPage(): Boolean {
