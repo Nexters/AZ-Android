@@ -70,32 +70,6 @@ class DetailsViewModel(
         }
     }
 
-    /**
-     * 아직 api 통신이 가능하지 않아서
-     * 임시로 더미데이터를 반환하는 함수를 만들어두었습니다
-     * */
-
-    private fun initDummyValues() {
-        val comment = CommentData(
-            "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
-            "2020-08-11T11:25:39.639Z",
-            1234,
-            "2020-08-11T11:25:39.639Z",
-            123,
-            "가나다"
-        )
-        val detail = PostDetailData(
-            DetailedPostData(
-                AuthorData(0, "string", "가나다", "NEW_RECRUIT"),
-                0, 0, "소나무가 삐지면?\n\n칫솔", "2020-08-11T11:27:10.860Z",
-                0, 0, "2020-08-11T11:27:10.860Z", true
-            )
-        )
-
-        _details.value = detail
-        _comments.value = listOf(comment, comment, comment, comment, comment, comment, comment)
-    }
-
     companion object {
         private const val TAG = "DetailsViewModel"
     }
