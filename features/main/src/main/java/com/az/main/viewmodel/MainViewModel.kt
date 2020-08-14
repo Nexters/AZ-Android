@@ -113,7 +113,7 @@ class MainViewModel(
             RatingForPromotionData(
                 commentCountForPromotion = 0,
                 currentRating = "NEW_RECRUIT",
-                message = "게스트 로그인\n회원가입 필요",
+                message = "인턴...\n동료가 돼라!",
                 nextRating = "ASSISTANT_MANAGE",
                 postCountForPromotion = 0,
                 progress = 0F
