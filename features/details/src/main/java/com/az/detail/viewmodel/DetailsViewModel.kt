@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.az.core.Preferences
 import com.az.core.Status
-import com.az.model.posts.AuthorData
 import com.az.model.posts.SimplePageData
-import com.az.model.posts.detail.DetailedPostData
 import com.az.model.posts.detail.PostDetailData
 import com.az.model.posts.detail.PostDetailRepository
 import com.az.model.posts.detail.comments.CommentData
@@ -25,6 +23,9 @@ class DetailsViewModel(
 ) : ViewModel() {
 
     private var postId = 0
+
+    private val loginStatus = sharedPrefs.getLoginStatus()
+    private val loginSession = sharedPrefs.getLoginSession()
 
     private val _details = MutableLiveData<PostDetailData>()
     val details: LiveData<PostDetailData> = _details
