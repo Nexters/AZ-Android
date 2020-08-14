@@ -13,6 +13,11 @@ import com.az.model.posts.detail.PostDetailData
 import com.az.model.posts.detail.PostDetailRepository
 import com.az.model.posts.detail.comments.CommentData
 import com.az.model.posts.detail.comments.CommentsRepository
+import com.az.model.posts.detail.comments.create.CreateCommentRepository
+import com.az.model.posts.detail.comments.create.CreateCommentRequestData
+import com.az.model.posts.detail.likes.LikePostRepository
+import com.az.model.users.bookmark.create.CreateBookmarkRepository
+import com.az.model.users.bookmark.delete.DeleteBookmarkRepository
 import kotlinx.coroutines.launch
 
 const val size = 10
@@ -20,6 +25,10 @@ const val size = 10
 class DetailsViewModel(
     private val postDetailRepository: PostDetailRepository,
     private val commentsRepository: CommentsRepository,
+    private val createCommentRepository: CreateCommentRepository,
+    private val likePostRepository: LikePostRepository,
+    private val createBookmarkRepository: CreateBookmarkRepository,
+    private val deleteBookmarkRepository: DeleteBookmarkRepository,
     sharedPrefs: Preferences
 ) : InfiniteViewModel<CommentData>() {
 
@@ -33,6 +42,8 @@ class DetailsViewModel(
 
     val comments: LiveData<List<CommentData?>> = items
     private lateinit var simplePageData: SimplePageData
+
+    val comment = MutableLiveData<String>()
 
     init {
         initSimplePageData()
@@ -85,6 +96,40 @@ class DetailsViewModel(
             }
             setIsLoading(false)
         }
+    }
+
+    fun createComment() {
+        if (isCommentInvalid()) {
+            return
+        }
+        viewModelScope.launch {
+            val response =
+                createCommentRepository.createComment(
+                    postId,
+                    CreateCommentRequestData(comment.value!!)
+                )
+            when (response.status) {
+                Status.SUCCESS -> {
+                    initSimplePageData()
+                    clearComment()
+                    clearComments()
+                    getItems()
+                }
+                Status.ERROR -> Log.d(TAG, response.message!!)
+            }
+        }
+    }
+
+    private fun isCommentInvalid(): Boolean {
+        return comment.value.isNullOrBlank()
+    }
+
+    private fun clearComment() {
+        comment.value = null
+    }
+
+    private fun clearComments() {
+        _items.value = null
     }
 
     companion object {
