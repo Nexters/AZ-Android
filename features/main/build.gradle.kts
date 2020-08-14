@@ -38,7 +38,6 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(BuildModules.Libraries.App))
     implementation(Libraries.constraintLayout)
-    implementation(project(BuildModules.Libraries.InfiniteRecyclerview))
 
     // Koin
     implementation(Libraries.koinAndroid)
