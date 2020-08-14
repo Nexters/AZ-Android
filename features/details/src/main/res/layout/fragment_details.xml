@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.az.detail.viewmodel.DetailsViewModel" />
@@ -55,6 +57,7 @@
             android:layout_height="56dp"
             android:background="@color/colorWhite"
             android:paddingHorizontal="30dp"
+            android:visibility="@{vm.isGuestLogin ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <EditText

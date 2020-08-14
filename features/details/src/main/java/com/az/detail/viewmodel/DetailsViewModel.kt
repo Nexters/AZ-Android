@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.az.core.LoginStatus
 import com.az.core.Preferences
 import com.az.core.Status
 import com.az.infinite_recyclerview.InfiniteViewModel
@@ -35,6 +36,10 @@ class DetailsViewModel(
 
     init {
         initSimplePageData()
+    }
+
+    fun isGuestLogin(): Boolean {
+        return loginStatus == LoginStatus.GUEST_LOGIN.status
     }
 
     fun setPostId(id: Int) {
