@@ -86,8 +86,8 @@ class DynamicToolbar @JvmOverloads constructor(
         removeAllViews()
         with(getView(R.layout.default_toolbar)) {
             layout_default_button_wrap.visibility = View.GONE
-            layout_backspace_close_button_wrap.apply {
-                visibility = View.GONE
+            layout_default_delete_button_wrap.apply {
+                visibility = View.VISIBLE
                 setOnClickListener {
                     closeHandler?.invoke()
                 }

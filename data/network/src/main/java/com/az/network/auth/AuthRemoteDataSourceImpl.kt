@@ -4,7 +4,7 @@ import com.az.core.Resource
 import com.az.core.data.auth.request.SignInRequestData
 import com.az.core.data.auth.request.SignUpRequestData
 import com.az.core.data.auth.response.SignInResponseData
-import com.az.network.ResponseHandler
+import com.az.network.responsehandler.ResponseHandler
 import retrofit2.HttpException
 
 class AuthRemoteDataSourceImpl(

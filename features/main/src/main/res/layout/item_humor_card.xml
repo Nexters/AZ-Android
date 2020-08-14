@@ -13,6 +13,10 @@
         <variable
             name="humorItem"
             type="com.az.model.posts.PostData" />
+
+        <variable
+            name="listener"
+            type="com.az.main.adapter.holder.listener.HumorItemListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +24,8 @@
         android:layout_height="270dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="14dp"
-        android:background="@drawable/bg_humor_card_item">
+        android:background="@drawable/bg_humor_card_item"
+        android:onClick="@{() -> listener.onClickHumorItem(humorItem.id)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/title_humor_card"
