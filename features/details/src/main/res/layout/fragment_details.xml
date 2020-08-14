@@ -67,6 +67,7 @@
                 android:background="@null"
                 android:fontFamily="@font/app_main_font"
                 android:hint="댓글달기"
+                android:text="@={vm.comment}"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGray"
                 android:textSize="15sp"
@@ -75,15 +76,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
+            <Button
                 android:id="@+id/btn_comment_send"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:background="@drawable/btn_comment_send"
                 android:button="@null"
+                android:onClick="@{() -> vm.createComment()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                bind:textToSend="@{vm.comment}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

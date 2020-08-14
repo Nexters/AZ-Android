@@ -1,5 +1,6 @@
 package com.az.detail.view.binding
 
+import android.widget.Button
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -26,4 +27,9 @@ fun setNameWithGrade(view: TextView, nickname: String?, code: String?) {
     }.let { grade ->
         view.text = "$grade ${nickname}님"
     }
+}
+
+@BindingAdapter("textToSend")
+fun setCommentSendButton(view: Button, textToSend: String?) {
+    view.isEnabled = !textToSend.isNullOrBlank()
 }
