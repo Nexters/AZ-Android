@@ -4,11 +4,6 @@ import com.az.core.Resource
 import com.az.model.posts.PostsData
 import com.az.model.posts.popular.PostsPopularRepository
 import com.az.network.posts.popular.PostsPopularRemoteDataSource
-import org.koin.dsl.module
-
-val postsPopularRepositoryModule = module {
-    single<PostsPopularRepository> { PostsPopularRepositoryImpl(get()) }
-}
 
 class PostsPopularRepositoryImpl(
     private val postsPopularRemoteDataSource: PostsPopularRemoteDataSource

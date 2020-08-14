@@ -4,11 +4,6 @@ import com.az.core.Resource
 import com.az.model.posts.detail.comments.CommentsData
 import com.az.model.posts.detail.comments.CommentsRepository
 import com.az.network.posts.detail.comments.CommentsRemoteDataSource
-import org.koin.dsl.module
-
-val commentsRepositoryModule = module {
-    single<CommentsRepository> { CommentsRepositoryImpl(get()) }
-}
 
 class CommentsRepositoryImpl(
     private val commentsRemoteDataSource: CommentsRemoteDataSource
