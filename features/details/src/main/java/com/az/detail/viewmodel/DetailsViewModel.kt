@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.az.core.LoginStatus
 import com.az.core.Preferences
 import com.az.core.Status
+import com.az.detail.view.listener.PostDetailListener
 import com.az.infinite_recyclerview.InfiniteViewModel
 import com.az.model.posts.SimplePageData
 import com.az.model.posts.detail.PostDetailData
@@ -117,6 +118,63 @@ class DetailsViewModel(
                     clearComments()
                     getItems()
                 }
+                Status.ERROR -> Log.d(TAG, response.message!!)
+            }
+        }
+    }
+
+    val listener = object : PostDetailListener {
+        override fun onClickLikeButton() {
+            likePost()
+        }
+
+        override fun onClickBookmarkButton() {
+            setBookmark()
+        }
+    }
+
+    private fun likePost() {
+        if (details.value?.detailedPost?.pressLike == true) {
+            // "이미 좋아요를 누른 게시물입니다" 토스트 메시지 출력
+            return
+        }
+        viewModelScope.launch {
+            val response = likePostRepository.likePost(postId)
+            when (response.status) {
+                Status.SUCCESS -> _details.value = PostDetailData(response.data!!.detailedPost)
+                Status.ERROR -> Log.d(TAG, response.message!!)
+            }
+        }
+    }
+
+    private fun setBookmark() {
+        // 북마크 추가/취소 되었습니다 토스트 메시지 출력ㅣ
+        if (details.value?.detailedPost?.pressBookMark == true) {
+            deleteBookmark()
+        } else {
+            addBookmark()
+        }
+    }
+
+    private fun deleteBookmark() {
+        viewModelScope.launch {
+            val response = deleteBookmarkRepository.deleteBookmark(postId)
+            when (response.status) {
+                Status.SUCCESS -> {
+                    details.value!!.detailedPost.copy(
+                        pressBookMark = false
+                    ).let { _details.value = PostDetailData(it) }
+                }
+                Status.ERROR -> Log.d(TAG, response.message!!)
+            }
+        }
+    }
+
+    private fun addBookmark() {
+        viewModelScope.launch {
+            val response = createBookmarkRepository.addBookmark(postId)
+            when (response.status) {
+                Status.SUCCESS -> _details.value = PostDetailData(response.data!!.detailedPost)
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }

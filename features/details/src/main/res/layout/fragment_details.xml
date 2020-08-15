@@ -34,7 +34,8 @@
                 <include
                     android:id="@+id/contents_detail_include"
                     layout="@layout/layout_contents_detail"
-                    bind:detail="@{vm.details}" />
+                    bind:detail="@{vm.details}"
+                    bind:listener="@{vm.listener}" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/comments_rv"
