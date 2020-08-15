@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.az.detail.viewmodel.DetailsViewModel" />
@@ -32,7 +34,8 @@
                 <include
                     android:id="@+id/contents_detail_include"
                     layout="@layout/layout_contents_detail"
-                    bind:detail="@{vm.details}" />
+                    bind:detail="@{vm.details}"
+                    bind:listener="@{vm.listener}" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/comments_rv"
@@ -55,6 +58,7 @@
             android:layout_height="56dp"
             android:background="@color/colorWhite"
             android:paddingHorizontal="30dp"
+            android:visibility="@{vm.isGuestLogin ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <EditText
@@ -64,6 +68,7 @@
                 android:background="@null"
                 android:fontFamily="@font/app_main_font"
                 android:hint="댓글달기"
+                android:text="@={vm.comment}"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGray"
                 android:textSize="15sp"
@@ -72,15 +77,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
+            <Button
                 android:id="@+id/btn_comment_send"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:background="@drawable/btn_comment_send"
                 android:button="@null"
+                android:onClick="@{() -> vm.createComment()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                bind:textToSend="@{vm.comment}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

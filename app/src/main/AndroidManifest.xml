@@ -14,9 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/NoTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

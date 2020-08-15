@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -28,17 +29,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/user_comment"
+            android:id="@+id/user_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:fontFamily="@font/sdgnh"
-            android:text="@{commentItem.writer}"
+            android:fontFamily="@font/sdgnb"
             android:textColor="@color/colorWhite"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@id/content"
             app:layout_constraintStart_toEndOf="@id/profile"
             app:layout_constraintTop_toTopOf="parent"
+            bind:nickname="@{commentItem.writer.nickname}"
+            bind:rating="@{commentItem.writer.rating}"
             tools:text="신입 가나다님" />
 
         <TextView
@@ -52,8 +54,8 @@
             android:textColor="@color/colorWhite"
             android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@id/date"
-            app:layout_constraintStart_toStartOf="@id/user_comment"
-            app:layout_constraintTop_toBottomOf="@id/user_comment"
+            app:layout_constraintStart_toStartOf="@id/user_name"
+            app:layout_constraintTop_toBottomOf="@id/user_name"
             tools:text="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
 
         <TextView

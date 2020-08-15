@@ -9,6 +9,10 @@
         <variable
             name="detail"
             type="com.az.model.posts.detail.PostDetailData" />
+
+        <variable
+            name="listener"
+            type="com.az.detail.view.listener.PostDetailListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +29,7 @@
             android:background="@drawable/btn_heart"
             android:button="@null"
             android:checked="@{detail.detailedPost.pressLike}"
+            android:onClick="@{() -> listener.onClickLikeButton()}"
             app:layout_constraintBottom_toBottomOf="@id/btn_bookmark"
             app:layout_constraintEnd_toStartOf="@id/btn_bookmark"
             app:layout_constraintTop_toTopOf="@id/btn_bookmark" />
@@ -37,7 +42,8 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/btn_bookmark"
             android:button="@null"
-            android:checked="@{detail.detailedPost.pressLike}"
+            android:checked="@{detail.detailedPost.pressBookMark}"
+            android:onClick="@{() -> listener.onClickBookmarkButton()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{@string/count(detail.detailedPost.comments)}"
+            android:text="@{@string/count(detail.detailedPost.commentCount)}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -132,7 +138,6 @@
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/app_main_font"
             android:text="@{detail.detailedPost.createdDate}"
