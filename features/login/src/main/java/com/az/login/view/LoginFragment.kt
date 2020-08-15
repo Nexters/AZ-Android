@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.az.core.LoginStatus
 import com.az.core.Preferences
 import com.az.core.Resource
 import com.az.core.Status
@@ -43,6 +44,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             lifecycleOwner = viewLifecycleOwner
             vm = viewModel
         }
+
+        checkLogin()
+
         return binding.root
     }
 
@@ -50,8 +54,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnSignup.setOnClickListener { toSignupPage() }
         binding.txtForgotPassword.setOnClickListener { toForgotPassworPage() }
-
+        binding.txtGuestLoginButton.setOnClickListener { toMainPageForGuest() }
         observer()
+    }
+
+    private fun checkLogin() {
+
+        when (viewModel.checkLogin()) {
+            LoginStatus.GUEST_LOGIN.status,
+            LoginStatus.USER_LOGIN.status -> {
+                toMainPage()
+            }
+        }
     }
 
     private fun toSignupPage() {
@@ -72,6 +86,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun observer() {
         viewModel.login.observe(viewLifecycleOwner, loginObserver)
+    }
+
+    private fun toMainPageForGuest() {
+        viewModel.onGuestLoginClick()
+        toMainPage()
     }
 
     private val loginObserver = Observer<Resource<SignInResponseData>> {

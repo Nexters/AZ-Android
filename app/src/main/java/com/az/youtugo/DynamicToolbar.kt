@@ -5,9 +5,11 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.LayoutRes
+import com.az.core.LoginStatus
 import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.android.synthetic.main.backspace_toolbar.view.*
 import kotlinx.android.synthetic.main.default_toolbar.view.*
+import kotlinx.android.synthetic.main.guest_toolbar.view.*
 import org.koin.core.KoinComponent
 
 class DynamicToolbar @JvmOverloads constructor(
@@ -20,12 +22,18 @@ class DynamicToolbar @JvmOverloads constructor(
     var alarmHandler: (() -> Unit)? = null
     var backspaceHandler: (() -> Unit)? = null
     var closeHandler: (() -> Unit)? = null
+    var toLoginHandler: (() -> Unit)? = null
 
     // TODO 모듈에 맞는 툴바 여기에 추가
     // TODO navigation에 label추가하 것
-    fun onDestinationChanged(destination: Int, destinationName: String?) {
+    fun onDestinationChanged(destination: Int, loginStatus: Int) {
         when (destination) {
-            R.id.mainFragment -> setDefaultToolbar()
+            R.id.mainFragment -> {
+                if (loginStatus == LoginStatus.GUEST_LOGIN.status) {
+                    return setLogoGuestToolbar()
+                }
+                setDefaultToolbar()
+            }
             R.id.loginFragment,
             R.id.signupFragment -> setLogoToolbar()
             R.id.forgotPasswordFragment -> setBackspaceToolbar("비밀번호찾기")
@@ -34,6 +42,16 @@ class DynamicToolbar @JvmOverloads constructor(
             R.id.detailsFragment -> setLogoCloseToolbar()
             R.id.createFragment -> setCloseToolbar("개그작성")
             else -> removeAllViews()
+        }
+    }
+
+    private fun setLogoGuestToolbar() {
+        removeAllViews()
+        with(getView(R.layout.guest_toolbar)) {
+            btn_to_login.setOnClickListener {
+                toLoginHandler?.invoke()
+            }
+            addView(this)
         }
     }
 

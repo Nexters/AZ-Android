@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.az.core.Preferences
+import com.az.main.view.MainFragmentDirections
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var navController: NavController
+    private val sharedPrefs: Preferences by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 .findNavController()
                 .apply {
                     addOnDestinationChangedListener { _, destination, _ ->
-                        toolbar.onDestinationChanged(destination.id, null)
+                        toolbar.onDestinationChanged(destination.id, sharedPrefs.getLoginStatus())
                     }
                 }
     }
@@ -45,6 +49,12 @@ class MainActivity : AppCompatActivity() {
         }
         toolbar.closeHandler = {
             navController.popBackStack()
+        }
+        toolbar.toLoginHandler = {
+            sharedPrefs.clearLoginSession()
+            sharedPrefs.clearLoginStatus()
+            val action = MainFragmentDirections.actionMainFragmentToLoginFragment()
+            navController.navigate(action)
         }
     }
 }

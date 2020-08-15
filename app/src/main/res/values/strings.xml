@@ -8,4 +8,5 @@
     <string name="title_alarm">alarm</string>
     <string name="title_create">create</string>
     <string name="title_details">details</string>
+    <string name="toolbar_sign_up_button">로그인/회원가입</string>
 </resources>

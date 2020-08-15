@@ -3,11 +3,16 @@ package com.az.main.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.az.core.LoginStatus
 import com.az.core.Preferences
+import com.az.core.Resource
 import com.az.core.Status
-import com.az.model.posts.*
+import com.az.infinite_recyclerview.InfiniteViewModel
+import com.az.model.posts.PostData
+import com.az.model.posts.PostsData
+import com.az.model.posts.PostsRepository
+import com.az.model.posts.SimplePageData
 import com.az.model.posts.popular.PostsPopularRepository
 import com.az.model.users.rating.RatingForPromotionData
 import com.az.model.users.rating.UserRatingData
@@ -21,10 +26,10 @@ class MainViewModel(
     private val postsRepository: PostsRepository,
     private val postsPopularRepository: PostsPopularRepository,
     sharedPrefs: Preferences
-) : ViewModel() {
+) : InfiniteViewModel<PostData>() {
 
-    /* private val loginStatus = sharedPrefs.getLoginStatus()
-     private val loginSession = sharedPrefs.getLoginSession()*/
+    private val loginStatus = sharedPrefs.getLoginStatus()
+    private val loginSession = sharedPrefs.getLoginSession()
 
     private val _userRating = MutableLiveData<UserRatingData>()
     val userRating: LiveData<UserRatingData> = _userRating
@@ -32,15 +37,28 @@ class MainViewModel(
     private val _isHumorsFame = MutableLiveData<Boolean>()
     val isHumorsFame: LiveData<Boolean> = _isHumorsFame
 
-    private val _humors = MutableLiveData<List<PostData>>()
-    val humors: LiveData<List<PostData>> = _humors
+    val humors: LiveData<List<PostData?>> = items
     private lateinit var simplePageData: SimplePageData
 
     init {
         initIsHumorsFameData()
         initSimplePageData()
-        getFakeUserRating()
-        getFakePosts()
+        getUserRating()
+        getPosts()
+    }
+
+    override fun hasNextPage(): Boolean {
+        return simplePageData.let { it.currentPage < it.totalPages }
+    }
+
+    override fun getItems() {
+        setIsLoading(true)
+        (isHumorsFame.value ?: false).let {
+            when (it) {
+                true -> getPopularPosts()
+                false -> getPosts()
+            }
+        }
     }
 
     private fun initIsHumorsFameData() {
@@ -48,110 +66,85 @@ class MainViewModel(
     }
 
     private fun initSimplePageData() {
-        simplePageData = SimplePageData(1, 0, 0)
+        simplePageData = SimplePageData(0, 0, 0)
+    }
+
+    private fun getCurrentPage(): Int {
+        return simplePageData.currentPage + 1
     }
 
     fun toggleFame() {
         _isHumorsFame.value = (isHumorsFame.value ?: false).let { !it }.also {
             initSimplePageData()
             when (it) {
-                true -> getFakePopularPosts()
-                false -> getFakePosts()
+                true -> getPopularPosts()
+                false -> getPosts()
             }
         }
     }
 
-    /*private fun getUserRating() {
+    private fun getUserRating() {
+        val userId = loginSession?.user?.id
+
+        if (userId == null) {
+            handleLoginSessionExpired()
+            return
+        }
+
         viewModelScope.launch {
-            val response = userRatingRepository.getUserRating(loginSession.user.id)
+            val response = userRatingRepository.getUserRating(userId)
             when (response.status) {
                 Status.SUCCESS -> _userRating.value = response.data
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
-    }*/
+    }
+
+    private fun handleLoginSessionExpired() {
+        if (loginStatus == LoginStatus.GUEST_LOGIN.status) {
+            setGuestLoginStatus()
+            return
+        }
+        // TODO : 로그인 화면으로 이동
+    }
+
+    private fun setGuestLoginStatus() {
+        _userRating.value = UserRatingData(
+            RatingForPromotionData(
+                commentCountForPromotion = 0,
+                currentRating = "NEW_RECRUIT",
+                message = "게스트 로그인\n회원가입 필요",
+                nextRating = "ASSISTANT_MANAGE",
+                postCountForPromotion = 0,
+                progress = 0F
+            )
+        )
+    }
 
     private fun getPosts() {
         viewModelScope.launch {
-            val response = postsRepository.getPosts(simplePageData.currentPage, size)
-            when (response.status) {
-                Status.SUCCESS -> {
-                    _humors.value = response.data!!.posts
-                    simplePageData = response.data!!.simplePage
-                }
-                Status.ERROR -> Log.d(TAG, response.message!!)
-            }
+            val response = postsRepository.getPosts(getCurrentPage(), size)
+            handlePostResponse(response)
+            setIsLoading(false)
         }
     }
 
     private fun getPopularPosts() {
         viewModelScope.launch {
-            val response = postsPopularRepository.getPopularPosts(simplePageData.currentPage, size)
-            when (response.status) {
-                Status.SUCCESS -> {
-                    _humors.value = response.data!!.posts
-                    simplePageData = response.data!!.simplePage
-                }
-                Status.ERROR -> Log.d(TAG, response.message!!)
+            val response = postsPopularRepository.getPopularPosts(getCurrentPage(), size)
+            handlePostResponse(response)
+            setIsLoading(false)
+        }
+    }
+
+    private fun handlePostResponse(response: Resource<PostsData>) {
+        when (response.status) {
+            Status.SUCCESS -> {
+                setItemLoadingView(false)
+                _items.value = items.value?.plus(response.data!!.posts) ?: response.data!!.posts
+                simplePageData = response.data!!.simplePage
             }
-        }
-    }
-
-    /**
-     * 아직 api 통신이 가능하지 않아서
-     * 임시로 더미데이터를 반환하는 함수를 만들어두었습니다
-     * */
-
-    private fun getFakeUserRating() {
-        _userRating.value = UserRatingData(
-            RatingForPromotionData(
-                commentCountForPromotion = 4,
-                currentRating = "NEW_RECRUIT",
-                message = "어이신입ㅋ\n유머 좀 하나?",
-                nextRating = "ASSISTANT_MANAGE",
-                postCountForPromotion = 14,
-                progress = 0.7F
-            )
-        )
-    }
-
-    private fun fakeSimplePageDataResponse(): SimplePageData {
-        return SimplePageData(
-            simplePageData.currentPage + 1,
-            30,
-            3
-        )
-    }
-
-    private fun getFakePosts() {
-        val post = PostData(
-            AuthorData(10, "string", "가나다", "NEW_RECRUIT"),
-            0, 5, "소나무가 삐지면?", "2020-08-08T20:41:52.995Z",
-            23, 2, "2020-08-08T20:41:52.995Z", true
-        )
-
-        PostsData(
-            listOf(post, post, post, post, post, post, post, post, post, post),
-            fakeSimplePageDataResponse()
-        ).let {
-            _humors.value = it.posts
-            simplePageData = it.simplePage
-        }
-    }
-
-    private fun getFakePopularPosts() {
-        val post = PostData(
-            AuthorData(11, "string", "라마바사", "NEW_RECRUIT"),
-            0, 17, "쌀이 불에 타면?", "2020-08-08T20:41:52.995Z",
-            25, 56, "2020-08-08T20:41:52.995Z", true
-        )
-
-        PostsData(
-            listOf(post, post, post, post, post, post, post, post, post, post),
-            fakeSimplePageDataResponse()
-        ).let {
-            _humors.value = it.posts
-            simplePageData = it.simplePage
+            Status.ERROR -> Log.d(TAG, response.message!!)
         }
     }
 

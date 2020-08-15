@@ -36,4 +36,16 @@ class PreferencesImpl(context: Context) : Preferences {
             it.putString(SHARED_PREF_KEY.USER_SESSION, Gson().toJson(session))
         }
     }
+
+    override fun clearLoginSession() {
+        editSharedPreference {
+            it.remove(SHARED_PREF_KEY.USER_SESSION)
+        }
+    }
+
+    override fun clearLoginStatus() {
+        editSharedPreference {
+            it.remove(SHARED_PREF_KEY.LOGIN_STATUS)
+        }
+    }
 }

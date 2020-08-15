@@ -34,11 +34,17 @@ class DetailsViewModel(
     private lateinit var simplePageData: SimplePageData
 
     init {
-        initDummyValues()
+        initSimplePageData()
     }
 
     fun setPostId(id: Int) {
         postId = id
+        getPostDetail()
+        getComments()
+    }
+
+    private fun initSimplePageData() {
+        simplePageData = SimplePageData(1, 0, 0)
     }
 
     private fun getPostDetail() {
