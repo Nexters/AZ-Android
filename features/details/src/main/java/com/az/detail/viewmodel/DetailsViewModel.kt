@@ -136,6 +136,7 @@ class DetailsViewModel(
     private fun likePost() {
         if (details.value?.detailedPost?.pressLike == true) {
             // "이미 좋아요를 누른 게시물입니다" 토스트 메시지 출력
+            _details.value = PostDetailData(details.value!!.detailedPost)
             return
         }
         viewModelScope.launch {
