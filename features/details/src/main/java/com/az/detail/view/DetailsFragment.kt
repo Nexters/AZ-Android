@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.az.detail.adapter.CommentsAdapter
 import com.az.detail.databinding.FragmentDetailsBinding
@@ -42,22 +41,10 @@ class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
             lifecycleOwner = requireActivity()
             vm = viewModel.apply { setPostId(args.postId) }
             commentsRv.adapter = CommentsAdapter()
+            setRecyclerViewScrollListener(commentsRv)
         }
         setSoftInputMode()
-        observeHideSoftInput()
-        observeToast()
-    }
-
-    private fun observeHideSoftInput() {
-        viewModel.hideSoftInput.observe(viewLifecycleOwner, Observer {
-            if (it) hideSoftInput()
-        })
-    }
-
-    private fun observeToast() {
-        viewModel.toastMessage.observe(viewLifecycleOwner, Observer {
-            if (!it.isNullOrBlank()) showToast(it)
-        })
+        setViewModelHandlers()
     }
 
     private fun setSoftInputMode() {
@@ -70,6 +57,13 @@ class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
 
     private fun getInputMethodManager(): InputMethodManager {
         return requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
+
+    private fun setViewModelHandlers() {
+        viewModel.run {
+            toastMessageHandler = { showToast(it) }
+            hideSoftInputHandler = { hideSoftInput() }
+        }
     }
 
     private fun showToast(message: String) {

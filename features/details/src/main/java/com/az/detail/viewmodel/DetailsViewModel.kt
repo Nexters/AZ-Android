@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.az.core.LoginStatus
 import com.az.core.Preferences
 import com.az.core.Status
-import com.az.detail.view.listener.PostDetailListener
 import com.az.infinite_recyclerview.InfiniteViewModel
 import com.az.model.posts.SimplePageData
 import com.az.model.posts.detail.PostDetailData
@@ -45,10 +44,9 @@ class DetailsViewModel(
     private lateinit var simplePageData: SimplePageData
 
     val comment = MutableLiveData<String>()
-    val hideSoftInput = MutableLiveData<Boolean>()
 
-    private val _toastMessage = MutableLiveData<String>()
-    val toastMessage: LiveData<String> = _toastMessage
+    var toastMessageHandler: ((message: String) -> Unit)? = null
+    var hideSoftInputHandler: (() -> Unit)? = null
 
     init {
         initSimplePageData()
@@ -115,10 +113,10 @@ class DetailsViewModel(
                 ).also { getPostDetail() }
             when (response.status) {
                 Status.SUCCESS -> {
-                    hideSoftInput()
+                    hideSoftInputHandler?.invoke()
                     initSimplePageData()
-                    clearComment()
-                    clearComments()
+                    clearComment.invoke()
+                    clearComments.invoke()
                     getItems()
                     showToast("댓글작성완료")
                 }
@@ -127,15 +125,8 @@ class DetailsViewModel(
         }
     }
 
-    val listener = object : PostDetailListener {
-        override fun onClickLikeButton() {
-            likePost()
-        }
-
-        override fun onClickBookmarkButton() {
-            setBookmark()
-        }
-    }
+    val likePostHandler = fun() { likePost() }
+    val bookmarkHandler = fun() { setBookmark() }
 
     private fun likePost() {
         if (isGuestLogin()) {
@@ -194,27 +185,14 @@ class DetailsViewModel(
         }
     }
 
-    private fun showToast(message: String) {
-        _toastMessage.value = message
-        _toastMessage.value = null
-    }
-
-    private fun hideSoftInput() {
-        hideSoftInput.value = true
-        hideSoftInput.value = false
-    }
-
     private fun isCommentInvalid(): Boolean {
         return comment.value.isNullOrBlank()
     }
 
-    private fun clearComment() {
-        comment.value = null
-    }
+    private val clearComment = { comment.value = null }
+    private val clearComments = { _items.value = null }
 
-    private fun clearComments() {
-        _items.value = null
-    }
+    private fun showToast(message: String) = toastMessageHandler?.invoke(message)
 
     companion object {
         private const val TAG = "DetailsViewModel"
