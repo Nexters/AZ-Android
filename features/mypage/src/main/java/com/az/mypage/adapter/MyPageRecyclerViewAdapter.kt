@@ -5,4 +5,3 @@ import androidx.recyclerview.widget.RecyclerView
 //class MyPageRecyclerViewAdapter : RecyclerView.Adapter() {
 //
 //}
-//

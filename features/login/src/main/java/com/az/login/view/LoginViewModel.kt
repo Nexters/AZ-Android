@@ -33,6 +33,8 @@ class LoginViewModel(private val repo: AuthRepository, private val sharedPrefs: 
     }
 
     fun setUserSession(userData: SignInResponseData) {
+        sharedPrefs.clearLoginSession()
+        sharedPrefs.clearLoginStatus()
         sharedPrefs.setLoginSession(userData)
         sharedPrefs.setLoginStatus(LoginStatus.USER_LOGIN)
     }
