@@ -44,9 +44,6 @@ class MainViewModel(
     private val _toastMessage = MutableLiveData<String>()
     val toastMessage: LiveData<String> = _toastMessage
 
-    private val _isRefreshing = MutableLiveData<Boolean>()
-    val isRefreshing: LiveData<Boolean> = _isRefreshing
-
     init {
         initIsHumorsFameData()
         initSimplePageData()
@@ -95,18 +92,12 @@ class MainViewModel(
     }
 
     fun refreshMainPage() {
-        setIsRefreshing(true)
         saveOldRating()
         cleanUserRatingData()
         cleanHumorData()
         initSimplePageData()
         getUserRating()
         getItems()
-        setIsRefreshing(false)
-    }
-
-    private fun setIsRefreshing(isRefreshing: Boolean) {
-        _isRefreshing.value = isRefreshing
     }
 
     private fun saveOldRating() {
@@ -171,7 +162,7 @@ class MainViewModel(
     private fun getPosts() {
         viewModelScope.launch {
             val response = postsRepository.getPosts(getCurrentPage(), size)
-            handlePostResponse(response)
+            handleGetPostResponse(response)
             setIsLoading(false)
         }
     }
@@ -179,12 +170,12 @@ class MainViewModel(
     private fun getPopularPosts() {
         viewModelScope.launch {
             val response = postsPopularRepository.getPopularPosts(getCurrentPage(), size)
-            handlePostResponse(response)
+            handleGetPostResponse(response)
             setIsLoading(false)
         }
     }
 
-    private fun handlePostResponse(response: Resource<PostsData>) {
+    private fun handleGetPostResponse(response: Resource<PostsData>) {
         when (response.status) {
             Status.SUCCESS -> {
                 setItemLoadingView(false)

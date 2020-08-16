@@ -44,7 +44,6 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
             humor_card_rv.adapter = MainHumorsAdapter(getHumorItemListener())
             setRecyclerViewScrollListener(humor_card_rv)
             fabCreateHumor.setOnClickListener { toCreatePage() }
-            refreshMain.setOnRefreshListener { viewModel.refreshMainPage() }
         }
         observeToast()
     }
