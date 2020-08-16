@@ -99,8 +99,11 @@ class MainViewModel(
         getItems()
     }
 
-    private fun cleanUserRatingData() {
+    private fun saveOldRating() {
         oldRating = userRating.value?.ratingForPromotion?.currentRating
+    }
+
+    private fun cleanUserRatingData() {
         _userRating.value = null
     }
 
@@ -115,8 +118,6 @@ class MainViewModel(
             handleLoginSessionExpired()
             return
         }
-
-        Log.d("checkRating", "oldRating : $oldRating")
 
         viewModelScope.launch {
             val response = userRatingRepository.getUserRating(userId)
