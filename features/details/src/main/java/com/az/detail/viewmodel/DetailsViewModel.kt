@@ -63,7 +63,11 @@ class DetailsViewModel(
     }
 
     private fun initSimplePageData() {
-        simplePageData = SimplePageData(1, 0, 0)
+        simplePageData = SimplePageData(0, 0, 0)
+    }
+
+    private fun getCurrentPage(): Int {
+        return simplePageData.currentPage + 1
     }
 
     override fun hasNextPage(): Boolean {
@@ -87,7 +91,7 @@ class DetailsViewModel(
 
     private fun getComments() {
         viewModelScope.launch {
-            val response = commentsRepository.getComments(postId, simplePageData.currentPage, size)
+            val response = commentsRepository.getComments(postId, getCurrentPage(), size)
             when (response.status) {
                 Status.SUCCESS -> {
                     setItemLoadingView(false)
