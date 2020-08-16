@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.az.infinite_recyclerview.InfiniteFragment
+import com.az.main.R
 import com.az.main.adapter.MainHumorsAdapter
 import com.az.main.adapter.holder.listener.HumorItemListener
 import com.az.main.databinding.FragmentMainBinding
@@ -45,7 +45,7 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
             setRecyclerViewScrollListener(humor_card_rv)
             fabCreateHumor.setOnClickListener { toCreatePage() }
         }
-        observeToast()
+        setViewModelHandlers()
     }
 
     override fun onResume() {
@@ -65,12 +65,12 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
     }
 
     private fun toCreatePage() {
-        if (viewModel.isGuestLogin()) {
-            showToast("가입이 필요한 서비스입니다")
-            return
-        }
         MainFragmentDirections.actionMainFragmentToCreateFragment()
             .let { action -> findNavController().navigate(action) }
+    }
+
+    private fun toLoginPage() {
+        findNavController().navigate(R.id.loginFragment)
     }
 
     private fun hideSoftInput() {
@@ -81,10 +81,12 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
         return requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 
-    private fun observeToast() {
-        viewModel.toastMessage.observe(viewLifecycleOwner, Observer {
-            if (!it.isNullOrBlank()) showToast(it)
-        })
+    private fun setViewModelHandlers() {
+        viewModel.run {
+            toastMessageHandler = { showToast(it) }
+            toCreatePageHandler = { toCreatePage() }
+            toLoginPageHandler = { toLoginPage() }
+        }
     }
 
     private fun showToast(message: String) {

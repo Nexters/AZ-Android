@@ -35,23 +35,23 @@ class MainViewModel(
     val userRating: LiveData<UserRatingData> = _userRating
     private var oldRating: String? = null
 
-    private val _isHumorsFame = MutableLiveData<Boolean>()
+    private val _isHumorsFame = MutableLiveData(false)
     val isHumorsFame: LiveData<Boolean> = _isHumorsFame
 
     val humors: LiveData<List<PostData?>> = items
     private lateinit var simplePageData: SimplePageData
 
-    private val _toastMessage = MutableLiveData<String>()
-    val toastMessage: LiveData<String> = _toastMessage
+    var toastMessageHandler: ((message: String) -> Unit)? = null
+    var toCreatePageHandler: (() -> Unit)? = null
+    var toLoginPageHandler: (() -> Unit)? = null
 
     init {
-        initIsHumorsFameData()
         initSimplePageData()
         getUserRating()
         getItems()
     }
 
-    fun isGuestLogin(): Boolean {
+    private fun isGuestLogin(): Boolean {
         return loginStatus == LoginStatus.GUEST_LOGIN.status
     }
 
@@ -69,10 +69,6 @@ class MainViewModel(
         }
     }
 
-    private fun initIsHumorsFameData() {
-        _isHumorsFame.value = false
-    }
-
     private fun initSimplePageData() {
         simplePageData = SimplePageData(0, 0, 0)
     }
@@ -85,10 +81,7 @@ class MainViewModel(
         _isHumorsFame.value = (isHumorsFame.value ?: false).let { !it }.also {
             initSimplePageData()
             cleanHumorData()
-            when (it) {
-                true -> getPopularPosts()
-                false -> getPosts()
-            }
+            getItems()
         }
     }
 
@@ -139,7 +132,7 @@ class MainViewModel(
             setGuestLoginStatus()
             return
         }
-        // TODO : 로그인 화면으로 이동
+        toLoginPageHandler?.invoke()
     }
 
     private fun setGuestLoginStatus() {
@@ -182,9 +175,15 @@ class MainViewModel(
         }
     }
 
-    private fun showToast(message: String) {
-        _toastMessage.value = message
-        _toastMessage.value = null
+
+    private fun showToast(message: String) = toastMessageHandler?.invoke(message)
+
+    fun toCreatePage() {
+        if (isGuestLogin()) {
+            showToast("가입이 필요한 서비스입니다")
+            return
+        }
+        toCreatePageHandler?.invoke()
     }
 
     companion object {
