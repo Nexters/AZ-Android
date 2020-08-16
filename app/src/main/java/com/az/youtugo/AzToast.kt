@@ -15,7 +15,7 @@ class AzToast(private val activity: Activity) {
                 .apply { findViewById<TextView>(R.id.text).text = message }
                 .let {
                     with(Toast(activity)) {
-                        setGravity(Gravity.FILL_HORIZONTAL, 0, 0)
+                        setGravity(Gravity.TOP, 0, 0)
                         duration = Toast.LENGTH_LONG
                         view = it
                         show()
