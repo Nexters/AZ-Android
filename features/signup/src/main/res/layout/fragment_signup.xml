@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,7 +9,7 @@
 
         <variable
             name="vm"
-            type="com.az.signup.SignupViewModel" />
+            type="com.az.signup.viewmodel.SignupViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,17 +25,19 @@
             android:id="@+id/edit_text_id_with_check"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@{vm.validId ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
+            android:background="@drawable/bg_rounded_button_white_border"
             android:hint="@string/signup_id"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
+            android:singleLine="true"
             android:text="@={vm.id}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorGray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            bind:validationBackground="@{vm.validId}" />
 
         <TextView
             android:id="@+id/txt_id_check_button"
@@ -57,45 +60,50 @@
             android:text="@string/signup_id_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
-            android:visibility="@{vm.validId ? View.GONE : View.VISIBLE}"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_id_with_check" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_id_with_check"
+            bind:errorTextVisibility="@{vm.validId}" />
 
         <EditText
             android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="18dp"
-            android:background="@{vm.validPassword ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
+            android:background="@drawable/bg_rounded_button_white_border"
             android:hint="@string/signup_password"
             android:inputType="textPassword"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
+            android:singleLine="true"
             android:text="@={vm.password}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorGray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_id_error" />
+            app:layout_constraintTop_toBottomOf="@id/txt_id_error"
+            bind:validationBackground="@{vm.validPassword}" />
 
         <EditText
             android:id="@+id/edit_text_password_check"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="18dp"
-            android:background="@{vm.validPassword ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
+            android:background="@drawable/bg_rounded_button_white_border"
             android:hint="@string/signup_password_check"
             android:inputType="textPassword"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
+            android:singleLine="true"
             android:text="@={vm.passwordCheck}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorGray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_text_password" />
+            app:layout_constraintTop_toBottomOf="@id/edit_text_password"
+            bind:validationBackground="@{vm.validPassword}" />
 
         <TextView
             android:id="@+id/txt_password_check_error"
@@ -107,29 +115,33 @@
             android:text="@string/signup_password_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
-            android:visibility="@{vm.validPassword ? View.GONE : View.VISIBLE}"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_password_check" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_password_check"
+            bind:errorTextVisibility="@{vm.validPassword}" />
 
         <EditText
             android:id="@+id/edit_text_nickname"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="18dp"
-            android:background="@{vm.validNickname ? @drawable/bg_rounded_button_white_border : @drawable/bg_rounded_button_red_border}"
+            android:background="@drawable/bg_rounded_button_white_border"
             android:hint="@string/signup_nickname"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
+            android:singleLine="true"
             android:text="@={vm.nickname}"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorGray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_password_check_error" />
+            app:layout_constraintTop_toBottomOf="@id/txt_password_check_error"
+            bind:validationBackground="@{vm.validNickname}" />
 
         <TextView
             android:id="@+id/txt_nickname_check_error"
+            errorTextVisibility="@{vm.validNickname}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -138,7 +150,7 @@
             android:text="@string/signup_nickname_check_error"
             android:textColor="@color/colorRed"
             android:textSize="15sp"
-            android:visibility="@{vm.validNickname ? View.GONE : View.VISIBLE}"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_nickname" />
 

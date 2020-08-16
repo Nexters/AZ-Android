@@ -7,6 +7,7 @@ object Versions {
 
     const val jetPack = "1.1.0"
     const val constraintLayout = "1.1.3"
+    const val swipeRefreshLayout = "1.0.0"
     const val ktx = "1.1.0"
     const val koin = "2.1.6"
     const val v7 = "28.0.0"
@@ -58,6 +59,8 @@ object Libraries {
     const val appCompat = "com.android.support:appcompat-v7:${Versions.v7}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val swipeRefreshLayout =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
 
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
 

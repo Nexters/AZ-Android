@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.az.core.LoginStatus
 import com.az.core.Preferences
 import com.az.core.Status
-import com.az.detail.view.listener.PostDetailListener
 import com.az.infinite_recyclerview.InfiniteViewModel
 import com.az.model.posts.SimplePageData
 import com.az.model.posts.detail.PostDetailData
@@ -45,7 +44,9 @@ class DetailsViewModel(
     private lateinit var simplePageData: SimplePageData
 
     val comment = MutableLiveData<String>()
-    val hideSoftInput = MutableLiveData<Boolean>()
+
+    var toastMessageHandler: ((message: String) -> Unit)? = null
+    var hideSoftInputHandler: (() -> Unit)? = null
 
     init {
         initSimplePageData()
@@ -62,7 +63,11 @@ class DetailsViewModel(
     }
 
     private fun initSimplePageData() {
-        simplePageData = SimplePageData(1, 0, 0)
+        simplePageData = SimplePageData(0, 0, 0)
+    }
+
+    private fun getCurrentPage(): Int {
+        return simplePageData.currentPage + 1
     }
 
     override fun hasNextPage(): Boolean {
@@ -86,7 +91,7 @@ class DetailsViewModel(
 
     private fun getComments() {
         viewModelScope.launch {
-            val response = commentsRepository.getComments(postId, simplePageData.currentPage, size)
+            val response = commentsRepository.getComments(postId, getCurrentPage(), size)
             when (response.status) {
                 Status.SUCCESS -> {
                     setItemLoadingView(false)
@@ -109,33 +114,35 @@ class DetailsViewModel(
                 createCommentRepository.createComment(
                     postId,
                     CreateCommentRequestData(comment.value!!)
-                )
+                ).also { getPostDetail() }
             when (response.status) {
                 Status.SUCCESS -> {
-                    hideSoftInput()
+                    hideSoftInputHandler?.invoke()
                     initSimplePageData()
-                    clearComment()
-                    clearComments()
+                    clearComment.invoke()
+                    clearComments.invoke()
                     getItems()
+                    showToast("댓글작성완료")
                 }
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
     }
 
-    val listener = object : PostDetailListener {
-        override fun onClickLikeButton() {
-            likePost()
-        }
-
-        override fun onClickBookmarkButton() {
-            setBookmark()
-        }
+    private fun isCommentInvalid(): Boolean {
+        return comment.value.isNullOrBlank()
     }
 
+    val likePostHandler = fun() { likePost() }
+    val bookmarkHandler = fun() { setBookmark() }
+
     private fun likePost() {
+        if (isGuestLogin()) {
+            showToast("가입이 필요한 서비스입니다").also { _details.value = details.value }
+            return
+        }
         if (details.value?.detailedPost?.pressLike == true) {
-            // "이미 좋아요를 누른 게시물입니다" 토스트 메시지 출력
+            showToast("이미 좋아요를 눌렀습니다")
             _details.value = PostDetailData(details.value!!.detailedPost)
             return
         }
@@ -149,7 +156,10 @@ class DetailsViewModel(
     }
 
     private fun setBookmark() {
-        // 북마크 추가/취소 되었습니다 토스트 메시지 출력ㅣ
+        if (isGuestLogin()) {
+            showToast("가입이 필요한 서비스입니다").also { _details.value = details.value }
+            return
+        }
         if (details.value?.detailedPost?.pressBookMark == true) {
             deleteBookmark()
         } else {
@@ -165,6 +175,7 @@ class DetailsViewModel(
                     details.value!!.detailedPost.copy(
                         pressBookMark = false
                     ).let { _details.value = PostDetailData(it) }
+                        .also { showToast("북마크 취소됨") }
                 }
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
@@ -176,27 +187,16 @@ class DetailsViewModel(
             val response = createBookmarkRepository.addBookmark(postId)
             when (response.status) {
                 Status.SUCCESS -> _details.value = PostDetailData(response.data!!.detailedPost)
+                    .also { showToast("북마크 추가됨") }
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
     }
 
-    private fun hideSoftInput() {
-        hideSoftInput.value = true
-        hideSoftInput.value = false
-    }
+    private val clearComment = { comment.value = null }
+    private val clearComments = { _items.value = null }
 
-    private fun isCommentInvalid(): Boolean {
-        return comment.value.isNullOrBlank()
-    }
-
-    private fun clearComment() {
-        comment.value = null
-    }
-
-    private fun clearComments() {
-        _items.value = null
-    }
+    private fun showToast(message: String) = toastMessageHandler?.invoke(message)
 
     companion object {
         private const val TAG = "DetailsViewModel"

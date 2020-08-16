@@ -25,7 +25,7 @@ class MainViewModel(
     private val userRatingRepository: UserRatingRepository,
     private val postsRepository: PostsRepository,
     private val postsPopularRepository: PostsPopularRepository,
-    sharedPrefs: Preferences
+    private val sharedPrefs: Preferences
 ) : InfiniteViewModel<PostData>() {
 
     private val loginStatus = sharedPrefs.getLoginStatus()
@@ -33,18 +33,26 @@ class MainViewModel(
 
     private val _userRating = MutableLiveData<UserRatingData>()
     val userRating: LiveData<UserRatingData> = _userRating
+    private var oldRating: String? = null
 
-    private val _isHumorsFame = MutableLiveData<Boolean>()
+    private val _isHumorsFame = MutableLiveData(false)
     val isHumorsFame: LiveData<Boolean> = _isHumorsFame
 
     val humors: LiveData<List<PostData?>> = items
     private lateinit var simplePageData: SimplePageData
 
+    var toastMessageHandler: ((message: String) -> Unit)? = null
+    var toCreatePageHandler: (() -> Unit)? = null
+    var toLoginPageHandler: (() -> Unit)? = null
+
     init {
-        initIsHumorsFameData()
         initSimplePageData()
         getUserRating()
         getItems()
+    }
+
+    private fun isGuestLogin(): Boolean {
+        return loginStatus == LoginStatus.GUEST_LOGIN.status
     }
 
     override fun hasNextPage(): Boolean {
@@ -61,10 +69,6 @@ class MainViewModel(
         }
     }
 
-    private fun initIsHumorsFameData() {
-        _isHumorsFame.value = false
-    }
-
     private fun initSimplePageData() {
         simplePageData = SimplePageData(0, 0, 0)
     }
@@ -76,23 +80,21 @@ class MainViewModel(
     fun toggleFame() {
         _isHumorsFame.value = (isHumorsFame.value ?: false).let { !it }.also {
             initSimplePageData()
-            when (it) {
-                true -> getPopularPosts()
-                false -> getPosts()
-            }
+            cleanHumorData()
+            getItems()
         }
     }
 
     fun refreshMainPage() {
-        cleanUserRatingData()
+        saveOldRating()
         cleanHumorData()
         initSimplePageData()
         getUserRating()
         getItems()
     }
 
-    private fun cleanUserRatingData() {
-        _userRating.value = null
+    private fun saveOldRating() {
+        oldRating = userRating.value?.ratingForPromotion?.currentRating
     }
 
     private fun cleanHumorData() {
@@ -110,10 +112,25 @@ class MainViewModel(
         viewModelScope.launch {
             val response = userRatingRepository.getUserRating(userId)
             when (response.status) {
-                Status.SUCCESS -> _userRating.value = response.data
-                Status.ERROR -> Log.d(TAG, response.message!!)
+                Status.SUCCESS -> {
+                    if (checkIsRatingUpdated(response.data?.ratingForPromotion?.currentRating!!)) {
+                        showToast("등업완료")
+                    }
+                    _userRating.value = response.data
+                }
+                Status.ERROR -> {
+                    response.message?.let {
+                        Log.d(TAG, it)
+                        showToast(it)
+                    }
+                    handleLoginSessionExpired()
+                }
             }
         }
+    }
+
+    private fun checkIsRatingUpdated(newRating: String): Boolean {
+        return oldRating?.let { it != newRating } ?: false
     }
 
     private fun handleLoginSessionExpired() {
@@ -121,7 +138,11 @@ class MainViewModel(
             setGuestLoginStatus()
             return
         }
-        // TODO : 로그인 화면으로 이동
+        sharedPrefs.run {
+            clearLoginSession()
+            clearLoginStatus()
+        }
+        toLoginPageHandler?.invoke()
     }
 
     private fun setGuestLoginStatus() {
@@ -140,7 +161,7 @@ class MainViewModel(
     private fun getPosts() {
         viewModelScope.launch {
             val response = postsRepository.getPosts(getCurrentPage(), size)
-            handlePostResponse(response)
+            handleGetPostResponse(response)
             setIsLoading(false)
         }
     }
@@ -148,20 +169,37 @@ class MainViewModel(
     private fun getPopularPosts() {
         viewModelScope.launch {
             val response = postsPopularRepository.getPopularPosts(getCurrentPage(), size)
-            handlePostResponse(response)
+            handleGetPostResponse(response)
             setIsLoading(false)
         }
     }
 
-    private fun handlePostResponse(response: Resource<PostsData>) {
+    private fun handleGetPostResponse(response: Resource<PostsData>) {
         when (response.status) {
             Status.SUCCESS -> {
                 setItemLoadingView(false)
                 _items.value = items.value?.plus(response.data!!.posts) ?: response.data!!.posts
                 simplePageData = response.data!!.simplePage
             }
-            Status.ERROR -> Log.d(TAG, response.message!!)
+            Status.ERROR -> {
+                response.message?.let {
+                    Log.d(TAG, it)
+                    showToast(it)
+                }
+                handleLoginSessionExpired()
+            }
         }
+    }
+
+
+    private fun showToast(message: String) = toastMessageHandler?.invoke(message)
+
+    fun createPage() {
+        if (isGuestLogin()) {
+            showToast("가입이 필요한 서비스입니다")
+            return
+        }
+        toCreatePageHandler?.invoke()
     }
 
     companion object {

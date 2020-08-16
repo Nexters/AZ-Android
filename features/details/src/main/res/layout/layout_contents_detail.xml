@@ -7,12 +7,8 @@
     <data>
 
         <variable
-            name="detail"
-            type="com.az.model.posts.detail.PostDetailData" />
-
-        <variable
-            name="listener"
-            type="com.az.detail.view.listener.PostDetailListener" />
+            name="vm"
+            type="com.az.detail.viewmodel.DetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,8 +24,8 @@
             android:layout_marginEnd="9dp"
             android:background="@drawable/btn_heart"
             android:button="@null"
-            android:checked="@{detail.detailedPost.pressLike}"
-            android:onClick="@{() -> listener.onClickLikeButton()}"
+            android:checked="@{vm.details.detailedPost.pressLike}"
+            android:onClick="@{() -> vm.likePostHandler.invoke()}"
             app:layout_constraintBottom_toBottomOf="@id/btn_bookmark"
             app:layout_constraintEnd_toStartOf="@id/btn_bookmark"
             app:layout_constraintTop_toTopOf="@id/btn_bookmark" />
@@ -42,8 +38,8 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/btn_bookmark"
             android:button="@null"
-            android:checked="@{detail.detailedPost.pressBookMark}"
-            android:onClick="@{() -> listener.onClickBookmarkButton()}"
+            android:checked="@{vm.details.detailedPost.pressBookMark}"
+            android:onClick="@{() -> vm.bookmarkHandler.invoke()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_heart"
-            bind:flexibleSizeDetailText="@{detail.detailedPost.content}"
+            bind:flexibleSizeDetailText="@{vm.details.detailedPost.content}"
             tools:text="소나무가 삐지면?\n\n칫솔" />
 
         <ImageView
@@ -81,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{@string/count(detail.detailedPost.likes)}"
+            android:text="@{@string/count(vm.details.detailedPost.likes)}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -107,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{@string/count(detail.detailedPost.commentCount)}"
+            android:text="@{@string/count(vm.details.detailedPost.commentCount)}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -130,8 +126,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/count_comment"
             app:layout_constraintTop_toBottomOf="@id/content_detail"
-            bind:nickname="@{detail.detailedPost.author.nickname}"
-            bind:rating="@{detail.detailedPost.author.rating}"
+            bind:nickname="@{vm.details.detailedPost.author.nickname}"
+            bind:rating="@{vm.details.detailedPost.author.rating}"
             tools:text="신입 가나다님" />
 
         <TextView
@@ -140,7 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/app_main_font"
-            android:text="@{detail.detailedPost.createdDate}"
+            android:text="@{vm.details.detailedPost.createdDate}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="12sp"
             android:textStyle="bold"

@@ -15,7 +15,9 @@ class CreateViewModel(
 
     val humorText = MutableLiveData<String>()
 
-    val postCompleted = MutableLiveData<Boolean>().apply { value = false }
+    var toastMessageHandler: ((message: String) -> Unit)? = null
+    var showSoftInputHandler: (() -> Unit)? = null
+    var closeCreatePageHandler: (() -> Unit)? = null
 
     fun createPost() {
         if (isPostInvalid()) {
@@ -24,7 +26,7 @@ class CreateViewModel(
         viewModelScope.launch {
             val response = createPostRepository.createPost(CreatePostRequestData(humorText.value!!))
             when (response.status) {
-                Status.SUCCESS -> setPostCompleted()
+                Status.SUCCESS -> closeCreatePageHandler?.invoke().also { showToast("개그작성완료") }
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
@@ -34,10 +36,7 @@ class CreateViewModel(
         return humorText.value.isNullOrBlank()
     }
 
-    private fun setPostCompleted() {
-        postCompleted.value = true
-        postCompleted.value = false
-    }
+    private fun showToast(message: String) = toastMessageHandler?.invoke(message)
 
     companion object {
         private const val TAG = "Create"

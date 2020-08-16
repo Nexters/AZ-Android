@@ -1,4 +1,4 @@
-package com.az.signup
+package com.az.signup.view
 
 import android.os.Bundle
 import android.util.Log
@@ -11,8 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.az.core.Resource
 import com.az.core.Status
 import com.az.core.data.auth.response.SignInResponseData
+import com.az.signup.R
 import com.az.signup.databinding.FragmentSignupBinding
 import com.az.signup.di.signupViewModelModule
+import com.az.signup.viewmodel.SignupViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
