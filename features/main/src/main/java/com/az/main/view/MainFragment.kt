@@ -47,6 +47,7 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
 
     override fun onResume() {
         super.onResume()
+        viewModel.refreshMainPage()
         hideSoftInput()
     }
 
