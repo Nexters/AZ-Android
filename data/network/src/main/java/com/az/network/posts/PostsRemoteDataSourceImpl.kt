@@ -3,18 +3,6 @@ package com.az.network.posts
 import com.az.core.Resource
 import com.az.model.posts.PostsData
 import com.az.network.responsehandler.ResponseHandler
-import org.koin.dsl.module
-import retrofit2.Retrofit
-
-val postsApiModule = module {
-    factory<PostsRemoteDataSource> { PostsRemoteDataSourceImpl(get(), get()) }
-
-    factory {
-        get<Retrofit>().create(
-            PostsApi::class.java
-        )
-    }
-}
 
 class PostsRemoteDataSourceImpl(
     private val postsApi: PostsApi,

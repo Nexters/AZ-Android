@@ -40,7 +40,7 @@ class CreateFragment : Fragment() {
             vm = viewModel
             humorInput.let {
                 it.requestFocus()
-                showSoftInput(it)
+                /*showSoftInput(it)*/
             }
         }
     }
