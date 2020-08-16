@@ -1,4 +1,4 @@
-package com.az.create
+package com.az.create.view
 
 import android.content.Context
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.az.create.viewmodel.CreateViewModel
 import com.az.create.databinding.FragmentCreateBinding
 import com.az.create.di.loadFeature
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -51,7 +52,8 @@ class CreateFragment : Fragment() {
         // softInput 이 30 mills 동안 delay 되었다가 보여지도록 했음
         view.postDelayed(
             { inputMethodManager.showSoftInput(view, 0) }
-            , DELAY_TO_SHOW_SOFT_INPUT
+            ,
+            DELAY_TO_SHOW_SOFT_INPUT
         )
     }
 }

@@ -89,7 +89,7 @@
 
     <fragment
         android:id="@+id/createFragment"
-        android:name="com.az.create.CreateFragment"
+        android:name="com.az.create.view.CreateFragment"
         android:label="CreateFragment"
         app:moduleName="create" />
 </navigation>

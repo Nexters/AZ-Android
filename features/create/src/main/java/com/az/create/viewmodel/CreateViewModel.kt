@@ -1,4 +1,4 @@
-package com.az.create
+package com.az.create.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

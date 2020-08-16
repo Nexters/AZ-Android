@@ -1,4 +1,4 @@
-package com.az.create
+package com.az.create.view.binding
 
 import android.text.Editable
 import android.text.TextWatcher

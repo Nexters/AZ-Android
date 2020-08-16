@@ -1,6 +1,6 @@
 package com.az.create.di
 
-import com.az.create.CreateViewModel
+import com.az.create.viewmodel.CreateViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
