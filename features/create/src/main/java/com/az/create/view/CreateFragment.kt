@@ -5,12 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.az.create.viewmodel.CreateViewModel
+import androidx.lifecycle.Observer
 import com.az.create.databinding.FragmentCreateBinding
 import com.az.create.di.loadFeature
+import com.az.create.viewmodel.CreateViewModel
+import com.az.youtugo.MainActivity
+import com.az.youtugo.ToolbarListener
+import kotlinx.android.synthetic.main.fragment_create.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class CreateFragment : Fragment() {
@@ -44,16 +48,33 @@ class CreateFragment : Fragment() {
                 /*showSoftInput(it)*/
             }
         }
+        setSoftInputMode()
+        observePostCompleted()
+        (activity as MainActivity).listener = object : ToolbarListener {
+            override fun onClickPostCompleteButton() {
+                viewModel.createPost()
+            }
+        }
+        /*(activity as MainActivity).findViewById<DynamicToolbar>(R.id.toolbar).createHandler = {
+            viewModel.createPost()
+        }*/
     }
 
-    private fun showSoftInput(view: EditText) {
+    private fun setSoftInputMode() {
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+    }
+
+    private fun observePostCompleted() {
+        viewModel.postCompleted.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                hideSoftInput()
+            }
+        })
+    }
+
+    private fun hideSoftInput() {
         val inputMethodManager =
             activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        // softInput 이 30 mills 동안 delay 되었다가 보여지도록 했음
-        view.postDelayed(
-            { inputMethodManager.showSoftInput(view, 0) }
-            ,
-            DELAY_TO_SHOW_SOFT_INPUT
-        )
+        inputMethodManager.hideSoftInputFromWindow(humor_input.windowToken, 0)
     }
 }
