@@ -44,6 +44,9 @@ class MainViewModel(
     private val _toastMessage = MutableLiveData<String>()
     val toastMessage: LiveData<String> = _toastMessage
 
+    private val _isRefreshing = MutableLiveData<Boolean>()
+    val isRefreshing: LiveData<Boolean> = _isRefreshing
+
     init {
         initIsHumorsFameData()
         initSimplePageData()
@@ -92,11 +95,18 @@ class MainViewModel(
     }
 
     fun refreshMainPage() {
+        setIsRefreshing(true)
+        saveOldRating()
         cleanUserRatingData()
         cleanHumorData()
         initSimplePageData()
         getUserRating()
         getItems()
+        setIsRefreshing(false)
+    }
+
+    private fun setIsRefreshing(isRefreshing: Boolean) {
+        _isRefreshing.value = isRefreshing
     }
 
     private fun saveOldRating() {

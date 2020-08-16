@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.az.main.R
 import com.az.main.adapter.MainHumorsAdapter
 import com.az.model.posts.PostData
@@ -28,6 +29,11 @@ fun setFame(view: RecyclerView, b: Boolean?) {
         b?.let { setIsHumorFame(it) }
         notifyDataSetChanged()
     }
+}
+
+@BindingAdapter("isRefreshing")
+fun setRefreshing(view: SwipeRefreshLayout, isRefreshing: Boolean?) {
+    view.isRefreshing = isRefreshing ?: false
 }
 
 @BindingAdapter("conciergeGrade")

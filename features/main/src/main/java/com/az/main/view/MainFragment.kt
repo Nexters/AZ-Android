@@ -44,21 +44,19 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
             humor_card_rv.adapter = MainHumorsAdapter(getHumorItemListener())
             setRecyclerViewScrollListener(humor_card_rv)
             fabCreateHumor.setOnClickListener { toCreatePage() }
+            refreshMain.setOnRefreshListener { viewModel.refreshMainPage() }
         }
         observeToast()
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.refreshMainPage()
         hideSoftInput()
     }
 
     private fun getHumorItemListener(): HumorItemListener {
         return object : HumorItemListener {
-            override fun onClickHumorItem(postId: Int) {
-                toDetailPage(postId)
-            }
+            override fun onClickHumorItem(postId: Int) = toDetailPage(postId)
         }
     }
 
