@@ -33,6 +33,7 @@ class MainViewModel(
 
     private val _userRating = MutableLiveData<UserRatingData>()
     val userRating: LiveData<UserRatingData> = _userRating
+    private var oldRating: String? = null
 
     private val _isHumorsFame = MutableLiveData<Boolean>()
     val isHumorsFame: LiveData<Boolean> = _isHumorsFame
@@ -99,6 +100,7 @@ class MainViewModel(
     }
 
     private fun cleanUserRatingData() {
+        oldRating = userRating.value?.ratingForPromotion?.currentRating
         _userRating.value = null
     }
 
@@ -113,6 +115,8 @@ class MainViewModel(
             handleLoginSessionExpired()
             return
         }
+
+        Log.d("checkRating", "oldRating : $oldRating")
 
         viewModelScope.launch {
             val response = userRatingRepository.getUserRating(userId)
@@ -129,7 +133,7 @@ class MainViewModel(
     }
 
     private fun checkIsRatingUpdated(newRating: String): Boolean {
-        return userRating.value?.ratingForPromotion?.currentRating != newRating
+        return oldRating?.let { it != newRating } ?: false
     }
 
     private fun handleLoginSessionExpired() {
