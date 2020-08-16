@@ -1,4 +1,4 @@
-package com.az.signup
+package com.az.signup.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
