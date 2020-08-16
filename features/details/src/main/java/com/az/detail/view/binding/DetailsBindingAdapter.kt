@@ -2,6 +2,7 @@ package com.az.detail.view.binding
 
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.Dimension
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.az.detail.adapter.CommentsAdapter
@@ -13,6 +14,31 @@ fun setItems(view: RecyclerView, items: List<CommentData>?) {
     (view.adapter as? CommentsAdapter)?.run {
         items?.let { replaceAll(it) } ?: replaceAll(listOf())
         notifyDataSetChanged()
+    }
+}
+
+@BindingAdapter("flexibleSizeDetailText")
+fun setFlexibleSizeDetailText(view: TextView, content: String?) {
+    val length = content?.length ?: 0
+    when {
+        (length in 0..12) -> {
+            view.apply {
+                setTextSize(Dimension.SP, 35F)
+                text = content
+            }
+        }
+        (length in 13..49) -> {
+            view.apply {
+                setTextSize(Dimension.SP, 22F)
+                text = content
+            }
+        }
+        else -> {
+            view.apply {
+                setTextSize(Dimension.SP, 16F)
+                text = content
+            }
+        }
     }
 }
 

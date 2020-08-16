@@ -56,12 +56,12 @@
             android:fontFamily="@font/sdgnh"
             android:gravity="center"
             android:lineSpacingExtra="5sp"
-            android:text="@{detail.detailedPost.content}"
             android:textColor="@color/colorSemiBlack"
             android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_heart"
+            bind:flexibleSizeDetailText="@{detail.detailedPost.content}"
             tools:text="소나무가 삐지면?\n\n칫솔" />
 
         <ImageView
