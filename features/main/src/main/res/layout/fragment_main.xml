@@ -52,10 +52,11 @@
                 android:layout_width="60dp"
                 android:layout_height="0dp"
                 android:onClick="@{() -> vm.refreshMainPage()}"
-                android:src="@drawable/ic_sinip_sticker"
+                android:src="@drawable/ic_sticker_main_sinip"
                 app:layout_constraintBottom_toBottomOf="@id/user_grade_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/user_grade" />
+                app:layout_constraintTop_toTopOf="@id/user_grade"
+                bind:gradeForMainSticker="@{vm.userRating.ratingForPromotion.currentRating}" />
 
             <TextView
                 android:id="@+id/post_number_text"

@@ -125,6 +125,10 @@ class DetailsViewModel(
         }
     }
 
+    private fun isCommentInvalid(): Boolean {
+        return comment.value.isNullOrBlank()
+    }
+
     val likePostHandler = fun() { likePost() }
     val bookmarkHandler = fun() { setBookmark() }
 
@@ -183,10 +187,6 @@ class DetailsViewModel(
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
-    }
-
-    private fun isCommentInvalid(): Boolean {
-        return comment.value.isNullOrBlank()
     }
 
     private val clearComment = { comment.value = null }

@@ -52,9 +52,7 @@ fun setNameWithGrade(view: TextView, nickname: String?, code: String?) {
         Rating.MANAGING_DIRECTOR.code -> Rating.MANAGING_DIRECTOR.gradeName
         Rating.BOSS.code -> Rating.BOSS.gradeName
         else -> Rating.NEW_RECRUIT.gradeName
-    }.let { grade ->
-        view.text = "$grade ${nickname}님"
-    }
+    }.let { grade -> view.text = "$grade ${nickname}님" }
 }
 
 @BindingAdapter("gradeForProfile")
