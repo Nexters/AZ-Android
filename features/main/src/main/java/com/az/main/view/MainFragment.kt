@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.az.infinite_recyclerview.InfiniteFragment
 import com.az.main.adapter.MainHumorsAdapter
@@ -42,8 +43,9 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
             vm = viewModel
             humor_card_rv.adapter = MainHumorsAdapter(getHumorItemListener())
             setRecyclerViewScrollListener(humor_card_rv)
-            fabCreateHumor.setOnClickListener { toCreatePage.invoke() }
+            fabCreateHumor.setOnClickListener { toCreatePage() }
         }
+        observeToast()
     }
 
     override fun onResume() {
@@ -65,7 +67,11 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
             .let { action -> findNavController().navigate(action) }
     }
 
-    private val toCreatePage: () -> Unit = {
+    private fun toCreatePage() {
+        if (viewModel.isGuestLogin()) {
+            showToast("가입이 필요한 서비스입니다")
+            return
+        }
         MainFragmentDirections.actionMainFragmentToCreateFragment()
             .let { action -> findNavController().navigate(action) }
     }
@@ -76,6 +82,12 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
 
     private fun getInputMethodManager(): InputMethodManager {
         return requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
+
+    private fun observeToast() {
+        viewModel.toastMessage.observe(viewLifecycleOwner, Observer {
+            if (!it.isNullOrBlank()) showToast(it)
+        })
     }
 
     private fun showToast(message: String) {

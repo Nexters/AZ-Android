@@ -40,11 +40,18 @@ class MainViewModel(
     val humors: LiveData<List<PostData?>> = items
     private lateinit var simplePageData: SimplePageData
 
+    private val _toastMessage = MutableLiveData<String>()
+    val toastMessage: LiveData<String> = _toastMessage
+
     init {
         initIsHumorsFameData()
         initSimplePageData()
         getUserRating()
         getItems()
+    }
+
+    fun isGuestLogin(): Boolean {
+        return loginStatus == LoginStatus.GUEST_LOGIN.status
     }
 
     override fun hasNextPage(): Boolean {
@@ -110,10 +117,19 @@ class MainViewModel(
         viewModelScope.launch {
             val response = userRatingRepository.getUserRating(userId)
             when (response.status) {
-                Status.SUCCESS -> _userRating.value = response.data
+                Status.SUCCESS -> {
+                    if (checkIsRatingUpdated(response.data?.ratingForPromotion?.currentRating!!)) {
+                        showToast("등업완료")
+                    }
+                    _userRating.value = response.data
+                }
                 Status.ERROR -> Log.d(TAG, response.message!!)
             }
         }
+    }
+
+    private fun checkIsRatingUpdated(newRating: String): Boolean {
+        return userRating.value?.ratingForPromotion?.currentRating != newRating
     }
 
     private fun handleLoginSessionExpired() {
@@ -162,6 +178,11 @@ class MainViewModel(
             }
             Status.ERROR -> Log.d(TAG, response.message!!)
         }
+    }
+
+    private fun showToast(message: String) {
+        _toastMessage.value = message
+        _toastMessage.value = null
     }
 
     companion object {

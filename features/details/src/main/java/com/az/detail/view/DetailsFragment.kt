@@ -15,7 +15,7 @@ import com.az.detail.di.loadFeature
 import com.az.detail.viewmodel.DetailsViewModel
 import com.az.infinite_recyclerview.InfiniteFragment
 import com.az.model.posts.detail.comments.CommentData
-import kotlinx.android.synthetic.main.fragment_details.*
+import com.az.youtugo.AzToast
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
@@ -45,11 +45,18 @@ class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
         }
         setSoftInputMode()
         observeHideSoftInput()
+        observeToast()
     }
 
     private fun observeHideSoftInput() {
         viewModel.hideSoftInput.observe(viewLifecycleOwner, Observer {
             if (it) hideSoftInput()
+        })
+    }
+
+    private fun observeToast() {
+        viewModel.toastMessage.observe(viewLifecycleOwner, Observer {
+            if (!it.isNullOrBlank()) showToast(it)
         })
     }
 
@@ -63,5 +70,9 @@ class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
 
     private fun getInputMethodManager(): InputMethodManager {
         return requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
+
+    private fun showToast(message: String) {
+        AzToast(requireActivity()).showToast(message)
     }
 }
