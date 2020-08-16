@@ -24,9 +24,10 @@
             android:layout_width="27dp"
             android:layout_height="26dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/ic_profile"
+            android:src="@drawable/ic_profile_sinip"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            bind:gradeForProfile="@{commentItem.writer.rating}" />
 
         <TextView
             android:id="@+id/user_name"
