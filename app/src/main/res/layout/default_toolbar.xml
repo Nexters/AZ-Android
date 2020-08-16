@@ -5,15 +5,15 @@
     android:layout_height="57dp"
     android:background="@color/colorSemiBlack"
     android:paddingStart="30dp"
-    android:paddingEnd="23dp">
+    android:paddingEnd="20dp">
 
     <ImageView
         android:layout_width="41dp"
         android:layout_height="25dp"
         android:src="@drawable/ic_toolbar_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/layout_default_delete_button_wrap"
@@ -32,13 +32,21 @@
             android:src="@drawable/ic_close_button" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_default_button_wrap"
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_default_button_wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:constraint_referenced_ids="layout_alarm_button_wrap,layout_my_level_button_wrap" />
+
+    <LinearLayout
+        android:id="@+id/layout_alarm_button_wrap"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:paddingStart="15dp"
+        android:paddingEnd="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/layout_my_level_button_wrap"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -46,14 +54,24 @@
             android:layout_width="20dp"
             android:layout_height="21dp"
             android:layout_gravity="center"
-            android:layout_marginEnd="14dp"
             android:src="@drawable/ic_alarm" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_my_level_button_wrap"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingStart="7dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_gravity="center"
             android:id="@+id/img_my_level"
             android:layout_width="25dp"
             android:layout_height="23dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_mypage" />
     </LinearLayout>
 

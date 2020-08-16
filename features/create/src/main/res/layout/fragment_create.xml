@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.az.create.CreateViewModel" />
+            type="com.az.create.viewmodel.CreateViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

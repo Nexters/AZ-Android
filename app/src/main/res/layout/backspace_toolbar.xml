@@ -9,8 +9,9 @@
     <ImageView
         android:id="@+id/img_backspace_back_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:paddingHorizontal="15dp"
         android:src="@drawable/ic_back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,10 +29,26 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="알림" />
 
+    <TextView
+        android:id="@+id/text_backspace_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:text="완료"
+        android:textColor="@color/colorGray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/layout_backspace_close_button_wrap"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="25dp"
+        android:paddingHorizontal="5dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +58,7 @@
             android:id="@+id/img_close_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:src="@drawable/ic_close_button" />
     </LinearLayout>
 

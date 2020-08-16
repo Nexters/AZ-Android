@@ -83,6 +83,22 @@ class MainViewModel(
         }
     }
 
+    fun refreshMainPage() {
+        cleanUserRatingData()
+        cleanHumorData()
+        initSimplePageData()
+        getUserRating()
+        getItems()
+    }
+
+    private fun cleanUserRatingData() {
+        _userRating.value = null
+    }
+
+    private fun cleanHumorData() {
+        _items.value = null
+    }
+
     private fun getUserRating() {
         val userId = loginSession?.user?.id
 

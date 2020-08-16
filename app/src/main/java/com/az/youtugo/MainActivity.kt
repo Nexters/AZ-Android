@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     private val sharedPrefs: Preferences by inject()
 
+    lateinit var listener: ToolbarListener
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -55,6 +57,9 @@ class MainActivity : AppCompatActivity() {
             sharedPrefs.clearLoginStatus()
             val action = MainFragmentDirections.actionMainFragmentToLoginFragment()
             navController.navigate(action)
+        }
+        toolbar.createHandler = {
+            listener.onClickPostCompleteButton()
         }
     }
 }
