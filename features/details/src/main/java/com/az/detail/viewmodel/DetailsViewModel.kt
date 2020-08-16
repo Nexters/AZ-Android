@@ -139,7 +139,7 @@ class DetailsViewModel(
 
     private fun likePost() {
         if (isGuestLogin()) {
-            showToast("가입이 필요한 서비스입니다")
+            showToast("가입이 필요한 서비스입니다").also { _details.value = details.value }
             return
         }
         if (details.value?.detailedPost?.pressLike == true) {
@@ -158,7 +158,7 @@ class DetailsViewModel(
 
     private fun setBookmark() {
         if (isGuestLogin()) {
-            showToast("가입이 필요한 서비스입니다")
+            showToast("가입이 필요한 서비스입니다").also { _details.value = details.value }
             return
         }
         if (details.value?.detailedPost?.pressBookMark == true) {
