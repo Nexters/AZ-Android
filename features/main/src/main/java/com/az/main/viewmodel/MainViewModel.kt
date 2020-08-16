@@ -84,6 +84,7 @@ class MainViewModel(
     fun toggleFame() {
         _isHumorsFame.value = (isHumorsFame.value ?: false).let { !it }.also {
             initSimplePageData()
+            cleanHumorData()
             when (it) {
                 true -> getPopularPosts()
                 false -> getPosts()
@@ -93,7 +94,6 @@ class MainViewModel(
 
     fun refreshMainPage() {
         saveOldRating()
-        cleanUserRatingData()
         cleanHumorData()
         initSimplePageData()
         getUserRating()
@@ -102,10 +102,6 @@ class MainViewModel(
 
     private fun saveOldRating() {
         oldRating = userRating.value?.ratingForPromotion?.currentRating
-    }
-
-    private fun cleanUserRatingData() {
-        _userRating.value = null
     }
 
     private fun cleanHumorData() {
