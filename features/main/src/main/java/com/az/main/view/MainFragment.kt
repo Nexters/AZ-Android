@@ -1,9 +1,11 @@
 package com.az.main.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.navigation.fragment.findNavController
 import com.az.infinite_recyclerview.InfiniteFragment
 import com.az.main.adapter.MainHumorsAdapter
@@ -43,6 +45,11 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        hideSoftInput()
+    }
+
     private fun getHumorItemListener(): HumorItemListener {
         return object : HumorItemListener {
             override fun onClickHumorItem(postId: Int) {
@@ -59,5 +66,13 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
     private val toCreatePage: () -> Unit = {
         MainFragmentDirections.actionMainFragmentToCreateFragment()
             .let { action -> findNavController().navigate(action) }
+    }
+
+    private fun hideSoftInput() {
+        getInputMethodManager().hideSoftInputFromWindow(view?.windowToken, 0)
+    }
+
+    private fun getInputMethodManager(): InputMethodManager {
+        return activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 }

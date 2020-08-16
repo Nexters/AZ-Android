@@ -36,6 +36,7 @@ class CreateViewModel(
 
     private fun setPostCompleted() {
         postCompleted.value = true
+        postCompleted.value = false
     }
 
     companion object {

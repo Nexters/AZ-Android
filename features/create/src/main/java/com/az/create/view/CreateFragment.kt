@@ -9,6 +9,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.az.create.databinding.FragmentCreateBinding
 import com.az.create.di.loadFeature
 import com.az.create.viewmodel.CreateViewModel
@@ -50,31 +51,40 @@ class CreateFragment : Fragment() {
         }
         setSoftInputMode()
         observePostCompleted()
+        setPostCompleteButtonListener()
+    }
+
+    private fun setPostCompleteButtonListener() {
         (activity as MainActivity).listener = object : ToolbarListener {
             override fun onClickPostCompleteButton() {
                 viewModel.createPost()
             }
         }
-        /*(activity as MainActivity).findViewById<DynamicToolbar>(R.id.toolbar).createHandler = {
-            viewModel.createPost()
-        }*/
     }
 
     private fun setSoftInputMode() {
-        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
     }
 
     private fun observePostCompleted() {
         viewModel.postCompleted.observe(viewLifecycleOwner, Observer {
             if (it) {
-                hideSoftInput()
+                closeCreatePage()
+            } else {
+                showSoftInput()
             }
         })
     }
 
-    private fun hideSoftInput() {
-        val inputMethodManager =
-            activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(humor_input.windowToken, 0)
+    private fun showSoftInput() {
+        getInputMethodManager().showSoftInput(humor_input, 0)
+    }
+
+    private fun getInputMethodManager(): InputMethodManager {
+        return activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
+
+    private fun closeCreatePage() {
+        findNavController().popBackStack()
     }
 }
