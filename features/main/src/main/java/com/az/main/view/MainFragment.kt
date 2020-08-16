@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.navigation.fragment.findNavController
 import com.az.infinite_recyclerview.InfiniteFragment
-import com.az.main.R
 import com.az.main.adapter.MainHumorsAdapter
 import com.az.main.adapter.holder.listener.HumorItemListener
 import com.az.main.databinding.FragmentMainBinding
@@ -16,6 +16,7 @@ import com.az.main.di.loadFeature
 import com.az.main.viewmodel.MainViewModel
 import com.az.model.posts.PostData
 import com.az.youtugo.AzToast
+import com.az.youtugo.R
 import kotlinx.android.synthetic.main.bottom_sheet_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -43,8 +44,8 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
             vm = viewModel
             humor_card_rv.adapter = MainHumorsAdapter(getHumorItemListener())
             setRecyclerViewScrollListener(humor_card_rv)
-            fabCreateHumor.setOnClickListener { toCreatePage() }
         }
+        setSoftInputMode()
         setViewModelHandlers()
     }
 
@@ -57,6 +58,10 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
         return object : HumorItemListener {
             override fun onClickHumorItem(postId: Int) = toDetailPage(postId)
         }
+    }
+
+    private fun setSoftInputMode() {
+        requireActivity().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED)
     }
 
     private fun toDetailPage(postId: Int) {

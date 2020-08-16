@@ -25,7 +25,7 @@ class MainViewModel(
     private val userRatingRepository: UserRatingRepository,
     private val postsRepository: PostsRepository,
     private val postsPopularRepository: PostsPopularRepository,
-    sharedPrefs: Preferences
+    private val sharedPrefs: Preferences
 ) : InfiniteViewModel<PostData>() {
 
     private val loginStatus = sharedPrefs.getLoginStatus()
@@ -118,7 +118,13 @@ class MainViewModel(
                     }
                     _userRating.value = response.data
                 }
-                Status.ERROR -> Log.d(TAG, response.message!!)
+                Status.ERROR -> {
+                    response.message?.let {
+                        Log.d(TAG, it)
+                        showToast(it)
+                    }
+                    handleLoginSessionExpired()
+                }
             }
         }
     }
@@ -131,6 +137,10 @@ class MainViewModel(
         if (loginStatus == LoginStatus.GUEST_LOGIN.status) {
             setGuestLoginStatus()
             return
+        }
+        sharedPrefs.run {
+            clearLoginSession()
+            clearLoginStatus()
         }
         toLoginPageHandler?.invoke()
     }
@@ -171,14 +181,20 @@ class MainViewModel(
                 _items.value = items.value?.plus(response.data!!.posts) ?: response.data!!.posts
                 simplePageData = response.data!!.simplePage
             }
-            Status.ERROR -> Log.d(TAG, response.message!!)
+            Status.ERROR -> {
+                response.message?.let {
+                    Log.d(TAG, it)
+                    showToast(it)
+                }
+                handleLoginSessionExpired()
+            }
         }
     }
 
 
     private fun showToast(message: String) = toastMessageHandler?.invoke(message)
 
-    fun toCreatePage() {
+    fun createPage() {
         if (isGuestLogin()) {
             showToast("가입이 필요한 서비스입니다")
             return

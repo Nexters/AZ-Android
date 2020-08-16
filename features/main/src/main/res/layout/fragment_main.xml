@@ -165,6 +165,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="24dp"
             android:elevation="8dp"
+            android:onClick="@{() -> vm.createPage()}"
             android:src="@drawable/ic_create_post"
             app:backgroundTint="@color/colorPurple"
             app:pressedTranslationZ="10dp" />
