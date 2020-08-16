@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.item_humor_card.view.*
 @BindingAdapter("setItems")
 fun setItems(view: RecyclerView, items: List<PostData>?) {
     (view.adapter as? MainHumorsAdapter)?.run {
-        items?.let { replaceAll(it) }
+        items?.let { replaceAll(it) } ?: replaceAll(listOf())
         notifyDataSetChanged()
     }
 }

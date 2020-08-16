@@ -11,7 +11,7 @@ import com.az.model.users.rating.Rating
 @BindingAdapter("setItems")
 fun setItems(view: RecyclerView, items: List<CommentData>?) {
     (view.adapter as? CommentsAdapter)?.run {
-        items?.let { replaceAll(it) }
+        items?.let { replaceAll(it) } ?: replaceAll(listOf())
         notifyDataSetChanged()
     }
 }
