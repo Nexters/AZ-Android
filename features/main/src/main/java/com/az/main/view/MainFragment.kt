@@ -14,6 +14,7 @@ import com.az.main.databinding.FragmentMainBinding
 import com.az.main.di.loadFeature
 import com.az.main.viewmodel.MainViewModel
 import com.az.model.posts.PostData
+import com.az.youtugo.AzToast
 import kotlinx.android.synthetic.main.bottom_sheet_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -74,6 +75,10 @@ class MainFragment : InfiniteFragment<MainViewModel, PostData>() {
     }
 
     private fun getInputMethodManager(): InputMethodManager {
-        return activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        return requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
+
+    private fun showToast(message: String) {
+        AzToast(requireActivity()).showToast(message)
     }
 }

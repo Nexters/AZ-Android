@@ -63,7 +63,7 @@ class CreateFragment : Fragment() {
     }
 
     private fun setSoftInputMode() {
-        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+        requireActivity().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
     }
 
     private fun observePostCompleted() {
@@ -81,7 +81,7 @@ class CreateFragment : Fragment() {
     }
 
     private fun getInputMethodManager(): InputMethodManager {
-        return activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        return requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 
     private fun closeCreatePage() {

@@ -54,12 +54,14 @@ class DetailsFragment : InfiniteFragment<DetailsViewModel, CommentData>() {
     }
 
     private fun setSoftInputMode() {
-        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+        requireActivity().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
     }
 
     private fun hideSoftInput() {
-        val inputMethodManager =
-            activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(comment_input.windowToken, 0)
+        getInputMethodManager().hideSoftInputFromWindow(view?.windowToken, 0)
+    }
+
+    private fun getInputMethodManager(): InputMethodManager {
+        return requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 }
