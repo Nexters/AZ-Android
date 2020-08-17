@@ -1,92 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="300dp"
-    android:layout_height="87dp"
-    android:background="@drawable/bg_rounded_button_color_white"
-    android:padding="18dp">
+<layout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_humor_title"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:fontFamily="@font/sdgnm"
-        android:textColor="@color/colorSemiBlack"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_bookmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="2dp"
-        android:src="@drawable/ic_bookmark_small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <variable
+            name="humorItem"
+            type="com.az.model.posts.PostData" />
+    </data>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_best"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:src="@drawable/ic_best_small"
-        app:layout_constraintEnd_toStartOf="@id/img_bookmark"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="300dp"
+        android:layout_height="87dp"
+        android:background="@drawable/bg_rounded_button_color_white"
+        android:padding="18dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_heart"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/ic_heart_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_humor_title" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_humor_title"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/sdgnm"
+            android:textColor="@color/colorSemiBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_heart_count"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:text="12개"
-        android:textColor="@color/colorSemiBlack"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/img_heart"
-        app:layout_constraintStart_toEndOf="@id/img_heart"
-        app:layout_constraintTop_toTopOf="@id/img_heart" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/ic_bookmark_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_best"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_best_small"
+            app:layout_constraintEnd_toStartOf="@id/img_bookmark"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_heart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_heart_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_humor_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_heart_count"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="12개"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/img_heart"
+            app:layout_constraintStart_toEndOf="@id/img_heart"
+            app:layout_constraintTop_toTopOf="@id/img_heart" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_comment"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/ic_comment_small"
-        app:layout_constraintBottom_toBottomOf="@id/img_heart"
-        app:layout_constraintStart_toEndOf="@id/txt_heart_count"
-        app:layout_constraintTop_toTopOf="@id/img_heart" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_comment"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_comment_small"
+            app:layout_constraintBottom_toBottomOf="@id/img_heart"
+            app:layout_constraintStart_toEndOf="@id/txt_heart_count"
+            app:layout_constraintTop_toTopOf="@id/img_heart" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_comment_count"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:text="12개"
-        android:textColor="@color/colorSemiBlack"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/img_heart"
-        app:layout_constraintStart_toEndOf="@id/img_comment"
-        app:layout_constraintTop_toTopOf="@id/img_heart" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_comment_count"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="12개"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/img_heart"
+            app:layout_constraintStart_toEndOf="@id/img_comment"
+            app:layout_constraintTop_toTopOf="@id/img_heart" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_humor_create_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="2020.08.15"
-        android:textColor="@color/colorSemiBlack"
-        app:layout_constraintBottom_toBottomOf="@id/img_heart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/img_heart" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_humor_create_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="2020.08.15"
+            android:textColor="@color/colorSemiBlack"
+            app:layout_constraintBottom_toBottomOf="@id/img_heart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_heart" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

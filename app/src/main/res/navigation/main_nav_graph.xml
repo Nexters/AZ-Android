@@ -68,6 +68,12 @@
         android:label="MyPageFragment"
         app:moduleName="mypage">
 
+        <action
+            android:id="@+id/action_logout"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+
     </fragment>
 
     <fragment
