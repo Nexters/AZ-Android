@@ -34,8 +34,7 @@
                 <include
                     android:id="@+id/contents_detail_include"
                     layout="@layout/layout_contents_detail"
-                    bind:detail="@{vm.details}"
-                    bind:listener="@{vm.listener}" />
+                    bind:vm="@{vm}" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/comments_rv"
@@ -57,37 +56,46 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="@color/colorWhite"
-            android:paddingHorizontal="30dp"
+            android:paddingHorizontal="15dp"
             android:visibility="@{vm.isGuestLogin ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:layout_height="match_parent"
                 android:background="@null"
                 android:fontFamily="@font/app_main_font"
+                android:gravity="center_vertical"
                 android:hint="댓글달기"
+                android:paddingStart="15dp"
                 android:text="@={vm.comment}"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGray"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_comment_send"
+                app:layout_constraintEnd_toStartOf="@id/layout_btn_comment_send_wrap"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/btn_comment_send"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/btn_comment_send"
-                android:button="@null"
+            <LinearLayout
+                android:id="@+id/layout_btn_comment_send_wrap"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
                 android:onClick="@{() -> vm.createComment()}"
+                android:paddingHorizontal="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                bind:textToSend="@{vm.comment}" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/btn_comment_send"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/btn_comment_send"
+                    android:button="@null"
+                    bind:textToSend="@{vm.comment}" />
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

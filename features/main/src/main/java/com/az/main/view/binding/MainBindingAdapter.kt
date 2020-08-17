@@ -1,6 +1,7 @@
 package com.az.main.view.binding
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.Dimension
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.item_humor_card.view.*
 @BindingAdapter("setItems")
 fun setItems(view: RecyclerView, items: List<PostData>?) {
     (view.adapter as? MainHumorsAdapter)?.run {
-        items?.let { replaceAll(it) }
+        items?.let { replaceAll(it) } ?: replaceAll(listOf())
         notifyDataSetChanged()
     }
 }
@@ -49,6 +50,17 @@ fun setHumorGradeProgress(view: ProgressBar, progress: Float?) {
             view.progress = it
         }
     }
+}
+
+@BindingAdapter("gradeForMainSticker")
+fun setMainStickerWithGrade(view: ImageView, code: String?) {
+    return when (code) {
+        Rating.ASSISTANT_MANAGE.code -> view.context.getDrawable(R.drawable.ic_sticker_main_daeri)
+        Rating.DEPARTMENT_HEAD.code -> view.context.getDrawable(R.drawable.ic_sticker_main_bujang)
+        Rating.MANAGING_DIRECTOR.code -> view.context.getDrawable(R.drawable.ic_sticker_main_sangmu)
+        Rating.BOSS.code -> view.context.getDrawable(R.drawable.ic_sticker_main_sajang)
+        else -> view.context.getDrawable(R.drawable.ic_sticker_main_sinip)
+    }.let { view.setImageDrawable(it) }
 }
 
 @BindingAdapter("grade")

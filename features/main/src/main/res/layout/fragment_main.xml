@@ -51,10 +51,12 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="0dp"
-                android:src="@drawable/ic_sinip_sticker"
+                android:onClick="@{() -> vm.refreshMainPage()}"
+                android:src="@drawable/ic_sticker_main_sinip"
                 app:layout_constraintBottom_toBottomOf="@id/user_grade_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/user_grade" />
+                app:layout_constraintTop_toTopOf="@id/user_grade"
+                bind:gradeForMainSticker="@{vm.userRating.ratingForPromotion.currentRating}" />
 
             <TextView
                 android:id="@+id/post_number_text"
@@ -155,8 +157,6 @@
         <include
             android:id="@+id/bottom_sheet_include"
             layout="@layout/bottom_sheet_main"
-            bind:humors="@{vm.humors}"
-            bind:isFame="@{vm.isHumorsFame}"
             bind:vm="@{vm}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -166,6 +166,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="24dp"
             android:elevation="8dp"
+            android:onClick="@{() -> vm.createPage()}"
             android:src="@drawable/ic_create_post"
             app:backgroundTint="@color/colorPurple"
             app:pressedTranslationZ="10dp" />

@@ -7,14 +7,6 @@
     <data>
 
         <variable
-            name="isFame"
-            type="Boolean" />
-
-        <variable
-            name="humors"
-            type="java.util.List&lt;com.az.model.posts.PostData&gt;" />
-
-        <variable
             name="vm"
             type="com.az.main.viewmodel.MainViewModel" />
     </data>
@@ -73,6 +65,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/humor_card_title" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/humor_card_rv"
             android:layout_width="match_parent"
@@ -86,8 +79,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/humor_sheet_divider"
-            bind:setFame="@{isFame}"
-            bind:setItems="@{humors}"
+            bind:setFame="@{vm.isHumorsFame}"
+            bind:setItems="@{vm.humors}"
             tools:listitem="@layout/item_humor_card" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

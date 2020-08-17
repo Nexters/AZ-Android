@@ -4,6 +4,7 @@ import android.app.Application
 import com.az.core.di.sharedPreferencesModule
 import com.az.network.auth.authApiModule
 import com.az.network.networkModule
+import com.az.network.posts.create.createPostApiModule
 import com.az.network.posts.detail.comments.commentsApiModule
 import com.az.network.posts.detail.comments.create.createCommentApiModule
 import com.az.network.posts.detail.likes.likePostApiModule
@@ -17,6 +18,7 @@ import com.az.network.users.comments.userCommentsApiModule
 import com.az.network.users.posts.userPostsApiModule
 import com.az.network.users.rating.userRatingApiModule
 import com.az.repository.auth.authRepositoryModule
+import com.az.repository.posts.create.createPostRepositoryModule
 import com.az.repository.posts.detail.comments.commentsRepositoryModule
 import com.az.repository.posts.detail.comments.create.createCommentRepositoryModule
 import com.az.repository.posts.detail.likes.likePostRepositoryModule
@@ -50,6 +52,8 @@ class YoutugoApp : Application() {
                 authRepositoryModule,
                 userRatingApiModule,
                 userRatingRepositoryModule,
+                createPostApiModule,
+                createPostRepositoryModule,
                 bookmarksApiModule,
                 bookmarksRepositoryModule,
                 userPostsApiModule,

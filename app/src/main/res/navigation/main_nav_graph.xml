@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.az.signup.SignupFragment"
+        android:name="com.az.signup.view.SignupFragment"
         android:label="SignupFragment"
         app:moduleName="signup">
 
@@ -95,7 +95,7 @@
 
     <fragment
         android:id="@+id/createFragment"
-        android:name="com.az.create.CreateFragment"
+        android:name="com.az.create.view.CreateFragment"
         android:label="CreateFragment"
         app:moduleName="create" />
 </navigation>

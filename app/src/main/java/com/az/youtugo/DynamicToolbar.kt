@@ -23,6 +23,7 @@ class DynamicToolbar @JvmOverloads constructor(
     var backspaceHandler: (() -> Unit)? = null
     var closeHandler: (() -> Unit)? = null
     var toLoginHandler: (() -> Unit)? = null
+    var createHandler: (() -> Unit)? = null
 
     // TODO 모듈에 맞는 툴바 여기에 추가
     // TODO navigation에 label추가하 것
@@ -40,7 +41,7 @@ class DynamicToolbar @JvmOverloads constructor(
             R.id.myPageFragment -> setBackspaceToolbar("마이페이지")
             R.id.alarmFragment -> setBackspaceToolbar("알림")
             R.id.detailsFragment -> setLogoCloseToolbar()
-            R.id.createFragment -> setCloseToolbar("개그작성")
+            R.id.createFragment -> setCreateToolbar("개그작성")
             else -> removeAllViews()
         }
     }
@@ -59,7 +60,7 @@ class DynamicToolbar @JvmOverloads constructor(
     private fun setLogoToolbar() {
         removeAllViews()
         with(getView(R.layout.default_toolbar)) {
-            layout_default_button_wrap.visibility = View.GONE
+            group_default_button_wrap.visibility = View.GONE
             layout_default_delete_button_wrap.visibility = View.GONE
             addView(this)
         }
@@ -69,12 +70,12 @@ class DynamicToolbar @JvmOverloads constructor(
     private fun setDefaultToolbar() {
         removeAllViews()
         with(getView(R.layout.default_toolbar)) {
-            layout_default_button_wrap.visibility = View.VISIBLE
+            group_default_button_wrap.visibility = View.VISIBLE
             layout_default_delete_button_wrap.visibility = View.GONE
-            img_alarm.setOnClickListener {
+            layout_alarm_button_wrap.setOnClickListener {
                 alarmHandler?.invoke()
             }
-            img_my_level.setOnClickListener {
+            layout_my_level_button_wrap.setOnClickListener {
                 myPageHandler?.invoke()
             }
             addView(this)
@@ -85,7 +86,7 @@ class DynamicToolbar @JvmOverloads constructor(
     private fun setLogoCloseToolbar() {
         removeAllViews()
         with(getView(R.layout.default_toolbar)) {
-            layout_default_button_wrap.visibility = View.GONE
+            group_default_button_wrap.visibility = View.GONE
             layout_default_delete_button_wrap.apply {
                 visibility = View.VISIBLE
                 setOnClickListener {
@@ -102,6 +103,7 @@ class DynamicToolbar @JvmOverloads constructor(
         with(getView(R.layout.backspace_toolbar)) {
             txt_backspace_title.text = title
             layout_backspace_close_button_wrap.visibility = View.GONE
+            text_backspace_complete.visibility = View.GONE
             img_backspace_back_button.apply {
                 visibility = View.VISIBLE
                 setOnClickListener {
@@ -118,10 +120,33 @@ class DynamicToolbar @JvmOverloads constructor(
         with(getView(R.layout.backspace_toolbar)) {
             txt_backspace_title.text = title
             img_backspace_back_button.visibility = View.GONE
+            text_backspace_complete.visibility = View.GONE
             layout_backspace_close_button_wrap.apply {
                 visibility = View.VISIBLE
                 setOnClickListener {
                     closeHandler?.invoke()
+                }
+            }
+            addView(this)
+        }
+    }
+
+    // 글작성 페이지 툴바
+    private fun setCreateToolbar(title: String) {
+        removeAllViews()
+        with(getView(R.layout.backspace_toolbar)) {
+            txt_backspace_title.text = title
+            layout_backspace_close_button_wrap.visibility = View.GONE
+            text_backspace_complete.apply {
+                visibility = View.VISIBLE
+                setOnClickListener {
+                    createHandler?.invoke()
+                }
+            }
+            img_backspace_back_button.apply {
+                visibility = View.VISIBLE
+                setOnClickListener {
+                    backspaceHandler?.invoke()
                 }
             }
             addView(this)
