@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="vm"
-            type="com.az.mypage.ui.viewModel.MyPageFragmentViewModel" />
+            type="com.az.mypage.ui.viewModel.MyPageViewModel" />
     </data>
 
 
@@ -34,7 +35,9 @@
 
         <include
             android:id="@+id/layout_bottom_sheet"
-            layout="@layout/layout_bottom_sheet" />
+            layout="@layout/layout_bottom_sheet"
+            bind:items="@{vm.baseItems}"
+            bind:vm="@{vm}"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
