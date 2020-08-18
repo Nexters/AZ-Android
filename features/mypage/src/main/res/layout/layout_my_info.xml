@@ -11,7 +11,7 @@
 
         <variable
             name="userRating"
-            type="String" />
+            type="com.az.model.users.rating.Rating" />
 
     </data>
 
@@ -29,7 +29,7 @@
             android:src="@drawable/ic_newbie_tag"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:gradeForUserSticker="@{userRating}" />
+            bind:gradeForUserSticker="@{userRating.code}" />
 
         <TextView
             android:id="@+id/txt_my_rating"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="3dp"
-            android:text="@{userRating}"
+            android:text="@{userRating.gradeName}"
             android:textColor="@color/colorWhite"
             android:textSize="30sp"
             android:textStyle="bold"

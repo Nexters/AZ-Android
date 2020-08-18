@@ -156,8 +156,8 @@ class MyPageViewModel(
         }
     }
 
-    fun getUserRating(): String {
-        return Rating.valueOf(user?.rating!!).gradeName
+    fun getUserRating(): Rating {
+        return Rating.valueOf(user?.rating!!)
     }
 
     fun onSelectMyPageItem(selectCode: MyPageItemCode) {
