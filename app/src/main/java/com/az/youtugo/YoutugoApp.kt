@@ -16,6 +16,8 @@ import com.az.network.users.bookmark.create.createBookmarkApiModule
 import com.az.network.users.bookmark.delete.deleteBookmarkApiModule
 import com.az.network.users.comments.userCommentsApiModule
 import com.az.network.users.posts.userPostsApiModule
+import com.az.network.users.identification.identificationApiModule
+import com.az.network.users.nickname.nicknameApiModule
 import com.az.network.users.rating.userRatingApiModule
 import com.az.repository.auth.authRepositoryModule
 import com.az.repository.posts.create.createPostRepositoryModule
@@ -30,6 +32,8 @@ import com.az.repository.users.bookmark.create.createBookmarkRepositoryModule
 import com.az.repository.users.bookmark.delete.deleteBookmarkRepositoryModule
 import com.az.repository.users.comments.userCommentsRepositoryModule
 import com.az.repository.users.posts.userPostsRepositoryModule
+import com.az.repository.users.identification.identificationRepositoryModule
+import com.az.repository.users.nickname.nicknameRepositoryModule
 import com.az.repository.users.rating.userRatingRepositoryModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -50,6 +54,10 @@ class YoutugoApp : Application() {
                 postsPopularRepositoryModule,
                 authApiModule,
                 authRepositoryModule,
+                identificationApiModule,
+                identificationRepositoryModule,
+                nicknameApiModule,
+                nicknameRepositoryModule,
                 userRatingApiModule,
                 userRatingRepositoryModule,
                 createPostApiModule,

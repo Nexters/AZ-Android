@@ -26,7 +26,10 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="@drawable/bg_rounded_button_white_border"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="@string/signup_id"
+            android:inputType="text"
+            android:maxLength="10"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
             android:singleLine="true"
@@ -37,15 +40,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:validationBackground="@{vm.validId}" />
+            bind:blockChangeAfterExistenceCheck="@{vm.isIdValid}"
+            bind:validationBackground="@{vm.isIdValid}" />
 
         <TextView
             android:id="@+id/txt_id_check_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:onClick="@{() -> vm.idExistenceCheck()}"
+            android:paddingHorizontal="24dp"
             android:paddingBottom="1dp"
-            android:text="@string/signup_duplicate_check"
+            android:text="@{vm.isIdValid ? @string/signup_duplicate_check_complete : @string/signup_duplicate_check}"
             android:textColor="@color/colorWhite"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/edit_text_id_with_check"
@@ -63,7 +69,7 @@
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_id_with_check"
-            bind:errorTextVisibility="@{vm.validId}" />
+            bind:errorTextVisibility="@{vm.isIdValid}" />
 
         <EditText
             android:id="@+id/edit_text_password"
@@ -71,8 +77,10 @@
             android:layout_height="56dp"
             android:layout_marginTop="18dp"
             android:background="@drawable/bg_rounded_button_white_border"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="@string/signup_password"
             android:inputType="textPassword"
+            android:maxLength="20"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
             android:singleLine="true"
@@ -83,7 +91,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_id_error"
-            bind:validationBackground="@{vm.validPassword}" />
+            bind:passwordChangeListener="@{vm.passwordValidationCheck}"
+            bind:validationBackground="@{vm.isPasswordValid}" />
 
         <EditText
             android:id="@+id/edit_text_password_check"
@@ -91,8 +100,10 @@
             android:layout_height="56dp"
             android:layout_marginTop="18dp"
             android:background="@drawable/bg_rounded_button_white_border"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="@string/signup_password_check"
             android:inputType="textPassword"
+            android:maxLength="20"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
             android:singleLine="true"
@@ -103,7 +114,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_text_password"
-            bind:validationBackground="@{vm.validPassword}" />
+            bind:passwordChangeListener="@{vm.passwordValidationCheck}"
+            bind:validationBackground="@{vm.isPasswordValid}" />
 
         <TextView
             android:id="@+id/txt_password_check_error"
@@ -118,7 +130,7 @@
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_password_check"
-            bind:errorTextVisibility="@{vm.validPassword}" />
+            bind:errorTextVisibility="@{vm.isPasswordValid}" />
 
         <EditText
             android:id="@+id/edit_text_nickname"
@@ -127,6 +139,8 @@
             android:layout_marginTop="18dp"
             android:background="@drawable/bg_rounded_button_white_border"
             android:hint="@string/signup_nickname"
+            android:inputType="text"
+            android:maxLength="6"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
             android:singleLine="true"
@@ -137,11 +151,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_password_check_error"
-            bind:validationBackground="@{vm.validNickname}" />
+            bind:blockChangeAfterExistenceCheck="@{vm.isNicknameValid}"
+            bind:validationBackground="@{vm.isNicknameValid}" />
 
         <TextView
             android:id="@+id/txt_nickname_check_error"
-            errorTextVisibility="@{vm.validNickname}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -152,15 +166,18 @@
             android:textSize="15sp"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_nickname" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_nickname"
+            bind:errorTextVisibility="@{vm.isNicknameValid()}" />
 
         <TextView
             android:id="@+id/txt_nickname_check_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:onClick="@{() -> vm.nicknameExistenceCheck()}"
+            android:paddingHorizontal="24dp"
             android:paddingBottom="1dp"
-            android:text="@string/signup_duplicate_check"
+            android:text="@{vm.isNicknameValid ? @string/signup_duplicate_check_complete : @string/signup_duplicate_check}"
             android:textColor="@color/colorWhite"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/edit_text_nickname"
@@ -172,8 +189,8 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="40dp"
-            android:background="@{vm.validSignUp ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
-            android:onClick="@{() -> vm.onSignUpButtonClick()}"
+            android:background="@{vm.isSignUpValid ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
+            android:onClick="@{() -> vm.signUp()}"
             android:text="@string/btn_signup"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent" />

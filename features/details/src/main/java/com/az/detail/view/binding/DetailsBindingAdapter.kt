@@ -1,6 +1,5 @@
 package com.az.detail.view.binding
 
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.Dimension
@@ -67,6 +66,6 @@ fun setProfileWithGrade(view: ImageView, code: String?) {
 }
 
 @BindingAdapter("textToSend")
-fun setCommentSendButton(view: Button, textToSend: String?) {
+fun setCommentSendButton(view: ImageView, textToSend: String?) {
     view.isEnabled = !textToSend.isNullOrBlank()
 }
