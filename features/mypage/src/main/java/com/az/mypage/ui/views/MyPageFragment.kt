@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.az.infinite_recyclerview.InfiniteFragment
+import com.az.main.view.MainFragmentDirections
 import com.az.model.BaseDataInterface
 import com.az.mypage.adapter.MyPageRecyclerViewAdapter
+import com.az.mypage.adapter.holder.listener.HumorItemListener
 import com.az.mypage.adapter.holder.listener.SettingItemListener
 import com.az.mypage.databinding.FragmentMyPageBinding
 import com.az.mypage.di.loadFeature
@@ -42,24 +44,29 @@ class MyPageFragment : InfiniteFragment<MyPageViewModel, BaseDataInterface>() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             vm = viewModel
-            recycler_view_my_page.adapter = MyPageRecyclerViewAdapter(settingItemClickListener())
+            recycler_view_my_page.adapter = MyPageRecyclerViewAdapter(
+                settingItemClickListener(),
+                getHumorItemListener()
+            )
         }
 
         btn_my_bookmark.setOnClickListener {
-            Log.d("TAG", "click bookmark")
             viewModel.onSelectMyPageItem(MyPageItemCode.MY_BOOKMARKS)
         }
         btn_my_comment.setOnClickListener {
-            Log.d("TAG", "click comment")
             viewModel.onSelectMyPageItem(MyPageItemCode.MY_COMMENTS)
         }
         btn_my_setting.setOnClickListener {
-            Log.d("TAG", "click setting")
             viewModel.onSelectMyPageItem(MyPageItemCode.SETTING)
         }
         btn_my_write.setOnClickListener {
-            Log.d("TAG", "click write")
             viewModel.onSelectMyPageItem(MyPageItemCode.MY_HUMORS)
+        }
+    }
+
+    private fun getHumorItemListener(): HumorItemListener {
+        return object : HumorItemListener {
+            override fun onClickHumorItem(postId: Int) = toDetailPage(postId)
         }
     }
 
@@ -70,6 +77,11 @@ class MyPageFragment : InfiniteFragment<MyPageViewModel, BaseDataInterface>() {
                 logout()
             }
         }
+    }
+
+    private fun toDetailPage(postId: Int) {
+        MyPageFragmentDirections.actionMyPageFragmentToDetailsFragment(postId)
+            .let { action -> findNavController().navigate(action) }
     }
 
     fun logout() {

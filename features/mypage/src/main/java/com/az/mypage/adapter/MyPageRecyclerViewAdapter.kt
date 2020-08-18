@@ -13,6 +13,7 @@ import com.az.mypage.R
 import com.az.mypage.adapter.holder.CommentItemViewHolder
 import com.az.mypage.adapter.holder.HumorCardItemViewHolder
 import com.az.mypage.adapter.holder.SettingItemViewHolder
+import com.az.mypage.adapter.holder.listener.HumorItemListener
 import com.az.mypage.adapter.holder.listener.SettingItemListener
 import com.az.mypage.databinding.ItemMyCommentBinding
 import com.az.mypage.databinding.ItemMyHumorCardBinding
@@ -21,7 +22,8 @@ import com.az.mypage.model.MyPageItemCode
 import com.az.mypage.model.SettingModel
 
 class MyPageRecyclerViewAdapter(
-    private val settingItemListener: SettingItemListener
+    private val settingItemListener: SettingItemListener,
+    private val humorItemListener: HumorItemListener
 ) : InfiniteRecyclerview<BaseDataInterface>() {
 
     private var viewType: MyPageItemCode? = null
@@ -40,7 +42,7 @@ class MyPageRecyclerViewAdapter(
                     parent,
                     false
                 )
-                HumorCardItemViewHolder(binding)
+                HumorCardItemViewHolder(binding, humorItemListener)
             }
             MyPageItemCode.MY_COMMENTS.code -> {
                 val binding = DataBindingUtil.inflate<ItemMyCommentBinding>(

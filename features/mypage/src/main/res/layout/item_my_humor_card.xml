@@ -6,6 +6,11 @@
         <variable
             name="humorItem"
             type="com.az.model.posts.PostData" />
+
+        <variable
+            name="listener"
+            type="com.az.mypage.adapter.holder.listener.HumorItemListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="87dp"
         android:background="@drawable/bg_rounded_button_color_white"
-        android:padding="18dp">
+        android:padding="18dp"
+        android:onClick="@{() -> listener.onClickHumorItem(humorItem.id)}">>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_humor_title"
