@@ -38,7 +38,6 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(BuildModules.Libraries.App))
     implementation(Libraries.constraintLayout)
-    implementation(Libraries.swipeRefreshLayout)
 
     // Koin
     implementation(Libraries.koinAndroid)
@@ -48,4 +47,5 @@ dependencies {
 
     implementation(Libraries.navigationFragment)
     implementation(Libraries.navigationUI)
+    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
 }
