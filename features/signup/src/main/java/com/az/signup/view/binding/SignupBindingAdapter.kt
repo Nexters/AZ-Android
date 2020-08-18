@@ -17,6 +17,11 @@ fun setValidationBackground(view: EditText, isValid: Boolean?) {
     }
 }
 
+@BindingAdapter("blockChangeAfterExistenceCheck")
+fun setBlockChange(view: EditText, isValid: Boolean?) {
+    if (isValid == true) view.isEnabled = false
+}
+
 @BindingAdapter("errorTextVisibility")
 fun setErrorTextVisibility(view: TextView, isValid: Boolean?) {
     isValid?.let {

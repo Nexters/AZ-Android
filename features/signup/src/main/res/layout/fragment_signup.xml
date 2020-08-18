@@ -40,6 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            bind:blockChangeAfterExistenceCheck="@{vm.isIdValid}"
             bind:validationBackground="@{vm.isIdValid}" />
 
         <TextView
@@ -50,7 +51,7 @@
             android:onClick="@{() -> vm.idExistenceCheck()}"
             android:paddingHorizontal="24dp"
             android:paddingBottom="1dp"
-            android:text="@string/signup_duplicate_check"
+            android:text="@{vm.isIdValid ? @string/signup_duplicate_check_complete : @string/signup_duplicate_check}"
             android:textColor="@color/colorWhite"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/edit_text_id_with_check"
@@ -150,6 +151,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_password_check_error"
+            bind:blockChangeAfterExistenceCheck="@{vm.isNicknameValid}"
             bind:validationBackground="@{vm.isNicknameValid}" />
 
         <TextView
@@ -175,7 +177,7 @@
             android:onClick="@{() -> vm.nicknameExistenceCheck()}"
             android:paddingHorizontal="24dp"
             android:paddingBottom="1dp"
-            android:text="@string/signup_duplicate_check"
+            android:text="@{vm.isNicknameValid ? @string/signup_duplicate_check_complete : @string/signup_duplicate_check}"
             android:textColor="@color/colorWhite"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/edit_text_nickname"
