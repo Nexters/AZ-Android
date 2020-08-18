@@ -36,7 +36,6 @@ include(
     BuildModules.Libraries.InfiniteRecyclerview,
 
     BuildModules.Features.Main,
-    BuildModules.Features.Humors,
     BuildModules.Features.MyPage,
     BuildModules.Features.Login,
     BuildModules.Features.Signup,
