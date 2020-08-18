@@ -8,12 +8,8 @@ import com.az.core.Resource
 import com.az.core.Status
 import com.az.infinite_recyclerview.InfiniteViewModel
 import com.az.model.BaseDataInterface
-import com.az.model.posts.PostData
 import com.az.model.posts.PostsData
-import com.az.model.posts.PostsRepository
 import com.az.model.posts.SimplePageData
-import com.az.model.posts.detail.comments.CommentData
-import com.az.model.posts.detail.likes.LikePostRepository
 import com.az.model.users.bookmark.BookmarksData
 import com.az.model.users.bookmark.BookmarksRepository
 import com.az.model.users.comments.UserCommentsRepository
@@ -37,15 +33,6 @@ class MyPageViewModel(
 
     private val _selectItemCode = MutableLiveData<MyPageItemCode>(MyPageItemCode.MY_HUMORS)
     val selectItemCode get() = _selectItemCode
-
-    private val _myHumors = MutableLiveData<List<PostData?>>()
-    val myHumors get() = _myHumors
-
-    private val _myComments = MutableLiveData<List<CommentData?>>()
-    val myComments get() = _myComments
-
-    private val _myBookmarks = MutableLiveData<List<PostData?>>()
-    val myBookmarks get() = _myBookmarks
 
     private lateinit var simplePageData: SimplePageData
 
@@ -88,24 +75,25 @@ class MyPageViewModel(
                 getMyBookmark()
             }
             MyPageItemCode.MY_COMMENTS -> {
-                getComments()
+                getMyComments()
             }
             MyPageItemCode.SETTING -> {
-                _baseItems.value = setting
+                baseItems.value = setting
             }
         }
         setIsLoading(false)
     }
 
-    private fun getComments() {
+    private fun getMyComments() {
         viewModelScope.launch {
             val response = commentUserRepository.getComments(
                 userId, getCurrentPage(), size
             )
             when (response.status) {
                 Status.SUCCESS -> {
-                    baseItems.value?.plus(response.data!!.commentList)
+                    baseItems.value = baseItems.value?.plus(response.data!!.commentList)
                         ?: response.data!!.commentList
+                    simplePageData = response.data!!.simplePage
                 }
                 Status.ERROR -> {
                     Log.e("MyPage Comments", response.message!!)
@@ -175,7 +163,6 @@ class MyPageViewModel(
     fun onSelectMyPageItem(selectCode: MyPageItemCode) {
         initData()
         initSimplePageData()
-
         selectItemCode.value = selectCode
         getItems()
     }
