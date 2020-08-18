@@ -47,5 +47,4 @@ dependencies {
 
     implementation(Libraries.navigationFragment)
     implementation(Libraries.navigationUI)
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
 }

@@ -17,17 +17,19 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="87dp"
-        android:background="@drawable/bg_rounded_button_color_white"
-        android:padding="18dp"
         android:layout_marginBottom="14dp"
-        android:onClick="@{() -> listener.onClickHumorItem(humorItem.id)}">>
+        android:background="@drawable/bg_rounded_button_color_white"
+        android:onClick="@{() -> listener.onClickHumorItem(humorItem.id)}"
+        android:padding="18dp">>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_humor_title"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:ellipsize="end"
             android:fontFamily="@font/sdgnm"
+            android:lines="1"
             android:text="@{humorItem.content}"
             android:textColor="@color/colorSemiBlack"
             app:layout_constraintStart_toStartOf="parent"

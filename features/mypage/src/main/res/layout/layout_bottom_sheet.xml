@@ -38,12 +38,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
+            android:clipToPadding="false"
+            android:paddingBottom="87dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_header_dash"
             bind:setItems="@{items}"
-            bind:setViewType="@{vm.selectItemCode}"/>
+            bind:setViewType="@{vm.selectItemCode}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -41,7 +41,7 @@ class MyPageViewModel(
 
     val user = sharedPref.getLoginSession()?.user
 
-    private val setting: List<SettingModel> = arrayListOf(
+    private val setting: List<SettingModel> = listOf(
         SettingModel(SettingKey.CHART, "아재트 조직도 정보"),
         SettingModel(SettingKey.PRIVACY, "개인정보 취급방침"),
         SettingModel(SettingKey.VERSION, "앱버전"),
