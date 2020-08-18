@@ -91,8 +91,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_id_error"
-            bind:passwordChangeListener="@{vm.passWordValidationCheck}"
-            bind:validationBackground="@{vm.isPassWordValid}" />
+            bind:passwordChangeListener="@{vm.passwordValidationCheck}"
+            bind:validationBackground="@{vm.isPasswordValid}" />
 
         <EditText
             android:id="@+id/edit_text_password_check"
@@ -114,8 +114,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_text_password"
-            bind:passwordChangeListener="@{vm.passWordValidationCheck}"
-            bind:validationBackground="@{vm.isPassWordValid}" />
+            bind:passwordChangeListener="@{vm.passwordValidationCheck}"
+            bind:validationBackground="@{vm.isPasswordValid}" />
 
         <TextView
             android:id="@+id/txt_password_check_error"
@@ -130,7 +130,7 @@
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_password_check"
-            bind:errorTextVisibility="@{vm.isPassWordValid}" />
+            bind:errorTextVisibility="@{vm.isPasswordValid}" />
 
         <EditText
             android:id="@+id/edit_text_nickname"

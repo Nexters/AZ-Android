@@ -33,8 +33,8 @@ class SignupViewModel(
     val isIdValid: LiveData<Boolean> = _isIdValid
     private val _isNicknameValid = MutableLiveData<Boolean>()
     val isNicknameValid: LiveData<Boolean> = _isNicknameValid
-    private val _isPassWordValid = MutableLiveData<Boolean>()
-    val isPassWordValid: LiveData<Boolean> = _isPassWordValid
+    private val _isPasswordValid = MutableLiveData<Boolean>()
+    val isPasswordValid: LiveData<Boolean> = _isPasswordValid
 
     private val _isSignUpValid = MutableLiveData<Boolean>()
     val isSignUpValid: LiveData<Boolean> = _isSignUpValid
@@ -99,14 +99,14 @@ class SignupViewModel(
         }
     }
 
-    val passWordValidationCheck = {
-        _isPassWordValid.value = password.value.equals(passwordCheck.value)
+    val passwordValidationCheck = {
+        _isPasswordValid.value = password.value.equals(passwordCheck.value)
         signUpValidationCheck()
     }
 
     private fun signUpValidationCheck() {
         _isSignUpValid.value =
-            (isIdValid.value ?: false && isPassWordValid.value ?: false && isNicknameValid.value ?: false)
+            (isIdValid.value ?: false && isPasswordValid.value ?: false && isNicknameValid.value ?: false)
     }
 
     fun signUp() {
