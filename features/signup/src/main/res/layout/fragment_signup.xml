@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:validationBackground="@{vm.validId}" />
+            bind:validationBackground="@{vm.isIdValid}" />
 
         <TextView
             android:id="@+id/txt_id_check_button"
@@ -63,7 +63,7 @@
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_id_with_check"
-            bind:errorTextVisibility="@{vm.validId}" />
+            bind:errorTextVisibility="@{vm.isIdValid}" />
 
         <EditText
             android:id="@+id/edit_text_password"
@@ -83,7 +83,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_id_error"
-            bind:validationBackground="@{vm.validPassword}" />
+            bind:validationBackground="@{vm.isPassWordValid}" />
 
         <EditText
             android:id="@+id/edit_text_password_check"
@@ -103,7 +103,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_text_password"
-            bind:validationBackground="@{vm.validPassword}" />
+            bind:validationBackground="@{vm.isPassWordValid}" />
 
         <TextView
             android:id="@+id/txt_password_check_error"
@@ -118,7 +118,7 @@
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_password_check"
-            bind:errorTextVisibility="@{vm.validPassword}" />
+            bind:errorTextVisibility="@{vm.isPassWordValid}" />
 
         <EditText
             android:id="@+id/edit_text_nickname"
@@ -137,11 +137,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_password_check_error"
-            bind:validationBackground="@{vm.validNickname}" />
+            bind:validationBackground="@{vm.isNicknameValid}" />
 
         <TextView
             android:id="@+id/txt_nickname_check_error"
-            errorTextVisibility="@{vm.validNickname}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -152,7 +151,8 @@
             android:textSize="15sp"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_nickname" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_nickname"
+            bind:errorTextVisibility="@{vm.isNicknameValid()}" />
 
         <TextView
             android:id="@+id/txt_nickname_check_button"
@@ -172,7 +172,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="40dp"
-            android:background="@{vm.validSignUp ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
+            android:background="@{vm.isSignUpValid ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
             android:onClick="@{() -> vm.onSignUpButtonClick()}"
             android:text="@string/btn_signup"
             android:textColor="@color/colorWhite"

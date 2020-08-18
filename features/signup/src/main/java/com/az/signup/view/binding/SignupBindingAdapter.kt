@@ -8,16 +8,10 @@ import com.az.signup.R
 
 @BindingAdapter("validationBackground")
 fun setValidationBackground(view: EditText, isValid: Boolean?) {
-    view.run {
-        if (text.isNullOrBlank()) {
-            background = context.getDrawable(R.drawable.bg_rounded_button_white_border)
-            return
-        }
-        isValid?.let {
-            background =
-                if (it) context.getDrawable(R.drawable.bg_rounded_button_white_border)
-                else context.getDrawable(R.drawable.bg_rounded_button_red_border)
-        }
+    isValid?.let {
+        view.background =
+            if (it) view.context.getDrawable(R.drawable.bg_rounded_button_white_border)
+            else view.context.getDrawable(R.drawable.bg_rounded_button_red_border)
     }
 }
 

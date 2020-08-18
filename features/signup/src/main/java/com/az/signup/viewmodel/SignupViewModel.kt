@@ -1,64 +1,61 @@
 package com.az.signup.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import com.az.core.Resource
 import com.az.core.data.auth.request.SignUpRequestData
 import com.az.model.auth.AuthRepository
+import com.az.model.users.identification.IdentificationRepository
+import com.az.model.users.nickname.NicknameRepository
 
-class SignupViewModel(private val repo: AuthRepository) : ViewModel() {
+class SignupViewModel(
+    private val authRepository: AuthRepository,
+    private val identificationRepository: IdentificationRepository,
+    private val nicknameRepository: NicknameRepository
+) : ViewModel() {
 
-    private val _id = MutableLiveData<String>()
-    val id get() = _id
-
-    private val _password = MutableLiveData<String>()
-    val password get() = _password
-
-    private val _passwordCheck = MutableLiveData<String>()
-    val passwordCheck get() = _passwordCheck
-
-    private val _nickname = MutableLiveData<String>()
-    val nickname get() = _nickname
-
-    private val _validId = MutableLiveData<Boolean>(false)
-    val validId get() = _validId
-
-    private val _validPassword = MutableLiveData<Boolean>(false)
-    val validPassword get() = _validPassword
-
-    private val _validNickname = MutableLiveData<Boolean>(false)
-    val validNickname get() = _validNickname
-
-    private val _validSignUp = MutableLiveData<Boolean>(false)
-    val validSignUp get() = _validSignUp
+    val id = MutableLiveData<String>()
+    val password = MutableLiveData<String>()
+    val passwordCheck = MutableLiveData<String>()
+    val nickname = MutableLiveData<String>()
 
     private val requestData = MutableLiveData<SignUpRequestData>()
 
-    fun validId() {
+    var toastMessageHandler: ((message: String) -> Unit)? = null
+    var toBackStackHandler: (() -> Unit)? = null
+
+    val isIdValid = Transformations.map(id) { idValidationCheck() }
+    val isPassWordValid = Transformations.map(password) { passWordValidationCheck() }
+    val isNicknameValid = Transformations.map(nickname) { nicknameValidationCheck() }
+
+    private val _isSignUpValid = MutableLiveData<Boolean>()
+    val isSignUpValid: LiveData<Boolean> = _isSignUpValid
+
+    private fun idValidationCheck(): Boolean {
         // TODO API Call check id
-        validId.value = !id.value.isNullOrEmpty()
+        signUpValidationCheck()
+        return !id.value.isNullOrBlank()
     }
 
-    fun validPassword() {
-        validPassword.value =
-            !password.value.isNullOrEmpty() && password.value.equals(passwordCheck.value)
+    private fun passWordValidationCheck(): Boolean {
+        signUpValidationCheck()
+        return !password.value.isNullOrBlank() && password.value.equals(passwordCheck.value)
     }
 
-    fun validNickname() {
+    private fun nicknameValidationCheck(): Boolean {
         // TODO Call API
-        validNickname.value = !nickname.value.isNullOrEmpty()
+        signUpValidationCheck()
+        return !nickname.value.isNullOrBlank()
     }
 
-    fun validSignUp() {
-        validSignUp.value = (validId.value!! && validPassword.value!! && validNickname.value!!)
+    private fun signUpValidationCheck() {
+        _isSignUpValid.value =
+            (isIdValid.value ?: false && isPassWordValid.value ?: false && isNicknameValid.value ?: false)
     }
 
     var signUp = requestData.switchMap { request ->
         liveData {
             emit(Resource.loading(null))
-            emit(repo.signUp(request))
+            emit(authRepository.signUp(request))
         }
     }
 
