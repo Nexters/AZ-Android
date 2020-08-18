@@ -6,4 +6,5 @@
     <string name="my_page_bookmark">북마크</string>
     <string name="my_page_comment">작성댓글</string>
     <string name="my_page_humor">작성개그</string>
+    <string name="count">%1$d개</string>
 </resources>

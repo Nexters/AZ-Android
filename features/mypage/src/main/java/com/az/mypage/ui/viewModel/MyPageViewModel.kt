@@ -125,11 +125,25 @@ class MyPageViewModel(
             val response = bookmarkUserRepository.getBookmarks(
                 userId, getCurrentPage(), size
             )
-            postResponse(response as Resource<PostsData>)
+            bookmarksResponse(response)
         }
     }
 
     private fun postResponse(response: Resource<PostsData>) {
+        when (response.status) {
+            Status.SUCCESS -> {
+                baseItems.value =
+                    baseItems.value?.plus(response.data!!.posts) ?: response.data!!.posts
+                simplePageData = response.data!!.simplePage
+            }
+            Status.ERROR -> {
+                Log.e("MyPage Humors", response.message!!)
+            }
+        }
+    }
+
+    // TODO 리팩토링.. PostData와 BookmarkData의 로직이 완전 동일한데 타입이 달라서 캐스팅이 안됨
+    private fun bookmarksResponse(response: Resource<BookmarksData>) {
         when (response.status) {
             Status.SUCCESS -> {
                 baseItems.value =
@@ -157,6 +171,10 @@ class MyPageViewModel(
 
         selectItemCode.value = selectCode
         getItems()
+    }
+
+    fun getUser() {
+        sharedPref.getLoginSession()?.user
     }
 
     private fun initData() {

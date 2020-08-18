@@ -22,7 +22,8 @@
 
             <include
                 android:id="@+id/layout_my_info"
-                layout="@layout/layout_my_info" />
+                layout="@layout/layout_my_info"
+                bind:user="@{vm.getUser()}"/>
 
             <include
                 android:id="@+id/layout_tab"
