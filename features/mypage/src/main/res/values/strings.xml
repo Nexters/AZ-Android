@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_rating">신입</string>
+    <string name="user_nickname">웅웅님</string>
+    <string name="my_page_setting">설정</string>
+    <string name="my_page_bookmark">북마크</string>
+    <string name="my_page_comment">작성댓글</string>
+    <string name="my_page_humor">작성개그</string>
+    <string name="count">%1$d개</string>
 </resources>

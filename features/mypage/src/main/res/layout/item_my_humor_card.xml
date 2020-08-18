@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="humorItem"
+            type="com.az.model.posts.PostData" />
+
+        <variable
+            name="listener"
+            type="com.az.mypage.adapter.holder.listener.HumorItemListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/bg_rounded_button_color_white"
+        android:onClick="@{() -> listener.onClickHumorItem(humorItem.id)}"
+        android:padding="18dp">>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_humor_title"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/sdgnm"
+            android:lines="1"
+            android:text="@{humorItem.content}"
+            android:textColor="@color/colorSemiBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/ic_bookmark_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_best"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_best_small"
+            app:layout_constraintEnd_toStartOf="@id/img_bookmark"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_heart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_heart_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_humor_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_heart_count"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="@{@string/count(humorItem.likes)}"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/img_heart"
+            app:layout_constraintStart_toEndOf="@id/img_heart"
+            app:layout_constraintTop_toTopOf="@id/img_heart" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_comment"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_comment_small"
+            app:layout_constraintBottom_toBottomOf="@id/img_heart"
+            app:layout_constraintStart_toEndOf="@id/txt_heart_count"
+            app:layout_constraintTop_toTopOf="@id/img_heart" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_comment_count"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@{@string/count(humorItem.commentCount)}"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/img_heart"
+            app:layout_constraintStart_toEndOf="@id/img_comment"
+            app:layout_constraintTop_toTopOf="@id/img_heart" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_humor_create_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{humorItem.createdDate}"
+            android:textColor="@color/colorSemiBlack"
+            app:layout_constraintBottom_toBottomOf="@id/img_heart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_heart" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

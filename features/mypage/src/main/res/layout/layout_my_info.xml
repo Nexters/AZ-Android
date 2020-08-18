@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userNickname"
+            type="String" />
+
+        <variable
+            name="userRating"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSemiBlack">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/user_grade_sticker"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="23dp"
+            android:src="@drawable/ic_newbie_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:gradeForUserSticker="@{userRating}" />
+
+        <TextView
+            android:id="@+id/txt_my_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="3dp"
+            android:text="@{userRating}"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/user_grade_sticker"
+            app:layout_constraintStart_toEndOf="@id/user_grade_sticker" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@{userNickname}"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@id/txt_my_rating"
+            app:layout_constraintStart_toEndOf="@id/txt_my_rating" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

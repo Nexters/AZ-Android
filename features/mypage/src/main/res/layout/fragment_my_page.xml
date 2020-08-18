@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="vm"
+            type="com.az.mypage.ui.viewModel.MyPageViewModel" />
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorSemiBlack">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="마이페이지" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <include
+                android:id="@+id/layout_my_info"
+                layout="@layout/layout_my_info"
+                bind:userNickname="@{vm.user.nickname}"
+                bind:userRating="@{vm.userRating}"/>
+
+            <include
+                android:id="@+id/layout_tab"
+                layout="@layout/layout_tab"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="33dp" />
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/layout_bottom_sheet"
+            layout="@layout/layout_bottom_sheet"
+            bind:items="@{vm.baseItems}"
+            bind:vm="@{vm}"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
