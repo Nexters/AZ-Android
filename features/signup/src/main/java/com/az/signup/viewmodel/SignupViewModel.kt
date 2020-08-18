@@ -154,7 +154,7 @@ class SignupViewModel(
     private fun showToast(message: String) = toastMessageHandler?.invoke(message)
 
     companion object {
-        private const val TAG = "SignupViewModel"
+        private val TAG = SignupViewModel::class.simpleName
         private const val AVAILABLE_CONTENT = 204
     }
 }
