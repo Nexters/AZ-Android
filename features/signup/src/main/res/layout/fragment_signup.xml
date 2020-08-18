@@ -79,7 +79,7 @@
             android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="@string/signup_password"
             android:inputType="textPassword"
-            android:maxLength="8"
+            android:maxLength="20"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
             android:singleLine="true"
@@ -90,6 +90,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_id_error"
+            bind:passwordChangeListener="@{vm.passWordValidationCheck}"
             bind:validationBackground="@{vm.isPassWordValid}" />
 
         <EditText
@@ -101,7 +102,7 @@
             android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="@string/signup_password_check"
             android:inputType="textPassword"
-            android:maxLength="8"
+            android:maxLength="20"
             android:paddingStart="26dp"
             android:paddingEnd="100dp"
             android:singleLine="true"
@@ -112,6 +113,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_text_password"
+            bind:passwordChangeListener="@{vm.passWordValidationCheck}"
             bind:validationBackground="@{vm.isPassWordValid}" />
 
         <TextView
@@ -170,6 +172,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:gravity="center"
+            android:onClick="@{() -> vm.nicknameExistenceCheck()}"
             android:paddingHorizontal="24dp"
             android:paddingBottom="1dp"
             android:text="@string/signup_duplicate_check"
@@ -185,7 +188,7 @@
             android:layout_height="56dp"
             android:layout_marginTop="40dp"
             android:background="@{vm.isSignUpValid ? @drawable/bg_rounded_button_color_purple : @drawable/bg_rounded_button_color_grey}"
-
+            android:onClick="@{() -> vm.signUp()}"
             android:text="@string/btn_signup"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent" />
