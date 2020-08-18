@@ -1,11 +1,16 @@
 package com.az.signup.viewmodel
 
-import androidx.lifecycle.*
-import com.az.core.Resource
-import com.az.core.data.auth.request.SignUpRequestData
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.az.core.Status
 import com.az.model.auth.AuthRepository
 import com.az.model.users.identification.IdentificationRepository
+import com.az.model.users.identification.IdentificationResponseData
 import com.az.model.users.nickname.NicknameRepository
+import kotlinx.coroutines.launch
 
 class SignupViewModel(
     private val authRepository: AuthRepository,
@@ -18,48 +23,69 @@ class SignupViewModel(
     val passwordCheck = MutableLiveData<String>()
     val nickname = MutableLiveData<String>()
 
-    private val requestData = MutableLiveData<SignUpRequestData>()
-
     var toastMessageHandler: ((message: String) -> Unit)? = null
     var toBackStackHandler: (() -> Unit)? = null
 
-    val isIdValid = Transformations.map(id) { idValidationCheck() }
-    val isPassWordValid = Transformations.map(password) { passWordValidationCheck() }
-    val isNicknameValid = Transformations.map(nickname) { nicknameValidationCheck() }
+    private val _isIdValid = MutableLiveData<Boolean>()
+    val isIdValid: LiveData<Boolean> = _isIdValid
+    private val _isNicknameValid = MutableLiveData<Boolean>()
+    val isNicknameValid: LiveData<Boolean> = _isNicknameValid
+    private val _isPassWordValid = MutableLiveData<Boolean>()
+    val isPassWordValid: LiveData<Boolean> = _isPassWordValid
 
     private val _isSignUpValid = MutableLiveData<Boolean>()
     val isSignUpValid: LiveData<Boolean> = _isSignUpValid
 
-    private fun idValidationCheck(): Boolean {
-        // TODO API Call check id
-        signUpValidationCheck()
-        return !id.value.isNullOrBlank()
-    }
-
-    private fun passWordValidationCheck(): Boolean {
-        signUpValidationCheck()
-        return !password.value.isNullOrBlank() && password.value.equals(passwordCheck.value)
-    }
-
-    private fun nicknameValidationCheck(): Boolean {
-        // TODO Call API
-        signUpValidationCheck()
-        return !nickname.value.isNullOrBlank()
-    }
-
-    private fun signUpValidationCheck() {
-        _isSignUpValid.value =
-            (isIdValid.value ?: false && isPassWordValid.value ?: false && isNicknameValid.value ?: false)
-    }
-
-    var signUp = requestData.switchMap { request ->
-        liveData {
-            emit(Resource.loading(null))
-            emit(authRepository.signUp(request))
+    fun idExistenceCheck() {
+        if (isIdInvalid()) return
+        viewModelScope.launch {
+            val response = identificationRepository.isIdentificationExist(id.value!!)
+            when (response.status) {
+                Status.SUCCESS -> handleIdentificationResponse(response.data!!)
+                Status.ERROR -> Log.d(TAG, response.message!!)
+            }
         }
     }
 
-    fun onSignUpButtonClick() {
-        requestData.value = SignUpRequestData(id.value!!, password.value!!, nickname.value!!)
+    private fun isIdInvalid(): Boolean {
+        id.value.let {
+            return when {
+                it.isNullOrBlank() -> true
+                it.contains("\\s".toRegex()) -> true.also { showToast("공백은 허용되지 않습니다") }
+                else -> true
+            }
+        }
+    }
+
+    private fun handleIdentificationResponse(response: IdentificationResponseData) {
+        when (response.code) {
+            CONTENT_EXIST_ALREADY -> _isIdValid.value = false
+            AVAILABLE_CONTENT -> _isIdValid.value = true
+            else -> showToast(response.message)
+        }
+    }
+
+    /*private fun passWordValidationCheck(): Boolean {
+
+    }
+
+    private fun passWordCheckValidationCheck(): Boolean {
+
+    }
+
+    private fun nicknameValidationCheck(): Boolean {
+
+    }
+
+    private fun signUpValidationCheck() {
+
+    }*/
+
+    private fun showToast(message: String) = toastMessageHandler?.invoke(message)
+
+    companion object {
+        private const val TAG = "SignupViewModel"
+        private const val CONTENT_EXIST_ALREADY = 201
+        private const val AVAILABLE_CONTENT = 204
     }
 }

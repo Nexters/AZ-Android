@@ -17,15 +17,9 @@ fun setValidationBackground(view: EditText, isValid: Boolean?) {
 
 @BindingAdapter("errorTextVisibility")
 fun setErrorTextVisibility(view: TextView, isValid: Boolean?) {
-    view.run {
-        if (text.isNullOrBlank()) {
-            visibility = View.GONE
-            return
-        }
-        isValid?.let {
-            visibility =
-                if (it) View.GONE
-                else View.VISIBLE
-        }
+    isValid?.let {
+        view.visibility =
+            if (it) View.GONE
+            else View.VISIBLE
     }
 }
