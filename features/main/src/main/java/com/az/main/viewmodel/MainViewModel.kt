@@ -78,11 +78,10 @@ class MainViewModel(
     }
 
     fun toggleFame() {
-        _isHumorsFame.value = (isHumorsFame.value ?: false).let { !it }.also {
-            initSimplePageData()
-            cleanHumorData()
-            getItems()
-        }
+        _isHumorsFame.value = (isHumorsFame.value ?: false).let { !it }
+        initSimplePageData()
+        cleanHumorData()
+        getItems()
     }
 
     fun refreshMainPage() {
