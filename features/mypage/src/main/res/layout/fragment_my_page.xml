@@ -23,7 +23,8 @@
             <include
                 android:id="@+id/layout_my_info"
                 layout="@layout/layout_my_info"
-                bind:user="@{vm.getUser()}"/>
+                bind:userNickname="@{vm.user.nickname}"
+                bind:userRating="@{vm.userRating}"/>
 
             <include
                 android:id="@+id/layout_tab"

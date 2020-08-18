@@ -18,6 +18,7 @@ import com.az.model.users.bookmark.BookmarksData
 import com.az.model.users.bookmark.BookmarksRepository
 import com.az.model.users.comments.UserCommentsRepository
 import com.az.model.users.posts.UserPostsRepository
+import com.az.model.users.rating.Rating
 import com.az.mypage.model.MyPageItemCode
 import com.az.mypage.model.SettingKey
 import com.az.mypage.model.SettingModel
@@ -50,6 +51,8 @@ class MyPageViewModel(
 
     private val _baseItems = MutableLiveData<List<BaseDataInterface>>()
     val baseItems get() = _baseItems
+
+    val user = sharedPref.getLoginSession()?.user
 
     private val setting: List<SettingModel> = arrayListOf(
         SettingModel(SettingKey.CHART, "아재트 조직도 정보"),
@@ -165,16 +168,16 @@ class MyPageViewModel(
         }
     }
 
+    fun getUserRating(): String {
+        return Rating.valueOf(user?.rating!!).gradeName
+    }
+
     fun onSelectMyPageItem(selectCode: MyPageItemCode) {
         initData()
         initSimplePageData()
 
         selectItemCode.value = selectCode
         getItems()
-    }
-
-    fun getUser() {
-        sharedPref.getLoginSession()?.user
     }
 
     private fun initData() {

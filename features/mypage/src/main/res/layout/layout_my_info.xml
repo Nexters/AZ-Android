@@ -5,8 +5,12 @@
     <data>
 
         <variable
-            name="user"
-            type="com.az.core.data.auth.SimpleUser" />
+            name="userNickname"
+            type="String" />
+
+        <variable
+            name="userRating"
+            type="String" />
 
     </data>
 
@@ -31,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="3dp"
-            android:text="@{user.rating}"
+            android:text="@{userRating}"
             android:textColor="@color/colorWhite"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -42,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="@{user.nickname}"
+            android:text="@{userNickname}"
             android:textColor="@color/colorWhite"
             android:textSize="30sp"
             android:textStyle="normal"
