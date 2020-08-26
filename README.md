@@ -1,6 +1,6 @@
 # 🤣 AZ-Android 🤣
 
-<img width="200" src="https://user-images.githubusercontent.com/58504556/90659312-7c28e400-e27f-11ea-894e-f9f7733bdd6f.png">
+<img width="600" src="https://user-images.githubusercontent.com/58504556/91311347-f2809580-e7ed-11ea-93a1-00bdb1623dc4.jpg">
 
 안드로이드의 반댓말은? 바깥드로이드
 
@@ -68,5 +68,7 @@ DFM 을 사용하면 Google 의 Dynamic Delivery를 통해 사용자가 그때�
 
 <br>
 <br>
+
+<img width="200" src="https://user-images.githubusercontent.com/58504556/90659312-7c28e400-e27f-11ea-894e-f9f7733bdd6f.png">
 
 ### 정답 : 칫솔~
