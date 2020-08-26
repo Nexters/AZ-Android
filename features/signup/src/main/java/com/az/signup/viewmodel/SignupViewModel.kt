@@ -63,7 +63,10 @@ class SignupViewModel(
 
     private fun handleIdentificationResponse(response: IdentificationResponseData) {
         when (response.code) {
-            AVAILABLE_CONTENT -> _isIdValid.value = true
+            AVAILABLE_CONTENT -> {
+                _isIdValid.value = true
+                showToast("사용 가능한 아이디입니다")
+            }
             else -> _isIdValid.value = false
         }
     }
@@ -94,7 +97,10 @@ class SignupViewModel(
 
     private fun handleNicknameResponse(response: NicknameResponseData) {
         when (response.code) {
-            AVAILABLE_CONTENT -> _isNicknameValid.value = true
+            AVAILABLE_CONTENT -> {
+                _isNicknameValid.value = true
+                showToast("사용 가능한 닉네임입니다")
+            }
             else -> _isNicknameValid.value = false
         }
     }
@@ -111,7 +117,7 @@ class SignupViewModel(
 
     fun signUp() {
         if (id.value.isNullOrBlank()) {
-            showToast("아이디를를 입력해주세요")
+            showToast("아이디를 입력해주세요")
             return
         }
         if (password.value.isNullOrBlank()) {
