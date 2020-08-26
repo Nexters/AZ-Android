@@ -7,7 +7,7 @@
 
         <variable
             name="alarmItem"
-            type="com.az.alarm.TempAlarmData" />
+            type="com.az.model.users.notices.DetailedNoticeData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +42,7 @@
             android:layout_marginEnd="4dp"
             android:fontFamily="@font/app_main_font"
             android:gravity="center_vertical"
-            android:text="@{alarmItem.title}"
+            android:text="@{alarmItem.detailedPost.content}"
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -58,7 +58,7 @@
             android:layout_marginTop="6dp"
             android:fontFamily="@font/app_main_font"
             android:gravity="center_vertical"
-            android:text="@{alarmItem.content}"
+            android:text="@{alarmItem.message}"
             android:textColor="@color/colorWhite"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/app_main_font"
             android:gravity="center_vertical"
-            android:text="@{alarmItem.time}"
+            android:text="@{alarmItem.createdDate}"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/alarm_title"
