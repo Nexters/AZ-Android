@@ -1,6 +1,6 @@
 object Versions {
-    const val name = "1.0"
-    const val code = 1
+    const val name = "1.1"
+    const val code = 2
     const val kotlin = "1.3.72"
     const val coroutines = "1.3.3"
     const val buildToolsVersion = "3.6.0"
