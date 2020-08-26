@@ -128,6 +128,7 @@ class SignupViewModel(
         }
         if (password.value!!.length < 8) {
             showToast("패스워드는 8글자 이상 입력해주세요")
+            return
         }
         if (passwordCheck.value.isNullOrBlank()) {
             showToast("패스워드를 확인해주세요")
@@ -139,11 +140,16 @@ class SignupViewModel(
         }
         if (isIdValid.value == false || isIdValid.value == null) {
             showToast("아이디 중복을 확인해주세요")
+            return
         }
         if (isNicknameValid.value == false || isNicknameValid.value == null) {
             showToast("닉네임 중복을 확인해주세요")
+            return
         }
-        if (isSignUpValid.value == false) return
+        if (isSignUpValid.value == false) {
+            showToast("회원가입이 정상적으로 완료되지 않았습니다")
+            return
+        }
 
 
         viewModelScope.launch {
