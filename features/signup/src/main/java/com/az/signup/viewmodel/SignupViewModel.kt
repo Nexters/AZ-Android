@@ -22,8 +22,8 @@ class SignupViewModel(
 ) : ViewModel() {
 
     val id = MutableLiveData<String>()
-    val password = MutableLiveData<String>()
-    val passwordCheck = MutableLiveData<String>()
+    val password = MutableLiveData("")
+    val passwordCheck = MutableLiveData("")
     val nickname = MutableLiveData<String>()
 
     var toastMessageHandler: ((message: String) -> Unit)? = null
