@@ -1,4 +1,4 @@
-package com.az.alarm
+package com.az.alarm.adapter
 
 import android.content.Context
 import android.graphics.Canvas

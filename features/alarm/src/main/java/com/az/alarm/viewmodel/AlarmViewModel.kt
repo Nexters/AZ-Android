@@ -1,8 +1,9 @@
-package com.az.alarm
+package com.az.alarm.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.az.alarm.TempAlarmData
 
 class AlarmViewModel : ViewModel() {
     private val _alarms = MutableLiveData<List<TempAlarmData>>()

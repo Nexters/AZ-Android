@@ -82,7 +82,7 @@
 
     <fragment
         android:id="@+id/alarmFragment"
-        android:name="com.az.alarm.AlarmFragment"
+        android:name="com.az.alarm.view.AlarmFragment"
         android:label="AlarmFragment"
         app:moduleName="alarm" />
 
