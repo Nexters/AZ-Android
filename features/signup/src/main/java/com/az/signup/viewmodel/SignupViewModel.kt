@@ -47,7 +47,8 @@ class SignupViewModel(
                 Status.SUCCESS -> handleIdentificationResponse(response.data!!)
                 Status.ERROR -> _isIdValid.value = false.also { Log.d(TAG, response.message!!) }
             }
-        }.also { signUpValidationCheck() }
+            signUpValidationCheck()
+        }
     }
 
     private fun isIdInvalid(): Boolean {
@@ -80,7 +81,8 @@ class SignupViewModel(
                 Status.ERROR -> _isNicknameValid.value =
                     false.also { Log.d(TAG, response.message!!) }
             }
-        }.also { signUpValidationCheck() }
+            signUpValidationCheck()
+        }
     }
 
     private fun isNicknameInvalid(): Boolean {
