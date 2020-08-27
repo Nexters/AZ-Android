@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.az.alarm.adapter.AlarmsAdapter
+import com.az.alarm.adapter.holder.listener.AlarmItemListener
 import com.az.alarm.databinding.FragmentAlarmBinding
 import com.az.alarm.di.loadFeature
 import com.az.alarm.viewmodel.AlarmViewModel
@@ -36,10 +37,21 @@ class AlarmFragment : InfiniteFragment<AlarmViewModel, DetailedNoticeData>() {
         binding.apply {
             lifecycleOwner = requireActivity()
             vm = viewModel
-            alarmRv.adapter = AlarmsAdapter()
+            alarmRv.adapter = AlarmsAdapter(getAlarmItemListener())
             setRecyclerViewScrollListener(alarmRv)
         }
         setViewModelHandlers()
+    }
+
+    private fun getAlarmItemListener(): AlarmItemListener {
+        return object : AlarmItemListener {
+            override fun onClickAlarmItem(postId: Int) = toDetailPage(postId)
+        }
+    }
+
+    private fun toDetailPage(postId: Int) {
+        AlarmFragmentDirections.actionAlarmFragmentToDetailsFragment(postId)
+            .let { action -> findNavController().navigate(action) }
     }
 
     private fun toLoginPage() {

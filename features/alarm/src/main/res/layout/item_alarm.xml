@@ -9,6 +9,10 @@
         <variable
             name="alarmItem"
             type="com.az.model.users.notices.DetailedNoticeData" />
+
+        <variable
+            name="listener"
+            type="com.az.alarm.adapter.holder.listener.AlarmItemListener" />
     </data>
 
     <LinearLayout
@@ -20,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorSemiBlack"
+            android:onClick="@{() -> listener.onClickAlarmItem(alarmItem.detailedPost.id)}"
             android:paddingVertical="22dp"
             android:paddingStart="30dp"
             android:paddingEnd="30dp">

@@ -5,14 +5,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.az.alarm.R
-import com.az.alarm.TempAlarmData
 import com.az.alarm.adapter.holder.AlarmItemViewHolder
+import com.az.alarm.adapter.holder.listener.AlarmItemListener
 import com.az.alarm.databinding.ItemAlarmBinding
 import com.az.infinite_recyclerview.InfiniteRecyclerview
 import com.az.infinite_recyclerview.LoadingViewHolder
 import com.az.model.users.notices.DetailedNoticeData
 
-class AlarmsAdapter : InfiniteRecyclerview<DetailedNoticeData>() {
+class AlarmsAdapter(
+    private val listener: AlarmItemListener
+) : InfiniteRecyclerview<DetailedNoticeData>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -23,7 +25,7 @@ class AlarmsAdapter : InfiniteRecyclerview<DetailedNoticeData>() {
                     parent,
                     false
                 ).let {
-                    AlarmItemViewHolder(it)
+                    AlarmItemViewHolder(it, listener)
                 }
             }
             else -> {
