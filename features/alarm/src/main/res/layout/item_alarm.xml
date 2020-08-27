@@ -26,12 +26,12 @@
             android:background="@color/colorSemiBlack"
             android:onClick="@{() -> listener.onClickAlarmItem(alarmItem.detailedPost.id)}"
             android:paddingVertical="22dp"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp">
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp">
 
             <TextView
                 android:id="@+id/alarm_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_alarm_button"
                 android:fontFamily="@font/app_main_font"
@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="4dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/app_main_font"
                 android:gravity="center_vertical"
                 android:maxLines="1"
