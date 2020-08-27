@@ -21,7 +21,7 @@
             android:background="@color/colorSemiBlack"
             android:paddingVertical="22dp"
             android:paddingStart="30dp"
-            android:paddingEnd="68dp">
+            android:paddingEnd="30dp">
 
             <TextView
                 android:id="@+id/alarm_btn"
@@ -32,12 +32,12 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="6dp"
-                android:text="좋아요"
                 android:textColor="@color/colorWhite"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="좋아요" />
 
             <TextView
                 android:id="@+id/alarm_title"
@@ -47,6 +47,7 @@
                 android:layout_marginEnd="4dp"
                 android:fontFamily="@font/app_main_font"
                 android:gravity="center_vertical"
+                android:maxLines="1"
                 android:text="@{alarmItem.detailedPost.content}"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
