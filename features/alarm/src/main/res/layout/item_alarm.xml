@@ -1,83 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="alarmItem"
-            type="com.az.alarm.TempAlarmData" />
+            type="com.az.model.users.notices.DetailedNoticeData" />
+
+        <variable
+            name="listener"
+            type="com.az.alarm.adapter.holder.listener.AlarmItemListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorSemiBlack"
-        android:paddingVertical="22dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="68dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/alarm_btn"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_alarm_button"
-            android:fontFamily="@font/app_main_font"
-            android:gravity="center_vertical|center_horizontal"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp"
-            android:text="좋아요"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="@color/colorSemiBlack"
+            android:onClick="@{() -> listener.onClickAlarmItem(alarmItem.detailedPost.id)}"
+            android:paddingVertical="22dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp">
 
-        <TextView
-            android:id="@+id/alarm_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="4dp"
-            android:fontFamily="@font/app_main_font"
-            android:gravity="center_vertical"
-            android:text="@{alarmItem.title}"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/alarm_btn"
-            app:layout_constraintTop_toTopOf="@id/alarm_btn"
-            tools:text="밤에 성시경이 두명이라면?" />
+            <TextView
+                android:id="@+id/alarm_btn"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_alarm_button"
+                android:fontFamily="@font/app_main_font"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:noticeType="@{alarmItem.noticeType}"
+                tools:text="좋아요" />
 
-        <TextView
-            android:id="@+id/alarm_content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:fontFamily="@font/app_main_font"
-            android:gravity="center_vertical"
-            android:text="@{alarmItem.content}"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/alarm_title"
-            app:layout_constraintTop_toBottomOf="@id/alarm_title"
-            tools:text="작성글에 새 좋아요가 등록되었습니다" />
+            <TextView
+                android:id="@+id/alarm_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/app_main_font"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{alarmItem.detailedPost.content}"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/alarm_btn"
+                app:layout_constraintTop_toTopOf="@id/alarm_btn"
+                tools:text="밤에 성시경이 두명이라면?" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/app_main_font"
-            android:gravity="center_vertical"
-            android:text="@{alarmItem.time}"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/alarm_title"
-            app:layout_constraintTop_toBottomOf="@id/alarm_content"
-            tools:text="5분전" />
+            <TextView
+                android:id="@+id/alarm_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/app_main_font"
+                android:gravity="center_vertical"
+                android:text="@{alarmItem.message}"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/alarm_title"
+                app:layout_constraintTop_toBottomOf="@id/alarm_title"
+                tools:text="작성글에 새 좋아요가 등록되었습니다" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/app_main_font"
+                android:gravity="center_vertical"
+                android:text="@{alarmItem.createdDate}"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/alarm_title"
+                app:layout_constraintTop_toBottomOf="@id/alarm_content"
+                tools:text="5분전" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPurple" />
+    </LinearLayout>
+
 </layout>

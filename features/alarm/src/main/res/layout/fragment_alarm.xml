@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.az.alarm.AlarmViewModel" />
+            type="com.az.alarm.viewmodel.AlarmViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
