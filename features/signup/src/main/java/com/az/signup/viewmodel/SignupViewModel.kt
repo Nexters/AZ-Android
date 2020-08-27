@@ -22,8 +22,8 @@ class SignupViewModel(
 ) : ViewModel() {
 
     val id = MutableLiveData<String>()
-    val password = MutableLiveData<String>()
-    val passwordCheck = MutableLiveData<String>()
+    val password = MutableLiveData("")
+    val passwordCheck = MutableLiveData("")
     val nickname = MutableLiveData<String>()
 
     var toastMessageHandler: ((message: String) -> Unit)? = null
@@ -47,7 +47,8 @@ class SignupViewModel(
                 Status.SUCCESS -> handleIdentificationResponse(response.data!!)
                 Status.ERROR -> _isIdValid.value = false.also { Log.d(TAG, response.message!!) }
             }
-        }.also { signUpValidationCheck() }
+            signUpValidationCheck()
+        }
     }
 
     private fun isIdInvalid(): Boolean {
@@ -63,7 +64,10 @@ class SignupViewModel(
 
     private fun handleIdentificationResponse(response: IdentificationResponseData) {
         when (response.code) {
-            AVAILABLE_CONTENT -> _isIdValid.value = true
+            AVAILABLE_CONTENT -> {
+                _isIdValid.value = true
+                showToast("사용 가능한 아이디입니다")
+            }
             else -> _isIdValid.value = false
         }
     }
@@ -77,7 +81,8 @@ class SignupViewModel(
                 Status.ERROR -> _isNicknameValid.value =
                     false.also { Log.d(TAG, response.message!!) }
             }
-        }.also { signUpValidationCheck() }
+            signUpValidationCheck()
+        }
     }
 
     private fun isNicknameInvalid(): Boolean {
@@ -94,7 +99,10 @@ class SignupViewModel(
 
     private fun handleNicknameResponse(response: NicknameResponseData) {
         when (response.code) {
-            AVAILABLE_CONTENT -> _isNicknameValid.value = true
+            AVAILABLE_CONTENT -> {
+                _isNicknameValid.value = true
+                showToast("사용 가능한 닉네임입니다")
+            }
             else -> _isNicknameValid.value = false
         }
     }
@@ -111,7 +119,7 @@ class SignupViewModel(
 
     fun signUp() {
         if (id.value.isNullOrBlank()) {
-            showToast("아이디를를 입력해주세요")
+            showToast("아이디를 입력해주세요")
             return
         }
         if (password.value.isNullOrBlank()) {
@@ -120,6 +128,7 @@ class SignupViewModel(
         }
         if (password.value!!.length < 8) {
             showToast("패스워드는 8글자 이상 입력해주세요")
+            return
         }
         if (passwordCheck.value.isNullOrBlank()) {
             showToast("패스워드를 확인해주세요")
@@ -131,11 +140,16 @@ class SignupViewModel(
         }
         if (isIdValid.value == false || isIdValid.value == null) {
             showToast("아이디 중복을 확인해주세요")
+            return
         }
         if (isNicknameValid.value == false || isNicknameValid.value == null) {
             showToast("닉네임 중복을 확인해주세요")
+            return
         }
-        if (isSignUpValid.value == false) return
+        if (isSignUpValid.value == false) {
+            showToast("회원가입이 정상적으로 완료되지 않았습니다")
+            return
+        }
 
 
         viewModelScope.launch {
